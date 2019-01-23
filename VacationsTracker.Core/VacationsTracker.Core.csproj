@@ -10,4 +10,12 @@
     <Folder Include="Infrastructure\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FlexiMvvm.Bindings.PreRelease" Version="0.9.7-prerelease" />
+    <PackageReference Include="FlexiMvvm.Common.PreRelease" Version="0.9.7-prerelease" />
+    <PackageReference Include="FlexiMvvm.Essentials.PreRelease" Version="0.9.7-prerelease" />
+    <PackageReference Include="FlexiMvvm.Lifecycle.PreRelease" Version="0.9.7-prerelease" />
+    <PackageReference Include="FlexiMvvm.Validation.PreRelease" Version="0.9.7-prerelease" />
+  </ItemGroup>
+
 </Project>
