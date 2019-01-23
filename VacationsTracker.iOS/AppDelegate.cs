@@ -1,7 +1,12 @@
-﻿using Foundation;
+﻿using FlexiMvvm.Bootstrappers;
+using FlexiMvvm.Ioc;
+using Foundation;
 using UIKit;
+using VacationsTracker.Core.Bootstrappers;
+using VacationsTracker.iOS.Bootstrappers;
+using VacationsTracker.iOS.Views;
 
-namespace Blank
+namespace VacationsTracker.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
@@ -18,11 +23,17 @@ namespace Blank
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // create a new window instance based on the screen size
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            Window.RootViewController = new UIViewController();
+            var config = new BootstrapperConfig();
+            config.SetSimpleIoc(new SimpleIoc());
+            var compositeBootstrapper = new CompositeBootstrapper(
+                new CoreBootstrapper(),
+                new IosBootstrapper());
+            compositeBootstrapper.Execute(config);
 
-            // make the window visible
+            Window = new UIWindow(UIScreen.MainScreen.Bounds)
+            {
+                RootViewController = new RootNavigationController()
+            };
             Window.MakeKeyAndVisible();
 
             return true;
