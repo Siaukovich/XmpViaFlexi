@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.OS;
+using Android.Views;
 using FlexiMvvm.Bootstrappers;
 using FlexiMvvm.Ioc;
 using FlexiMvvm.Views.V7;
