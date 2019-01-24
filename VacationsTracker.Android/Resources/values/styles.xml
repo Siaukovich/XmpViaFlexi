@@ -3,7 +3,6 @@
   <!--
     Вопросы
     
-    Где лучше писать констрэйнты - в axml или styles?
     Можно ли сделать отступ сверху без marginTop (потому что это костыльно)?
     Конфликт нагет-пакетов
   -->
@@ -32,8 +31,6 @@
     <style name="InvalidCredentialsTextViewStyle">
       <item name="android:layout_width">@dimen/TextViewDefaultWidth</item>
       <item name="android:layout_height">wrap_content</item>
-      <item name="layout_constraintLeft_toLeftOf">parent</item>
-      <item name="layout_constraintRight_toRightOf">parent</item>
       <item name="android:padding">@dimen/Inset1x</item>
       <item name="android:visibility">invisible</item>
       <item name="android:background">@drawable/RoundTextView</item>
@@ -45,8 +42,6 @@
       <item name="android:background">@android:color/white</item>
       <item name="android:layout_width">@dimen/TextEditDefaultWidth</item>
       <item name="android:layout_height">@dimen/TextEditDefaultHeight</item>
-      <item name="layout_constraintLeft_toLeftOf">parent</item>
-      <item name="layout_constraintRight_toRightOf">parent</item>
       <item name="android:layout_marginVertical">@dimen/Inset1x</item>
       <item name="android:singleLine">true</item>
       <item name="android:paddingHorizontal">@dimen/Inset1x</item>
@@ -56,8 +51,6 @@
       <item name="android:background">@drawable/RoundLoginButton</item>
       <item name="android:layout_width">@dimen/ButtonDefaultWidth</item>
       <item name="android:layout_height">@dimen/ButtonDefaultHeight</item>
-      <item name="layout_constraintLeft_toLeftOf">parent</item>
-      <item name="layout_constraintRight_toRightOf">parent</item>
       <item name="android:layout_marginVertical">@dimen/Inset1x</item>
       <item name="android:textColor">@android:color/white</item>
     </style>

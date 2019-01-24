@@ -7,24 +7,32 @@
 	<TextView
 		android:id="@+id/InvalidCredentialsText"
 	    android:text="Please, retry your login and password pair"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
 		style="@style/InvalidCredentialsTextViewStyle"/>
 
 	<EditText
          android:id="@+id/LoginEntry"
 		 android:hint="Login"
 		 style="@style/LoginEntryStyle" 
+		 app:layout_constraintLeft_toLeftOf="parent"
+		 app:layout_constraintRight_toRightOf="parent"
 		 app:layout_constraintTop_toBottomOf="@id/InvalidCredentialsText"/>
 
 	<EditText
 		 android:id="@+id/PasswordEntry"
 		 android:hint="Password"
-		 style="@style/LoginEntryStyle" 
+		 style="@style/LoginEntryStyle"
+		 app:layout_constraintLeft_toLeftOf="parent"
+		 app:layout_constraintRight_toRightOf="parent"
 		 app:layout_constraintTop_toBottomOf="@id/LoginEntry"/>
 
 	<Button
 		 android:id="@+id/LoginButton"
 		 android:text="Sign In"
 		 style="@style/LoginButtonStyle" 
+		 app:layout_constraintLeft_toLeftOf="parent"
+		 app:layout_constraintRight_toRightOf="parent"
 		 app:layout_constraintTop_toBottomOf="@id/PasswordEntry"/>
 
 </android.support.constraint.ConstraintLayout>
