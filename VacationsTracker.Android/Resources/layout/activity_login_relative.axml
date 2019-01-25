@@ -3,27 +3,27 @@
 		        style="@style/LoginLayoutStyle">
 
 	<TextView
-		android:id="@+id/InvalidCredentialsText"
+		android:id="@+id/invalidCredentialsText"
 	    android:text="Please, retry your login and password pair"
 		style="@style/InvalidCredentialsTextViewStyle"/>
 
 	<EditText
-         android:id="@+id/LoginEntry"
+         android:id="@+id/loginEntry"
 		 android:hint="Login"
 		 style="@style/LoginEntryStyle"
-		 android:layout_below="@id/InvalidCredentialsText"/>
+		 android:layout_below="@id/invalidCredentialsText"/>
 
 	<EditText
-		 android:id="@+id/PasswordEntry"
+		 android:id="@+id/passwordEntry"
 		 android:hint="Password"
 		 style="@style/LoginEntryStyle" 
-		 android:layout_below="@id/LoginEntry"/>
+		 android:layout_below="@id/loginEntry"/>
 
 	<Button
-		 android:id="@+id/LoginButton"
+		 android:id="@+id/loginButton"
 		 android:text="Sign In"
 		 style="@style/LoginButtonStyle" 
-		 android:layout_below="@id/PasswordEntry"
+		 android:layout_below="@id/passwordEntry"
 		 android:layout_centerHorizontal="true"/>
 		
 </RelativeLayout>
