@@ -1,4 +1,5 @@
 ﻿using System;
+using Android;
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -6,7 +7,7 @@ using Android.Widget;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
 
-namespace VacationsTracker.Android.Views.Login
+namespace VacationsTracker.Droid.Views.Login
 {
     [Activity(Label = "LoginActivity", Theme = "@style/AppTheme")]
     public class LoginActivity : FlxAppCompatActivity<LoginViewModel>

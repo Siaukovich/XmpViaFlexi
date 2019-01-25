@@ -6,13 +6,13 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 
-namespace VacationsTracker.Android.Views
+namespace VacationsTracker.Droid.Views
 {
     public partial class HomeActivityViewHolder
     {
          private readonly Activity activity;
 
-         private RecyclerView recyclerView;
+         private Android.Support.V7.Widget.RecyclerView recyclerView;
 
         public HomeActivityViewHolder( Activity activity)
         {
@@ -22,8 +22,8 @@ namespace VacationsTracker.Android.Views
         }
 
         
-        public RecyclerView RecyclerView =>
-            recyclerView ?? (recyclerView = activity.FindViewById<RecyclerView>(Resource.Id.recyclerView));
+        public Android.Support.V7.Widget.RecyclerView RecyclerView =>
+            recyclerView ?? (recyclerView = activity.FindViewById<Android.Support.V7.Widget.RecyclerView>(Resource.Id.recyclerView));
     }
 
     public partial class LoginActivityViewHolder
@@ -90,6 +90,29 @@ namespace VacationsTracker.Android.Views
         
         public Button LoginButton =>
             loginButton ?? (loginButton = activity.FindViewById<Button>(Resource.Id.loginButton));
+    }
+
+    public partial class VacationCellViewHolder
+    {
+         private ImageView vacationImage;
+         private TextView vacationDuration;
+         private TextView vacationType;
+         private TextView vacationStatus;
+
+        public ImageView VacationImage =>
+            vacationImage ?? (vacationImage = ItemView.FindViewById<ImageView>(Resource.Id.vacationImage));
+
+        
+        public TextView VacationDuration =>
+            vacationDuration ?? (vacationDuration = ItemView.FindViewById<TextView>(Resource.Id.vacationDuration));
+
+        
+        public TextView VacationType =>
+            vacationType ?? (vacationType = ItemView.FindViewById<TextView>(Resource.Id.vacationType));
+
+        
+        public TextView VacationStatus =>
+            vacationStatus ?? (vacationStatus = ItemView.FindViewById<TextView>(Resource.Id.vacationStatus));
     }
 
 }

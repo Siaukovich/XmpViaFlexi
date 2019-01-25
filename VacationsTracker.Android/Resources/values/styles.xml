@@ -1,10 +1,7 @@
 <resources>
 
   <!--
-    Вопросы
-    
     Можно ли сделать отступ сверху без marginTop (потому что это костыльно)?
-    Конфликт нагет-пакетов
   -->
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -54,5 +51,35 @@
       <item name="android:layout_marginVertical">@dimen/Inset1x</item>
       <item name="android:textColor">@android:color/white</item>
     </style>
+
+  <style name="VacationImageStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">match_parent</item>
+  </style>
+
+  <style name="VacationDurationStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    <item name="android:textColor">@color/colorLightBlue</item>
+  </style>
+
+  <style name="VacationTypeStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">@android:color/darker_gray</item>
+  </style>
+
+  <style name="VacationStatusStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">@android:color/darker_gray</item>
+  </style>
+
+  <style name="SeparatorStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:background">@android:color/darker_gray</item>
+  </style>
 
 </resources>
