@@ -1710,6 +1710,9 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f0700a8
 			public const int LoginScreenTopMargin = 2131165352;
 			
+			// aapt resource value: 0x7f0700aa
+			public const int SeparatorDefaultThickness = 2131165354;
+			
 			// aapt resource value: 0x7f0700a7
 			public const int TextEditDefaultHeight = 2131165351;
 			
@@ -1718,6 +1721,9 @@ namespace VacationsTracker.Droid
 			
 			// aapt resource value: 0x7f0700a3
 			public const int TextViewDefaultWidth = 2131165347;
+			
+			// aapt resource value: 0x7f0700a9
+			public const int VacationImageDefaultHeight = 2131165353;
 			
 			// aapt resource value: 0x7f070012
 			public const int abc_action_bar_content_inset_material = 2131165202;
@@ -4189,8 +4195,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f0a0038
 			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131361848;
 			
-			// aapt resource value: 0x7f0a018a
-			public const int SeparatorStyle = 2131362186;
+			// aapt resource value: 0x7f0a018b
+			public const int SeparatorStyle = 2131362187;
 			
 			// aapt resource value: 0x7f0a0181
 			public const int SplashTheme = 2131362177;
@@ -4501,17 +4507,20 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f0a010d
 			public const int ThemeOverlay_AppCompat_Light = 2131362061;
 			
-			// aapt resource value: 0x7f0a0187
-			public const int VacationDurationStyle = 2131362183;
-			
 			// aapt resource value: 0x7f0a0186
-			public const int VacationImageStyle = 2131362182;
-			
-			// aapt resource value: 0x7f0a0189
-			public const int VacationStatusStyle = 2131362185;
+			public const int VacationCellStyle = 2131362182;
 			
 			// aapt resource value: 0x7f0a0188
-			public const int VacationTypeStyle = 2131362184;
+			public const int VacationDurationStyle = 2131362184;
+			
+			// aapt resource value: 0x7f0a0187
+			public const int VacationImageStyle = 2131362183;
+			
+			// aapt resource value: 0x7f0a018a
+			public const int VacationStatusStyle = 2131362186;
+			
+			// aapt resource value: 0x7f0a0189
+			public const int VacationTypeStyle = 2131362185;
 			
 			// aapt resource value: 0x7f0a010e
 			public const int Widget_AppCompat_ActionBar = 2131362062;
