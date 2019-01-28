@@ -53,14 +53,14 @@
     </style>
 
   <style name="VacationImageStyle">
+    <item name="android:layout_height">40dp</item>
     <item name="android:layout_width">wrap_content</item>
-    <item name="android:layout_height">match_parent</item>
   </style>
 
   <style name="VacationDurationStyle">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
-    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
     <item name="android:textColor">@color/colorLightBlue</item>
   </style>
 
@@ -73,6 +73,7 @@
   <style name="VacationStatusStyle">
     <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">wrap_content</item>
+    <item name="android:paddingRight">@dimen/Inset1x</item>
     <item name="android:textColor">@android:color/darker_gray</item>
   </style>
 

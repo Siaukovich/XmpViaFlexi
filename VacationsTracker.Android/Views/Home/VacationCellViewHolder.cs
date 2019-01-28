@@ -1,8 +1,9 @@
-﻿
-using Android.Views;
+﻿using Android.Views;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
+using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels;
+using VacationsTracker.Droid.Views.ValueConverters;
 
 namespace VacationsTracker.Droid.Views
 {
@@ -19,7 +20,23 @@ namespace VacationsTracker.Droid.Views
 
             bindingSet.Bind(VacationType)
                 .For(v => v.Text)
-                .To(vm => vm.VacationType);
+                .To(vm => vm.Type)
+                .WithConvertion<VacationTypeValueConverter>();
+
+            bindingSet.Bind(VacationStatus)
+                .For(v => v.Text)
+                .To(vm => vm.Status)
+                .WithConvertion<VacationStatusValueConverter>();
+
+            bindingSet.Bind(VacationDuration)
+                .For(v => v.Text)
+                .To(vm => vm.Duration)
+                .WithConvertion<DurationValueConverter>();
+
+            bindingSet.Bind(VacationImage)
+                .For(v => v.SetImageResourceBinding())
+                .To(vm => vm.Type)
+                .WithConvertion<ImageValueConverter>();
         }
     }
 }
