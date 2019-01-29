@@ -20,7 +20,7 @@ namespace VacationsTracker.Droid.Views
 
             bindingSet.Bind(LastUpdatedTime)
                 .For(v => v.Text)
-                .To(vm => DateTime.Now.ToString("g", CultureInfo.CurrentCulture));
+                .To(vm => vm.RefreshedDateTime);
         }
     }
 }

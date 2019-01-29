@@ -98,6 +98,7 @@ namespace VacationsTracker.Droid.Views
          private TextView vacationDuration;
          private TextView vacationType;
          private TextView vacationStatus;
+         private View separatorView;
 
 
 
@@ -116,6 +117,10 @@ namespace VacationsTracker.Droid.Views
         
         public TextView VacationStatus =>
             vacationStatus ?? (vacationStatus = ItemView.FindViewById<TextView>(Resource.Id.vacationStatus));
+
+        
+        public View SeparatorView =>
+            separatorView ?? (separatorView = ItemView.FindViewById<View>(Resource.Id.separator_view));
     }
 
     

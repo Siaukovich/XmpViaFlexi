@@ -37,6 +37,11 @@ namespace VacationsTracker.Droid.Views
                 .For(v => v.SetImageResourceBinding())
                 .To(vm => vm.Type)
                 .WithConvertion<ImageValueConverter>();
+
+            bindingSet.Bind(SeparatorView)
+                .For(v => v.Visibility)
+                .To(vm => vm.SeparatorVisible)
+                .WithConvertion<SeparatorVisibilityValueConverter>();
         }
     }
 }

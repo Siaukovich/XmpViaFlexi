@@ -37,5 +37,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels
             get => _end;
             set => Set(ref _end, value);
         }
+
+        public bool SeparatorVisible { get; set; } = true;
     }
 }
