@@ -104,9 +104,11 @@ namespace VacationsTracker.Droid.Views
          private Android.Support.V7.Widget.Toolbar detailsToolbar;
          private Button saveRequestButton;
          private Android.Support.V4.View.ViewPager vacationTypePager;
+         private RelativeLayout dateStart;
          private TextView vacationStartDay;
          private TextView vacationStartMonth;
          private TextView vacationStartYear;
+         private RelativeLayout dateEnd;
          private TextView vacationEndDay;
          private TextView vacationEndMonth;
          private TextView vacationEndYear;
@@ -130,7 +132,11 @@ namespace VacationsTracker.Droid.Views
 
         
         public Android.Support.V4.View.ViewPager VacationTypePager =>
-            vacationTypePager ?? null;
+            vacationTypePager ?? (vacationTypePager = activity.FindViewById<Android.Support.V4.View.ViewPager>(Resource.Id.vacation_type_pager));
+
+        
+        public RelativeLayout DateStart =>
+            dateStart ?? (dateStart = activity.FindViewById<RelativeLayout>(Resource.Id.date_start));
 
         
         public TextView VacationStartDay =>
@@ -143,6 +149,10 @@ namespace VacationsTracker.Droid.Views
         
         public TextView VacationStartYear =>
             vacationStartYear ?? (vacationStartYear = activity.FindViewById<TextView>(Resource.Id.vacation_start_year));
+
+        
+        public RelativeLayout DateEnd =>
+            dateEnd ?? (dateEnd = activity.FindViewById<RelativeLayout>(Resource.Id.date_end));
 
         
         public TextView VacationEndDay =>

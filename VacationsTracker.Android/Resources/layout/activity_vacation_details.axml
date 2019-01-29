@@ -44,65 +44,81 @@
 		android:layout_height="wrap_content"
 		android:layout_margin="@dimen/Inset2x">
 
-		<TextView
-			android:id="@+id/vacation_start_day"
+		<RelativeLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:textSize="60dp"
-			android:textColor="@color/colorLightBlue"
-			android:text="20"
-			android:layout_alignParentLeft="true"/>
+			android:id="@+id/date_start">
 
-		<TextView
-			android:id="@+id/vacation_start_month"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textSize="25dp"
-			android:textColor="@color/colorLightBlue"
-			android:text="APR"
-			android:layout_alignTop="@id/vacation_start_day"
-			android:layout_toRightOf="@id/vacation_start_day"/>
+			<TextView
+				android:id="@+id/vacation_start_day"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="45dp"
+				android:textColor="@color/colorLightBlue"
+				android:gravity="center|top"
+				android:text="20"
+				android:layout_alignParentLeft="true"/>
 
-		<TextView
-			android:id="@+id/vacation_start_year"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textSize="15dp"
-			android:text="2017"
-			android:textColor="@color/colorLightBlue"
-			android:layout_alignBottom="@id/vacation_start_day"
-			android:layout_toRightOf="@id/vacation_start_day"/>
+			<TextView
+				android:id="@+id/vacation_start_month"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="20dp"
+				android:textColor="@color/colorLightBlue"
+				android:text="APR"
+				android:layout_alignTop="@id/vacation_start_day"
+				android:layout_toRightOf="@id/vacation_start_day"/>
 
-		<TextView
-			android:id="@+id/vacation_end_day"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textSize="60dp"
-			android:text="20"
-			android:textColor="@color/colorLightGreen"
-			android:layout_toLeftOf="@id/vacation_end_month"
-			android:layout_alignTop="@id/vacation_start_day"/>
+			<TextView
+				android:id="@+id/vacation_start_year"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15dp"
+				android:text="2017"
+				android:textColor="@color/colorLightBlue"
+				android:layout_alignBottom="@id/vacation_start_day"
+				android:layout_toRightOf="@id/vacation_start_day"/>
 
-		<TextView
-			android:id="@+id/vacation_end_month"
-			android:layout_width="wrap_content"
-			android:text="MAY"
-			android:layout_height="wrap_content"
-			android:textSize="25dp"
-			android:textColor="@color/colorLightGreen"
-			android:layout_alignTop="@id/vacation_end_day"
-			android:layout_alignParentRight="true"/>
+		</RelativeLayout>
 
-		<TextView
-			android:id="@+id/vacation_end_year"
+
+		<RelativeLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="2017"
-			android:textAppearance="?android:attr/textAppearanceSmall"
-			android:textColor="@color/colorLightGreen"
-			android:layout_alignBottom="@id/vacation_end_day"
-			android:layout_toRightOf="@id/vacation_end_day"
-			android:layout_alignParentRight="true"/>
+			android:id="@+id/date_end"
+			android:layout_alignParentRight="true">
+
+			<TextView
+				android:id="@+id/vacation_end_day"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="45dp"
+				android:textColor="@color/colorLightGreen"
+				android:gravity="center|top"
+				android:text="20"
+				android:layout_alignParentLeft="true"/>
+
+			<TextView
+				android:id="@+id/vacation_end_month"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="20dp"
+				android:textColor="@color/colorLightGreen"
+				android:text="APR"
+				android:layout_alignTop="@id/vacation_end_day"
+				android:layout_toRightOf="@id/vacation_end_day"/>
+
+			<TextView
+				android:id="@+id/vacation_end_year"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15dp"
+				android:text="2017"
+				android:textColor="@color/colorLightGreen"
+				android:layout_alignBottom="@id/vacation_end_day"
+				android:layout_toRightOf="@id/vacation_end_day"/>
+
+		</RelativeLayout>
 
 	</RelativeLayout>
 
@@ -113,17 +129,19 @@
 		  android:layout_width="match_parent"
 		  android:layout_height="wrap_content"
 		  android:orientation="horizontal"
-		  android:layout_gravity="center">
+		  android:gravity="center">
 
 		  <RadioButton android:id="@+id/approved_radio"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
-			  android:text="Approved" />
+			  android:text="Approved" 
+			  android:layout_margin="5dp"/>
 
 		  <RadioButton android:id="@+id/closed_radio"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
-			  android:text="Closed" />
+			  android:text="Closed"  
+			  android:layout_margin="@dimen/Inset1x"/>
 
 	</RadioGroup>
 
