@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using FlexiMvvm;
 using FlexiMvvm.Collections;
+using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
 
@@ -29,6 +31,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         {
             get => _refreshedDateTime;
             set => Set(ref _refreshedDateTime, value);
+        }
+
+        public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(vacationSelected);
+
+        private void vacationSelected(VacationCellViewModel vacationCellViewModel)
+        {
+            Debug.WriteLine(vacationCellViewModel.Duration);
         }
 
         protected override async Task InitializeAsync()

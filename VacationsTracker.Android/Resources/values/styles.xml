@@ -87,7 +87,19 @@
   <style name="SeparatorStyle">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">@dimen/SeparatorDefaultThickness</item>
+  </style>
+
+  <style name="GraySeparatorStyle" parent="SeparatorStyle">
     <item name="android:background">@android:color/darker_gray</item>
+  </style>
+
+  <style name="LightBlueSeparatorStyle" parent="SeparatorStyle">
+    <item name="android:background">@color/colorLightBlue</item>
+  </style>
+
+  <style name="ToolbarTheme" parent="Theme.AppCompat">
+    <item name="colorPrimary">@color/colorLightBlue</item>
+    <item name="colorAccent">@color/colorAccent</item>
   </style>
 
 </resources>

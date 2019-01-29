@@ -28,7 +28,7 @@
 
 	<View
 		android:id="@+id/separator_view"
-		style="@style/SeparatorStyle"
+		style="@style/GraySeparatorStyle"
 		android:layout_toRightOf="@id/vacationImage"
 		android:layout_alignParentBottom="true"/>
 
