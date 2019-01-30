@@ -12,6 +12,7 @@ namespace VacationsTracker.Droid.Views
     {
          private readonly Activity activity;
 
+         private Android.Support.V4.Widget.SwipeRefreshLayout refresher;
          private Android.Support.V7.Widget.Toolbar homeToolbar;
          private Android.Support.V7.Widget.RecyclerView recyclerView;
 
@@ -21,6 +22,10 @@ namespace VacationsTracker.Droid.Views
 
             this.activity = activity;
         }
+
+        
+        public Android.Support.V4.Widget.SwipeRefreshLayout Refresher =>
+            refresher ?? (refresher = activity.FindViewById<Android.Support.V4.Widget.SwipeRefreshLayout>(Resource.Id.refresher));
 
         
         public Android.Support.V7.Widget.Toolbar HomeToolbar =>
@@ -112,6 +117,7 @@ namespace VacationsTracker.Droid.Views
          private TextView vacationEndDay;
          private TextView vacationEndMonth;
          private TextView vacationEndYear;
+         private RadioGroup statusRadioGroup;
          private RadioButton approvedRadio;
          private RadioButton closedRadio;
 
@@ -165,6 +171,10 @@ namespace VacationsTracker.Droid.Views
         
         public TextView VacationEndYear =>
             vacationEndYear ?? (vacationEndYear = activity.FindViewById<TextView>(Resource.Id.vacation_end_year));
+
+        
+        public RadioGroup StatusRadioGroup =>
+            statusRadioGroup ?? (statusRadioGroup = activity.FindViewById<RadioGroup>(Resource.Id.status_radio_group));
 
         
         public RadioButton ApprovedRadio =>

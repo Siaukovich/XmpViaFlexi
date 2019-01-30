@@ -43,12 +43,10 @@
 			<TextView
 				android:id="@+id/vacation_start_day"
 				android:layout_alignParentLeft="true"
-				android:text="20"
 				style="@style/VacationStartDayStyle"/>
 
 			<TextView
 				android:id="@+id/vacation_start_month"
-				android:text="APR"
 				android:layout_marginTop="@dimen/Inset1x"
 				android:layout_alignTop="@id/vacation_start_day"
 				android:layout_toRightOf="@id/vacation_start_day"
@@ -56,7 +54,6 @@
 
 			<TextView
 				android:id="@+id/vacation_start_year"
-				android:text="2017"
 				android:layout_toRightOf="@id/vacation_start_day"
 				android:layout_alignBaseline="@id/vacation_start_day"
 				style="@style/VacationStartYearStyle"/>
@@ -73,21 +70,18 @@
 			<TextView
 				android:id="@+id/vacation_end_day"
 				android:gravity="center|top"
-				android:text="20"
 				android:layout_alignParentLeft="true"
 				style="@style/VacationEndDayStyle"/>
 
 			<TextView
 				android:id="@+id/vacation_end_month"
 				android:layout_marginTop="8dp"
-				android:text="APR"
 				android:layout_alignTop="@id/vacation_end_day"
 				android:layout_toRightOf="@id/vacation_end_day"
 				style="@style/VacationEndMonthStyle"/>
 
 			<TextView
 				android:id="@+id/vacation_end_year"
-				android:text="2017"
 				android:layout_alignBaseline="@id/vacation_end_day"				
 				android:layout_toRightOf="@id/vacation_end_day"
 				style="@style/VacationEndYearStyle"/>

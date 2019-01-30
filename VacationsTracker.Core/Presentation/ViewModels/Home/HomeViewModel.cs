@@ -8,6 +8,7 @@ using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Presentation.ViewModels.Details;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Home
 {
@@ -37,7 +38,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         private void vacationSelected(VacationCellViewModel vacationCellViewModel)
         {
-            Debug.WriteLine(vacationCellViewModel.Duration);
+            var parameters = new VacationDetailsParameters(vacationCellViewModel.Id);
+            _navigationService.NavigateToVacationDetails(this, parameters);
         }
 
         protected override async Task InitializeAsync()
