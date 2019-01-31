@@ -31,13 +31,23 @@ namespace VacationsTracker.Droid.Views.Details
 
             ViewHolder = new VacationDetailsActivityViewHolder(this);
 
+            SetTypePagerAdapter();
+
+            SetPagerBottomDots();
+        }
+
+        private void SetTypePagerAdapter()
+        {
             VacationTypesAdapter = new FragmentPagerObservableAdapter(SupportFragmentManager, FragmentsFactory)
             {
                 Items = ViewModel.VacationTypes
             };
 
             ViewHolder.VacationTypePager.Adapter = VacationTypesAdapter;
+        }
 
+        private void SetPagerBottomDots()
+        {
             var pager = ViewHolder.VacationTypePager;
             var tabLayout = ViewHolder.TabDots;
             tabLayout.SetupWithViewPager(pager);

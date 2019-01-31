@@ -22,18 +22,6 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             _vacationsRepository = vacationsRepository;
         }
 
-        //public VacationType VacationType { get; set; }
-
-        //public DateTime VacationStart { get; set; }
-
-        //public DateTime VacationEnd { get; set; }
-
-        //public VacationStatus VacationStatus
-        //{
-        //    get => Cell.Status;
-        //    set =>
-        //}
-
         public VacationCellViewModel Vacation { get; set; }
 
         public ICommand SaveCommand => CommandProvider.Get(Save);
@@ -58,14 +46,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
         {
             await base.InitializeAsync(parameters);
 
-            var vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
-
-            Vacation = vacation;
-
-            //VacationType = vacation.Type;
-            //VacationStart = vacation.Start;
-            //VacationEnd = vacation.End;
-            //VacationStatus = vacation.Status;
+            Vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
         }
     }
 }
