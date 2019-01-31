@@ -8,6 +8,7 @@ using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
 using FlexiMvvm.Views.V4;
+using FlexiMvvm.Weak.Subscriptions;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
@@ -35,8 +36,8 @@ namespace VacationsTracker.Droid.Views.Details
 
             SetPagerBottomDots();
 
-            ViewHolder.DateStart.Click += OnVacationStartDayClick;
-            ViewHolder.DateEnd.Click += OnVacationEndDayClick;
+            ViewHolder.DateStart.ClickWeakSubscribe(OnVacationStartDayClick);
+            ViewHolder.DateEnd.ClickWeakSubscribe(OnVacationEndDayClick);
         }
 
         private void SetTypePagerAdapter()
