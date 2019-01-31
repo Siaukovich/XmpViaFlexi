@@ -4,32 +4,32 @@
     style="@style/VacationCellStyle">
 
 	<ImageView
-		android:id="@+id/vacationImage"
+		android:id="@+id/vacation_image"
 		style="@style/VacationImageStyle"
 		android:layout_alignParentLeft="true"
 		android:adjustViewBounds="true"/>
 
 	<TextView
-		android:id="@+id/vacationDuration"
+		android:id="@+id/vacation_duration"
 		style="@style/VacationDurationStyle"
-		android:layout_toRightOf="@id/vacationImage"
-        android:layout_alignTop="@id/vacationImage"/>
+		android:layout_toRightOf="@id/vacation_image"
+        android:layout_alignTop="@id/vacation_image"/>
 
 	<TextView
-		android:id="@+id/vacationType"
+		android:id="@+id/vacation_type"
 		style="@style/VacationTypeStyle"
-		android:layout_toRightOf="@id/vacationImage"
-        android:layout_alignBottom="@id/vacationImage"/>
+		android:layout_toRightOf="@id/vacation_image"
+        android:layout_alignBottom="@id/vacation_image"/>
 
 	<TextView
-		android:id="@+id/vacationStatus"
+		android:id="@+id/vacation_status"
 		style="@style/VacationStatusStyle"
 		android:layout_alignParentRight="true"/>
 
 	<View
 		android:id="@+id/separator_view"
 		style="@style/GraySeparatorStyle"
-		android:layout_toRightOf="@id/vacationImage"
+		android:layout_toRightOf="@id/vacation_image"
 		android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

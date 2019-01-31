@@ -33,7 +33,7 @@ namespace VacationsTracker.Droid.Views
 
         
         public Android.Support.V7.Widget.RecyclerView RecyclerView =>
-            recyclerView ?? (recyclerView = activity.FindViewById<Android.Support.V7.Widget.RecyclerView>(Resource.Id.recyclerView));
+            recyclerView ?? (recyclerView = activity.FindViewById<Android.Support.V7.Widget.RecyclerView>(Resource.Id.recycler_view));
     }
 
     public partial class LoginActivityViewHolder
@@ -54,52 +54,19 @@ namespace VacationsTracker.Droid.Views
 
         
         public TextView InvalidCredentialsText =>
-            invalidCredentialsText ?? (invalidCredentialsText = activity.FindViewById<TextView>(Resource.Id.invalidCredentialsText));
+            invalidCredentialsText ?? (invalidCredentialsText = activity.FindViewById<TextView>(Resource.Id.invalid_credentials_text));
 
         
         public EditText LoginEntry =>
-            loginEntry ?? (loginEntry = activity.FindViewById<EditText>(Resource.Id.loginEntry));
+            loginEntry ?? (loginEntry = activity.FindViewById<EditText>(Resource.Id.login_entry));
 
         
         public EditText PasswordEntry =>
-            passwordEntry ?? (passwordEntry = activity.FindViewById<EditText>(Resource.Id.passwordEntry));
+            passwordEntry ?? (passwordEntry = activity.FindViewById<EditText>(Resource.Id.password_entry));
 
         
         public Button LoginButton =>
-            loginButton ?? (loginButton = activity.FindViewById<Button>(Resource.Id.loginButton));
-    }
-
-    public partial class LoginRelativeActivityViewHolder
-    {
-         private readonly Activity activity;
-
-         private TextView invalidCredentialsText;
-         private EditText loginEntry;
-         private EditText passwordEntry;
-         private Button loginButton;
-
-        public LoginRelativeActivityViewHolder( Activity activity)
-        {
-            if (activity == null) throw new ArgumentNullException(nameof(activity));
-
-            this.activity = activity;
-        }
-
-        
-        public TextView InvalidCredentialsText =>
-            invalidCredentialsText ?? (invalidCredentialsText = activity.FindViewById<TextView>(Resource.Id.invalidCredentialsText));
-
-        
-        public EditText LoginEntry =>
-            loginEntry ?? (loginEntry = activity.FindViewById<EditText>(Resource.Id.loginEntry));
-
-        
-        public EditText PasswordEntry =>
-            passwordEntry ?? (passwordEntry = activity.FindViewById<EditText>(Resource.Id.passwordEntry));
-
-        
-        public Button LoginButton =>
-            loginButton ?? (loginButton = activity.FindViewById<Button>(Resource.Id.loginButton));
+            loginButton ?? (loginButton = activity.FindViewById<Button>(Resource.Id.login_button));
     }
 
     public partial class VacationDetailsActivityViewHolder
@@ -202,19 +169,19 @@ namespace VacationsTracker.Droid.Views
 
         
         public ImageView VacationImage =>
-            vacationImage ?? (vacationImage = ItemView.FindViewById<ImageView>(Resource.Id.vacationImage));
+            vacationImage ?? (vacationImage = ItemView.FindViewById<ImageView>(Resource.Id.vacation_image));
 
         
         public TextView VacationDuration =>
-            vacationDuration ?? (vacationDuration = ItemView.FindViewById<TextView>(Resource.Id.vacationDuration));
+            vacationDuration ?? (vacationDuration = ItemView.FindViewById<TextView>(Resource.Id.vacation_duration));
 
         
         public TextView VacationType =>
-            vacationType ?? (vacationType = ItemView.FindViewById<TextView>(Resource.Id.vacationType));
+            vacationType ?? (vacationType = ItemView.FindViewById<TextView>(Resource.Id.vacation_type));
 
         
         public TextView VacationStatus =>
-            vacationStatus ?? (vacationStatus = ItemView.FindViewById<TextView>(Resource.Id.vacationStatus));
+            vacationStatus ?? (vacationStatus = ItemView.FindViewById<TextView>(Resource.Id.vacation_status));
 
         
         public View SeparatorView =>
@@ -236,7 +203,7 @@ namespace VacationsTracker.Droid.Views
 
         
         public TextView LastUpdatedTime =>
-            lastUpdatedTime ?? (lastUpdatedTime = ItemView.FindViewById<TextView>(Resource.Id.lastUpdatedTime));
+            lastUpdatedTime ?? (lastUpdatedTime = ItemView.FindViewById<TextView>(Resource.Id.last_updated_time));
     }
 
     public partial class VacationTypeFragmentViewHolder
