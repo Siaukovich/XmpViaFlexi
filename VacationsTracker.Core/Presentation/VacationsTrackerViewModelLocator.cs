@@ -26,9 +26,14 @@ namespace VacationsTracker.Core.Presentation
                 _dependencyProvider.Get<INavigationService>(),
                 _dependencyProvider.Get<IVacationsRepository>()));
 
-            factory.Register(() => new VacationDetailsViewModel(
-                _dependencyProvider.Get<INavigationService>(),
-                _dependencyProvider.Get<IVacationsRepository>()));
+            factory.Register(() =>
+            {
+                return new VacationDetailsViewModel(
+                    _dependencyProvider.Get<INavigationService>(),
+                    _dependencyProvider.Get<IVacationsRepository>());
+            });
+
+            factory.Register(() => new VacationTypePagerViewModel(_dependencyProvider.Get<INavigationService>()));
         }
     }
 }

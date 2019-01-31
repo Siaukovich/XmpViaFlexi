@@ -64,6 +64,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\CustomBindings.cs" />
+    <Compile Include="Views\Details\VacationTypeFragment.cs" />
     <Compile Include="Views\Home\HomeActivity.cs" />
     <Compile Include="Views\Details\VacationDetailsActivity.cs" />
     <Compile Include="Views\Home\VacationFooterCellViewHolder.cs" />
@@ -181,6 +182,7 @@
     <AndroidResource Include="Resources\drawable\Icon_Request_Green.png" />
     <AndroidResource Include="Resources\drawable\Icon_Request_Plum.png" />
     <AndroidResource Include="Resources\layout\activity_vacation_details.axml" />
+    <AndroidResource Include="Resources\layout\fragment_vacation_type.axml" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

@@ -1,8 +1,13 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.OS;
 using Android.Widget;
+using FlexiMvvm;
 using FlexiMvvm.Bindings;
+using FlexiMvvm.Collections;
+using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
+using FlexiMvvm.Views.V4;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
@@ -16,6 +21,8 @@ namespace VacationsTracker.Droid.Views.Details
     {
         private VacationDetailsActivityViewHolder ViewHolder { get; set; }
 
+        private FragmentPagerObservableAdapter VacationTypesAdapter { get; set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,10 +30,21 @@ namespace VacationsTracker.Droid.Views.Details
             SetContentView(Resource.Layout.activity_vacation_details);
 
             ViewHolder = new VacationDetailsActivityViewHolder(this);
+
+            VacationTypesAdapter = new FragmentPagerObservableAdapter(SupportFragmentManager, FragmentsFactory)
+            {
+                Items = ViewModel.VacationTypes
+            };
+
+            ViewHolder.VacationTypePager.Adapter = VacationTypesAdapter;
         }
 
         public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
         {
+            bindingSet.Bind(VacationTypesAdapter)
+                .For(v => v.Items)
+                .To(vm => vm.VacationTypes);
+
             bindingSet.Bind(ViewHolder.VacationStartDay)
                 .For(v => v.Text)
                 .To(vm => vm.VacationStart)
@@ -66,6 +84,25 @@ namespace VacationsTracker.Droid.Views.Details
                 .For(v => v.Checked)
                 .To(vm => vm.VacationStatus)
                 .WithConvertion<VacationStatusToApprovedRadioValueConverter>();
+        }
+
+        private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)
+        {
+            if (parameters is VacationTypePagerParameters vacationTypePagerParameters)
+            {
+                var bundle = new Bundle();
+                bundle.PutViewModelParameters(vacationTypePagerParameters);
+
+                var fragment = new VacationTypeFragment()
+                {
+                    Arguments = bundle
+                };
+
+                return fragment;
+            }
+
+            throw new NotSupportedException(nameof(parameters));
+
         }
     }
 }

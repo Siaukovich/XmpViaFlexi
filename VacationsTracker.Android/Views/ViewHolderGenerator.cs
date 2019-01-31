@@ -234,5 +234,28 @@ namespace VacationsTracker.Droid.Views
             lastUpdatedTime ?? (lastUpdatedTime = ItemView.FindViewById<TextView>(Resource.Id.lastUpdatedTime));
     }
 
+    public partial class VacationTypeFragmentViewHolder
+    {
+         private readonly View rootView;
+
+         private ImageView imageVacationType;
+         private TextView textViewVacationName;
+
+        public VacationTypeFragmentViewHolder( View rootView)
+        {
+            if (rootView == null) throw new ArgumentNullException(nameof(rootView));
+
+            this.rootView = rootView;
+        }
+
+        
+        public ImageView ImageVacationType =>
+            imageVacationType ?? (imageVacationType = rootView.FindViewById<ImageView>(Resource.Id.image_vacation_type));
+
+        
+        public TextView TextViewVacationName =>
+            textViewVacationName ?? (textViewVacationName = rootView.FindViewById<TextView>(Resource.Id.text_view_vacation_name));
+    }
+
 }
 // ReSharper restore All
