@@ -30,9 +30,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             = new RangeObservableCollection<VacationTypePagerParameters>
             {
                 new VacationTypePagerParameters { VacationType = VacationType.Regular },
-                new VacationTypePagerParameters { VacationType = VacationType.Overtime },
                 new VacationTypePagerParameters { VacationType = VacationType.SickDays },
                 new VacationTypePagerParameters { VacationType = VacationType.ExceptionalLeave },
+                new VacationTypePagerParameters { VacationType = VacationType.Overtime },
                 new VacationTypePagerParameters { VacationType = VacationType.LeaveWithoutPay },
             };
 

@@ -16,7 +16,7 @@ using VacationsTracker.Droid.Views.ValueConverters;
 namespace VacationsTracker.Droid.Views.Details
 {
     [Activity(Label = "VacationDetailsActivity")]
-    public class VacationDetailsActivity 
+    public class VacationDetailsActivity
         : FlxBindableAppCompatActivity<VacationDetailsViewModel, VacationDetailsParameters>
     {
         private VacationDetailsActivityViewHolder ViewHolder { get; set; }
@@ -97,6 +97,11 @@ namespace VacationsTracker.Droid.Views.Details
             bindingSet.Bind(ViewHolder.SaveRequestButton)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.SaveCommand);
+
+            bindingSet.Bind(ViewHolder.VacationTypePager)
+                .For(v => v.SetCurrentItemAndPageSelectedBinding())
+                .To(vm => vm.Vacation.Type)
+                .WithConvertion<TypeToPagerItemValueConverter>();
         }
 
         private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)
