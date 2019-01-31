@@ -182,6 +182,9 @@
     <AndroidResource Include="Resources\drawable\Icon_Request_Plum.png" />
     <AndroidResource Include="Resources\layout\activity_vacation_details.axml" />
     <AndroidResource Include="Resources\layout\fragment_vacation_type.axml" />
+    <AndroidResource Include="Resources\drawable\tab_indicator_selected.xml" />
+    <AndroidResource Include="Resources\drawable\tab_indicator_default.xml" />
+    <AndroidResource Include="Resources\drawable\tab_selector.xml" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

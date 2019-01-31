@@ -37,6 +37,10 @@ namespace VacationsTracker.Droid.Views.Details
             };
 
             ViewHolder.VacationTypePager.Adapter = VacationTypesAdapter;
+
+            var pager = ViewHolder.VacationTypePager;
+            var tabLayout = ViewHolder.TabDots;
+            tabLayout.SetupWithViewPager(pager);
         }
 
         public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
