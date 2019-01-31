@@ -34,6 +34,9 @@ namespace VacationsTracker.Droid.Views.Details
             SetTypePagerAdapter();
 
             SetPagerBottomDots();
+
+            ViewHolder.DateStart.Click += OnVacationStartDayClick;
+            ViewHolder.DateEnd.Click += OnVacationEndDayClick;
         }
 
         private void SetTypePagerAdapter()
@@ -102,6 +105,18 @@ namespace VacationsTracker.Droid.Views.Details
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
                 .To(vm => vm.Vacation.Type)
                 .WithConvertion<TypeToPagerItemValueConverter>();
+        }
+
+        private void OnVacationStartDayClick(object sender, EventArgs args)
+        {
+            var datePickerFragment = DatePickerFragment.NewInstance( this.ViewModel.Vacation.Start, selectedTime => ViewModel.Vacation.Start = selectedTime);
+            datePickerFragment.Show(FragmentManager, string.Empty);
+        }
+
+        private void OnVacationEndDayClick(object sender, EventArgs args)
+        {
+            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.End, selectedTime => ViewModel.Vacation.End = selectedTime);
+            datePickerFragment.Show(FragmentManager, string.Empty);
         }
 
         private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)
