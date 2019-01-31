@@ -5,6 +5,11 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
 {
     public class VacationTypePagerParameters : ViewModelBundleBase
     {
+        public VacationTypePagerParameters(VacationType type)
+        {
+            VacationType = type;
+        }
+
         public VacationType VacationType
         {
             get => (VacationType)Bundle.GetInt();

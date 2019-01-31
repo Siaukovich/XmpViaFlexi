@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using FlexiMvvm;
 using FlexiMvvm.Collections;
@@ -26,15 +27,10 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
 
         public ICommand SaveCommand => CommandProvider.Get(Save);
 
-        public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; } 
-            = new RangeObservableCollection<VacationTypePagerParameters>
-            {
-                new VacationTypePagerParameters { VacationType = VacationType.Regular },
-                new VacationTypePagerParameters { VacationType = VacationType.SickDays },
-                new VacationTypePagerParameters { VacationType = VacationType.ExceptionalLeave },
-                new VacationTypePagerParameters { VacationType = VacationType.Overtime },
-                new VacationTypePagerParameters { VacationType = VacationType.LeaveWithoutPay },
-            };
+        public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; }
+            = new RangeObservableCollection<VacationTypePagerParameters>(
+                Enum.GetValues(typeof(VacationType))
+                    .Cast<VacationType>().Select(t => new VacationTypePagerParameters(t)));
 
         private async void Save()
         {
