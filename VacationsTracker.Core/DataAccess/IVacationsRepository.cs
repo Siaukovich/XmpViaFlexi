@@ -7,6 +7,9 @@ namespace VacationsTracker.Core.DataAccess
     public interface IVacationsRepository
     {
         Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync();
+
         Task<VacationCellViewModel> GetVacationAsync(string vacationId);
+
+        Task UpdateVacationAsync(VacationCellViewModel vacation);
     }
 }

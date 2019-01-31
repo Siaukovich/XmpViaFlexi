@@ -16,6 +16,7 @@
   <dimen name="TextEditDefaultHeight">32dp</dimen>
   <dimen name="LoginScreenTopMargin">96dp</dimen>
   <dimen name="VacationImageDefaultHeight">40dp</dimen>
+  <dimen name="VacationImageDefaultHeight2x">80dp</dimen>
   <dimen name="SeparatorDefaultThickness">1dp</dimen>
   <dimen name="ToolbarDefaultHeight">40dp</dimen>
   <dimen name="VacationDayDefaultHeight">48dp</dimen>

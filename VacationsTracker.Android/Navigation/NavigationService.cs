@@ -40,5 +40,12 @@ namespace VacationsTracker.Droid.Navigation
             detailsIntent.PutViewModelParameters(parameters);
             homeActivity.NotNull().StartActivity(detailsIntent);
         }
+
+        public void NavigateBackToHome(VacationDetailsViewModel fromViewModel)
+        {
+            var vacationDetailsActivity = GetActivity<VacationDetailsViewModel, VacationDetailsActivity>(fromViewModel);
+            vacationDetailsActivity.NotNull().Finish();
+        }
+
     }
 }

@@ -1716,8 +1716,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f0700a9
 			public const int LoginScreenTopMargin = 2131165353;
 			
-			// aapt resource value: 0x7f0700ab
-			public const int SeparatorDefaultThickness = 2131165355;
+			// aapt resource value: 0x7f0700ac
+			public const int SeparatorDefaultThickness = 2131165356;
 			
 			// aapt resource value: 0x7f0700a8
 			public const int TextEditDefaultHeight = 2131165352;
@@ -1728,20 +1728,23 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f0700a4
 			public const int TextViewDefaultWidth = 2131165348;
 			
-			// aapt resource value: 0x7f0700ac
-			public const int ToolbarDefaultHeight = 2131165356;
-			
 			// aapt resource value: 0x7f0700ad
-			public const int VacationDayDefaultHeight = 2131165357;
+			public const int ToolbarDefaultHeight = 2131165357;
+			
+			// aapt resource value: 0x7f0700ae
+			public const int VacationDayDefaultHeight = 2131165358;
 			
 			// aapt resource value: 0x7f0700aa
 			public const int VacationImageDefaultHeight = 2131165354;
 			
-			// aapt resource value: 0x7f0700ae
-			public const int VacationMonthDefaultHeight = 2131165358;
+			// aapt resource value: 0x7f0700ab
+			public const int VacationImageDefaultHeight2x = 2131165355;
 			
 			// aapt resource value: 0x7f0700af
-			public const int VacationYearDefaultHeight = 2131165359;
+			public const int VacationMonthDefaultHeight = 2131165359;
+			
+			// aapt resource value: 0x7f0700b0
+			public const int VacationYearDefaultHeight = 2131165360;
 			
 			// aapt resource value: 0x7f070012
 			public const int abc_action_bar_content_inset_material = 2131165202;
@@ -2615,8 +2618,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080037
 			public const int SYM = 2131230775;
 			
-			// aapt resource value: 0x7f0800c6
-			public const int action0 = 2131230918;
+			// aapt resource value: 0x7f0800c7
+			public const int action0 = 2131230919;
 			
 			// aapt resource value: 0x7f080089
 			public const int action_bar = 2131230857;
@@ -2639,17 +2642,17 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080067
 			public const int action_bar_title = 2131230823;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int action_container = 2131230915;
+			// aapt resource value: 0x7f0800c4
+			public const int action_container = 2131230916;
 			
 			// aapt resource value: 0x7f08008a
 			public const int action_context_bar = 2131230858;
 			
-			// aapt resource value: 0x7f0800ca
-			public const int action_divider = 2131230922;
+			// aapt resource value: 0x7f0800cb
+			public const int action_divider = 2131230923;
 			
-			// aapt resource value: 0x7f0800c4
-			public const int action_image = 2131230916;
+			// aapt resource value: 0x7f0800c5
+			public const int action_image = 2131230917;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -2666,11 +2669,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080069
 			public const int action_mode_close_button = 2131230825;
 			
-			// aapt resource value: 0x7f0800c5
-			public const int action_text = 2131230917;
+			// aapt resource value: 0x7f0800c6
+			public const int action_text = 2131230918;
 			
-			// aapt resource value: 0x7f0800d3
-			public const int actions = 2131230931;
+			// aapt resource value: 0x7f0800d4
+			public const int actions = 2131230932;
 			
 			// aapt resource value: 0x7f08006a
 			public const int activity_chooser_view_content = 2131230826;
@@ -2687,8 +2690,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080038
 			public const int always = 2131230776;
 			
-			// aapt resource value: 0x7f0800ab
-			public const int approved_radio = 2131230891;
+			// aapt resource value: 0x7f0800ac
+			public const int approved_radio = 2131230892;
 			
 			// aapt resource value: 0x7f080063
 			public const int async = 2131230819;
@@ -2711,8 +2714,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080070
 			public const int buttonPanel = 2131230832;
 			
-			// aapt resource value: 0x7f0800c7
-			public const int cancel_action = 2131230919;
+			// aapt resource value: 0x7f0800c8
+			public const int cancel_action = 2131230920;
 			
 			// aapt resource value: 0x7f080045
 			public const int center = 2131230789;
@@ -2729,8 +2732,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080080
 			public const int checkbox = 2131230848;
 			
-			// aapt resource value: 0x7f0800cf
-			public const int chronometer = 2131230927;
+			// aapt resource value: 0x7f0800d0
+			public const int chronometer = 2131230928;
 			
 			// aapt resource value: 0x7f08004e
 			public const int clip_horizontal = 2131230798;
@@ -2738,20 +2741,20 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08004f
 			public const int clip_vertical = 2131230799;
 			
-			// aapt resource value: 0x7f0800ac
-			public const int closed_radio = 2131230892;
+			// aapt resource value: 0x7f0800ad
+			public const int closed_radio = 2131230893;
 			
 			// aapt resource value: 0x7f080039
 			public const int collapseActionView = 2131230777;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int container = 2131230901;
+			// aapt resource value: 0x7f0800b6
+			public const int container = 2131230902;
 			
 			// aapt resource value: 0x7f080073
 			public const int contentPanel = 2131230835;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int coordinator = 2131230902;
+			// aapt resource value: 0x7f0800b7
+			public const int coordinator = 2131230903;
 			
 			// aapt resource value: 0x7f08007a
 			public const int custom = 2131230842;
@@ -2759,11 +2762,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080079
 			public const int customPanel = 2131230841;
 			
-			// aapt resource value: 0x7f0800a6
-			public const int date_end = 2131230886;
+			// aapt resource value: 0x7f0800a7
+			public const int date_end = 2131230887;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int date_start = 2131230882;
+			// aapt resource value: 0x7f0800a3
+			public const int date_start = 2131230883;
 			
 			// aapt resource value: 0x7f080087
 			public const int decor_content_parent = 2131230855;
@@ -2771,20 +2774,20 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08006d
 			public const int default_activity_button = 2131230829;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int design_bottom_sheet = 2131230904;
+			// aapt resource value: 0x7f0800b9
+			public const int design_bottom_sheet = 2131230905;
+			
+			// aapt resource value: 0x7f0800c0
+			public const int design_menu_item_action_area = 2131230912;
 			
 			// aapt resource value: 0x7f0800bf
-			public const int design_menu_item_action_area = 2131230911;
+			public const int design_menu_item_action_area_stub = 2131230911;
 			
 			// aapt resource value: 0x7f0800be
-			public const int design_menu_item_action_area_stub = 2131230910;
+			public const int design_menu_item_text = 2131230910;
 			
 			// aapt resource value: 0x7f0800bd
-			public const int design_menu_item_text = 2131230909;
-			
-			// aapt resource value: 0x7f0800bc
-			public const int design_navigation_view = 2131230908;
+			public const int design_navigation_view = 2131230909;
 			
 			// aapt resource value: 0x7f08009f
 			public const int details_toolbar = 2131230879;
@@ -2804,8 +2807,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080030
 			public const int end = 2131230768;
 			
-			// aapt resource value: 0x7f0800d5
-			public const int end_padder = 2131230933;
+			// aapt resource value: 0x7f0800d6
+			public const int end_padder = 2131230934;
 			
 			// aapt resource value: 0x7f08003f
 			public const int enterAlways = 2131230783;
@@ -2855,8 +2858,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08006f
 			public const int icon = 2131230831;
 			
-			// aapt resource value: 0x7f0800d4
-			public const int icon_group = 2131230932;
+			// aapt resource value: 0x7f0800d5
+			public const int icon_group = 2131230933;
 			
 			// aapt resource value: 0x7f08003a
 			public const int ifRoom = 2131230778;
@@ -2864,11 +2867,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08006c
 			public const int image = 2131230828;
 			
-			// aapt resource value: 0x7f0800c1
-			public const int image_vacation_type = 2131230913;
+			// aapt resource value: 0x7f0800c2
+			public const int image_vacation_type = 2131230914;
 			
-			// aapt resource value: 0x7f0800d0
-			public const int info = 2131230928;
+			// aapt resource value: 0x7f0800d1
+			public const int info = 2131230929;
 			
 			// aapt resource value: 0x7f08009b
 			public const int invalidCredentialsText = 2131230875;
@@ -2882,11 +2885,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int largeLabel = 2131230900;
+			// aapt resource value: 0x7f0800b5
+			public const int largeLabel = 2131230901;
 			
-			// aapt resource value: 0x7f0800b2
-			public const int lastUpdatedTime = 2131230898;
+			// aapt resource value: 0x7f0800b3
+			public const int lastUpdatedTime = 2131230899;
 			
 			// aapt resource value: 0x7f080049
 			public const int left = 2131230793;
@@ -2909,14 +2912,14 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08009c
 			public const int loginEntry = 2131230876;
 			
-			// aapt resource value: 0x7f0800d8
-			public const int masked = 2131230936;
+			// aapt resource value: 0x7f0800d9
+			public const int masked = 2131230937;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int media_actions = 2131230921;
+			// aapt resource value: 0x7f0800ca
+			public const int media_actions = 2131230922;
 			
-			// aapt resource value: 0x7f0800d6
-			public const int message = 2131230934;
+			// aapt resource value: 0x7f0800d7
+			public const int message = 2131230935;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2927,8 +2930,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f0800bb
-			public const int navigation_header_container = 2131230907;
+			// aapt resource value: 0x7f0800bc
+			public const int navigation_header_container = 2131230908;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -2939,14 +2942,14 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08001e
 			public const int normal = 2131230750;
 			
-			// aapt resource value: 0x7f0800d2
-			public const int notification_background = 2131230930;
+			// aapt resource value: 0x7f0800d3
+			public const int notification_background = 2131230931;
+			
+			// aapt resource value: 0x7f0800cd
+			public const int notification_main_column = 2131230925;
 			
 			// aapt resource value: 0x7f0800cc
-			public const int notification_main_column = 2131230924;
-			
-			// aapt resource value: 0x7f0800cb
-			public const int notification_main_column_container = 2131230923;
+			public const int notification_main_column_container = 2131230924;
 			
 			// aapt resource value: 0x7f08005c
 			public const int packed = 2131230812;
@@ -2990,11 +2993,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
 			
-			// aapt resource value: 0x7f0800d1
-			public const int right_icon = 2131230929;
+			// aapt resource value: 0x7f0800d2
+			public const int right_icon = 2131230930;
 			
-			// aapt resource value: 0x7f0800cd
-			public const int right_side = 2131230925;
+			// aapt resource value: 0x7f0800ce
+			public const int right_side = 2131230926;
 			
 			// aapt resource value: 0x7f08000c
 			public const int save_image_matrix = 2131230732;
@@ -3059,8 +3062,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080097
 			public const int select_dialog_listview = 2131230871;
 			
-			// aapt resource value: 0x7f0800b1
-			public const int separator_view = 2131230897;
+			// aapt resource value: 0x7f0800b2
+			public const int separator_view = 2131230898;
 			
 			// aapt resource value: 0x7f080081
 			public const int shortcut = 2131230849;
@@ -3074,14 +3077,14 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080025
 			public const int showTitle = 2131230757;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int smallLabel = 2131230899;
+			// aapt resource value: 0x7f0800b4
+			public const int smallLabel = 2131230900;
+			
+			// aapt resource value: 0x7f0800bb
+			public const int snackbar_action = 2131230907;
 			
 			// aapt resource value: 0x7f0800ba
-			public const int snackbar_action = 2131230906;
-			
-			// aapt resource value: 0x7f0800b9
-			public const int snackbar_text = 2131230905;
+			public const int snackbar_text = 2131230906;
 			
 			// aapt resource value: 0x7f080043
 			public const int snap = 2131230787;
@@ -3113,11 +3116,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08004b
 			public const int start = 2131230795;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int status_bar_latest_event_content = 2131230920;
+			// aapt resource value: 0x7f0800c9
+			public const int status_bar_latest_event_content = 2131230921;
 			
-			// aapt resource value: 0x7f0800aa
-			public const int status_radio_group = 2131230890;
+			// aapt resource value: 0x7f0800ab
+			public const int status_radio_group = 2131230891;
 			
 			// aapt resource value: 0x7f080083
 			public const int submenuarrow = 2131230851;
@@ -3127,6 +3130,9 @@ namespace VacationsTracker.Droid
 			
 			// aapt resource value: 0x7f08001f
 			public const int tabMode = 2131230751;
+			
+			// aapt resource value: 0x7f0800a2
+			public const int tab_dots = 2131230882;
 			
 			// aapt resource value: 0x7f080019
 			public const int tag_transition_group = 2131230745;
@@ -3143,11 +3149,11 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080076
 			public const int textSpacerNoTitle = 2131230838;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int text_input_password_toggle = 2131230912;
+			// aapt resource value: 0x7f0800c1
+			public const int text_input_password_toggle = 2131230913;
 			
-			// aapt resource value: 0x7f0800c2
-			public const int text_view_vacation_name = 2131230914;
+			// aapt resource value: 0x7f0800c3
+			public const int text_view_vacation_name = 2131230915;
 			
 			// aapt resource value: 0x7f080014
 			public const int textinput_counter = 2131230740;
@@ -3155,8 +3161,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080015
 			public const int textinput_error = 2131230741;
 			
-			// aapt resource value: 0x7f0800ce
-			public const int time = 2131230926;
+			// aapt resource value: 0x7f0800cf
+			public const int time = 2131230927;
 			
 			// aapt resource value: 0x7f08001c
 			public const int title = 2131230748;
@@ -3173,8 +3179,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f08007b
 			public const int topPanel = 2131230843;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int touch_outside = 2131230903;
+			// aapt resource value: 0x7f0800b8
+			public const int touch_outside = 2131230904;
 			
 			// aapt resource value: 0x7f08000f
 			public const int transition_current_scene = 2131230735;
@@ -3200,35 +3206,35 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080026
 			public const int useLogo = 2131230758;
 			
-			// aapt resource value: 0x7f0800ae
-			public const int vacationDuration = 2131230894;
+			// aapt resource value: 0x7f0800af
+			public const int vacationDuration = 2131230895;
 			
-			// aapt resource value: 0x7f0800ad
-			public const int vacationImage = 2131230893;
+			// aapt resource value: 0x7f0800ae
+			public const int vacationImage = 2131230894;
+			
+			// aapt resource value: 0x7f0800b1
+			public const int vacationStatus = 2131230897;
 			
 			// aapt resource value: 0x7f0800b0
-			public const int vacationStatus = 2131230896;
-			
-			// aapt resource value: 0x7f0800af
-			public const int vacationType = 2131230895;
-			
-			// aapt resource value: 0x7f0800a7
-			public const int vacation_end_day = 2131230887;
+			public const int vacationType = 2131230896;
 			
 			// aapt resource value: 0x7f0800a8
-			public const int vacation_end_month = 2131230888;
+			public const int vacation_end_day = 2131230888;
 			
 			// aapt resource value: 0x7f0800a9
-			public const int vacation_end_year = 2131230889;
+			public const int vacation_end_month = 2131230889;
 			
-			// aapt resource value: 0x7f0800a3
-			public const int vacation_start_day = 2131230883;
+			// aapt resource value: 0x7f0800aa
+			public const int vacation_end_year = 2131230890;
 			
 			// aapt resource value: 0x7f0800a4
-			public const int vacation_start_month = 2131230884;
+			public const int vacation_start_day = 2131230884;
 			
 			// aapt resource value: 0x7f0800a5
-			public const int vacation_start_year = 2131230885;
+			public const int vacation_start_month = 2131230885;
+			
+			// aapt resource value: 0x7f0800a6
+			public const int vacation_start_year = 2131230886;
 			
 			// aapt resource value: 0x7f0800a1
 			public const int vacation_type_pager = 2131230881;
@@ -3236,8 +3242,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800d7
-			public const int visible = 2131230935;
+			// aapt resource value: 0x7f0800d8
+			public const int visible = 2131230936;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;

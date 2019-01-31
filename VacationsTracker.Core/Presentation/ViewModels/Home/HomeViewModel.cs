@@ -34,18 +34,35 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             set => Set(ref _refreshedDateTime, value);
         }
 
-        public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(vacationSelected);
+        public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
-        private void vacationSelected(VacationCellViewModel vacationCellViewModel)
+        private void VacationSelected(VacationCellViewModel vacationCellViewModel)
         {
             var parameters = new VacationDetailsParameters(vacationCellViewModel.Id);
             _navigationService.NavigateToVacationDetails(this, parameters);
+        }
+
+        public async Task Refresh()
+        {
+            await ReloadVacations();
         }
 
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
 
+            await LoadVacations();
+        }
+
+        private async Task ReloadVacations()
+        {
+            Vacations.Clear();
+
+            await LoadVacations();
+        }
+
+        private async Task LoadVacations()
+        {
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
             var list = vacations.ToList();

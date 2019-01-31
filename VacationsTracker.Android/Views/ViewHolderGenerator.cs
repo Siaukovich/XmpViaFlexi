@@ -109,6 +109,7 @@ namespace VacationsTracker.Droid.Views
          private Android.Support.V7.Widget.Toolbar detailsToolbar;
          private Button saveRequestButton;
          private Android.Support.V4.View.ViewPager vacationTypePager;
+         private Android.Support.Design.Widget.TabLayout tabDots;
          private RelativeLayout dateStart;
          private TextView vacationStartDay;
          private TextView vacationStartMonth;
@@ -139,6 +140,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.V4.View.ViewPager VacationTypePager =>
             vacationTypePager ?? (vacationTypePager = activity.FindViewById<Android.Support.V4.View.ViewPager>(Resource.Id.vacation_type_pager));
+
+        
+        public Android.Support.Design.Widget.TabLayout TabDots =>
+            tabDots ?? (tabDots = activity.FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.tab_dots));
 
         
         public RelativeLayout DateStart =>

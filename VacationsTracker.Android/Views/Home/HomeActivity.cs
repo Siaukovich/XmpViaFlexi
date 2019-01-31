@@ -36,6 +36,13 @@ namespace VacationsTracker.Droid.Views.Home
             ViewHolder.Refresher.Refresh += OnRefresh;
         }
 
+        protected override async void OnResume()
+        {
+             base.OnResume();
+
+             await ViewModel.Refresh();
+        }
+
         public override void Bind(BindingSet<HomeViewModel> bindingSet)
         {
             base.Bind(bindingSet);

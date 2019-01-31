@@ -134,5 +134,25 @@ namespace VacationsTracker.Core.DataAccess
 
             return Task.FromResult(vacation);
         }
+
+        public Task UpdateVacationAsync(VacationCellViewModel vacation)
+        {
+            int index = -1;
+            for (var i = 0; i < _vacations.Count; i++)
+            {
+                if (_vacations[i].Id == vacation.Id)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index != -1)
+            {
+                _vacations[index] = vacation;
+            }
+
+            return Task.CompletedTask;
+        }
     }
 }

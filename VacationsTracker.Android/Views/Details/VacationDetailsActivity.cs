@@ -47,43 +47,42 @@ namespace VacationsTracker.Droid.Views.Details
 
             bindingSet.Bind(ViewHolder.VacationStartDay)
                 .For(v => v.Text)
-                .To(vm => vm.VacationStart)
+                .To(vm => vm.Vacation.Start)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationStartMonth)
                 .For(v => v.Text)
-                .To(vm => vm.VacationStart)
+                .To(vm => vm.Vacation.Start)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationStartYear)
                 .For(v => v.Text)
-                .To(vm => vm.VacationStart)
+                .To(vm => vm.Vacation.Start)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndDay)
                 .For(v => v.Text)
-                .To(vm => vm.VacationEnd)
+                .To(vm => vm.Vacation.End)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndMonth)
                 .For(v => v.Text)
-                .To(vm => vm.VacationEnd)
+                .To(vm => vm.Vacation.End)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndYear)
                 .For(v => v.Text)
-                .To(vm => vm.VacationEnd)
+                .To(vm => vm.Vacation.End)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
-            bindingSet.Bind(ViewHolder.ClosedRadio)
-                .For(v => v.Checked)
-                .To(vm => vm.VacationStatus)
-                .WithConvertion<VacationStatusToClosedRadioValueConverter>();
+            bindingSet.Bind(ViewHolder.StatusRadioGroup)
+                .For(v => v.CheckAndCheckedChangeBinding())
+                .To(vm => vm.Vacation.Status)
+                .WithConvertion<RadioGroupValueConverter>();
 
-            bindingSet.Bind(ViewHolder.ApprovedRadio)
-                .For(v => v.Checked)
-                .To(vm => vm.VacationStatus)
-                .WithConvertion<VacationStatusToApprovedRadioValueConverter>();
+            bindingSet.Bind(ViewHolder.SaveRequestButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.SaveCommand);
         }
 
         private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)
