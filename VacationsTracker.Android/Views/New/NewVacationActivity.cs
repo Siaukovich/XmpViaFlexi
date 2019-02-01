@@ -8,15 +8,16 @@ using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
+using VacationsTracker.Core.Presentation.ViewModels.New;
+using VacationsTracker.Droid.Views.Details;
 using VacationsTracker.Droid.Views.ValueConverters;
 
-namespace VacationsTracker.Droid.Views.Details
+namespace VacationsTracker.Droid.Views.New
 {
-    [Activity(Label = "VacationDetailsActivity")]
-    public class VacationDetailsActivity
-        : FlxBindableAppCompatActivity<VacationDetailsViewModel, VacationDetailsParameters>
+    [Activity(Label = "NewVacationActivity")]
+    public class NewVacationActivity : FlxBindableAppCompatActivity<NewVacationViewModel>
     {
-        private VacationDetailsActivityViewHolder ViewHolder { get; set; }
+        private VacationNewActivityViewHolder ViewHolder { get; set; }
 
         private FragmentPagerObservableAdapter VacationTypesAdapter { get; set; }
 
@@ -24,9 +25,9 @@ namespace VacationsTracker.Droid.Views.Details
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.activity_vacation_details);
+            SetContentView(Resource.Layout.activity_vacation_new);
 
-            ViewHolder = new VacationDetailsActivityViewHolder(this);
+            ViewHolder = new VacationNewActivityViewHolder(this);
 
             SetTypePagerAdapter();
 
@@ -53,7 +54,7 @@ namespace VacationsTracker.Droid.Views.Details
             tabLayout.SetupWithViewPager(pager);
         }
 
-        public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
+        public override void Bind(BindingSet<NewVacationViewModel> bindingSet)
         {
             bindingSet.Bind(VacationTypesAdapter)
                 .For(v => v.Items)
@@ -118,7 +119,7 @@ namespace VacationsTracker.Droid.Views.Details
         private void OnVacationEndDayClick(object sender, EventArgs args)
         {
             var datePickerFragment = DatePickerFragment.NewInstance(
-                ViewModel.Vacation.End, 
+                ViewModel.Vacation.End,
                 date => ViewModel.Vacation.End = date,
                 date => date > DateTime.Now && date > ViewModel.Vacation.Start,
                 OnInvalidDateHandler);

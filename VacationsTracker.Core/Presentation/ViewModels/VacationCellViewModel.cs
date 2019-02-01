@@ -7,6 +7,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels
 {
     public class VacationCellViewModel : ObservableObjectBase
     {
+        public static VacationCellViewModel GetNew => new VacationCellViewModel
+        {
+            _start = DateTime.Now,
+            _end = DateTime.Now.AddDays(1)
+        };
+
         private VacationType _type;
         private VacationStatus _status;
         private DateTime _start;

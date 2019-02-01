@@ -74,6 +74,7 @@
     <Compile Include="Views\Home\VacationsAdapter.cs" />
     <Compile Include="Views\Home\VacationCellViewHolder.cs" />
     <Compile Include="Views\Login\LoginActivity.cs" />
+    <Compile Include="Views\New\NewVacationActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />
     <Compile Include="Views\ValueConverters\RadioGroupValueConverter.cs" />
@@ -187,6 +188,9 @@
     <AndroidResource Include="Resources\drawable\tab_indicator_default.xml" />
     <AndroidResource Include="Resources\drawable\tab_selector.xml" />
     <AndroidResource Include="Resources\drawable\ic_add.png" />
+    <AndroidResource Include="Resources\layout\activity_vacation_new.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

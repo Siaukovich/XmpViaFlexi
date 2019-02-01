@@ -9,10 +9,12 @@ using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
+using VacationsTracker.Core.Presentation.ViewModels.New;
 using VacationsTracker.Droid.Views;
 using VacationsTracker.Droid.Views.Details;
 using VacationsTracker.Droid.Views.Home;
 using VacationsTracker.Droid.Views.Login;
+using VacationsTracker.Droid.Views.New;
 
 namespace VacationsTracker.Droid.Navigation
 {
@@ -47,5 +49,17 @@ namespace VacationsTracker.Droid.Navigation
             vacationDetailsActivity.NotNull().Finish();
         }
 
+        public void NavigateToNewVacation(HomeViewModel fromViewModel)
+        {
+            var homeActivity = GetActivity<HomeViewModel, HomeActivity>(fromViewModel);
+            var newVacationIntent = new Intent(homeActivity, typeof(NewVacationActivity));
+            homeActivity.NotNull().StartActivity(newVacationIntent);
+        }
+
+        public void NavigateBackToHome(NewVacationViewModel fromViewModel)
+        {
+            var vacationDetailsActivity = GetActivity<NewVacationViewModel, NewVacationActivity>(fromViewModel);
+            vacationDetailsActivity.NotNull().Finish();
+        }
     }
 }

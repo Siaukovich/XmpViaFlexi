@@ -154,5 +154,14 @@ namespace VacationsTracker.Core.DataAccess
 
             return Task.CompletedTask;
         }
+
+        public Task SaveVacationAsync(VacationCellViewModel vacation)
+        {
+            vacation.Id = Guid.NewGuid().ToString();
+
+            _vacations.Add(vacation);
+
+            return Task.CompletedTask;
+        }
     }
 }

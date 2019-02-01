@@ -11,5 +11,7 @@ namespace VacationsTracker.Core.DataAccess
         Task<VacationCellViewModel> GetVacationAsync(string vacationId);
 
         Task UpdateVacationAsync(VacationCellViewModel vacation);
+
+        Task SaveVacationAsync(VacationCellViewModel vacation);
     }
 }

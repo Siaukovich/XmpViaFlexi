@@ -9,6 +9,7 @@ using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
+using ICommand = FlexiMvvm.Commands.ICommand;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Home
 {
@@ -36,10 +37,17 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
+        public ICommand CreateNewVacationCommand => CommandProvider.Get(CreateNewVacation);
+
         private void VacationSelected(VacationCellViewModel vacationCellViewModel)
         {
             var parameters = new VacationDetailsParameters(vacationCellViewModel.Id);
             _navigationService.NavigateToVacationDetails(this, parameters);
+        }
+
+        private void CreateNewVacation()
+        {
+            _navigationService.NavigateToNewVacation(this);
         }
 
         public async Task Refresh()
@@ -66,6 +74,17 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
             var list = vacations.ToList();
+
+            for (var i = list.Count - 2; i >= 0; i--)
+            {
+                if (list[i].SeparatorVisible)
+                {
+                    break;
+                }
+
+                list[i].SeparatorVisible = true;
+            }
+
             if (list.Count != 0)
             {
                 list[list.Count - 1].SeparatorVisible = false;

@@ -39,9 +39,6 @@ namespace VacationsTracker.Droid.Views.Home
 
             ViewHolder.Refresher.Refresh += OnRefresh;
 
-            ViewHolder.Fab.ClickWeakSubscribe((sender, args) =>
-                Toast.MakeText(this, "Button clicked", ToastLength.Short).Show());
-
             ViewHolder.RecyclerView.AddOnScrollListener(new HideFabOnScrollListener(ViewHolder.Fab));
         }
 
@@ -59,6 +56,11 @@ namespace VacationsTracker.Droid.Views.Home
             bindingSet.Bind(VacationsAdapter)
                 .For(v => v.ItemClickedBinding())
                 .To(vm => vm.VacationSelectedCommand);
+
+
+            bindingSet.Bind(ViewHolder.Fab)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.CreateNewVacationCommand);
         }
 
         private async void OnRefresh(object sender, EventArgs args)

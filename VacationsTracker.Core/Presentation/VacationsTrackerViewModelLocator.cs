@@ -6,6 +6,7 @@ using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
+using VacationsTracker.Core.Presentation.ViewModels.New;
 
 namespace VacationsTracker.Core.Presentation
 {
@@ -31,6 +32,10 @@ namespace VacationsTracker.Core.Presentation
                 _dependencyProvider.Get<IVacationsRepository>()));
 
             factory.Register(() => new VacationTypePagerViewModel());
+
+            factory.Register(() => new NewVacationViewModel(
+                _dependencyProvider.Get<INavigationService>(),
+                _dependencyProvider.Get<IVacationsRepository>()));
         }
     }
 }
