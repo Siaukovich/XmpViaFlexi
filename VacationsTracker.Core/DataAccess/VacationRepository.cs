@@ -101,22 +101,22 @@ namespace VacationsTracker.Core.DataAccess
                     Status = VacationStatus.Closed,
                     Type = VacationType.LeaveWithoutPay
                 },
-                //new VacationCellViewModel
-                //{
-                //    Id = Guid.NewGuid().ToString(),
-                //    Start = new DateTime(2018, 07, 11),
-                //    End = new DateTime(2018, 07, 13),
-                //    Status = VacationStatus.Closed,
-                //    Type = VacationType.ExceptionalLeave
-                //},
-                //new VacationCellViewModel
-                //{
-                //    Id = Guid.NewGuid().ToString(),
-                //    Start = new DateTime(2018, 02, 6),
-                //    End = new DateTime(2018, 02, 7),
-                //    Status = VacationStatus.Closed,
-                //    Type = VacationType.Overtime
-                //}
+                new VacationCellViewModel
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Start = new DateTime(2018, 07, 11),
+                    End = new DateTime(2018, 07, 13),
+                    Status = VacationStatus.Closed,
+                    Type = VacationType.ExceptionalLeave
+                },
+                new VacationCellViewModel
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Start = new DateTime(2018, 02, 6),
+                    End = new DateTime(2018, 02, 7),
+                    Status = VacationStatus.Closed,
+                    Type = VacationType.Overtime
+                }
             };
 
         public int Count => _vacations.Count;
