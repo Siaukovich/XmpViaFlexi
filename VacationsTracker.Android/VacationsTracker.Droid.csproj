@@ -68,6 +68,7 @@
     <Compile Include="Views\Details\VacationTypeFragment.cs" />
     <Compile Include="Views\Home\HomeActivity.cs" />
     <Compile Include="Views\Details\VacationDetailsActivity.cs" />
+    <Compile Include="Views\Home\HideFabOnScrollListener.cs" />
     <Compile Include="Views\Home\VacationFooterCellViewHolder.cs" />
     <Compile Include="Views\Home\VacationHeaderCellViewHolder.cs" />
     <Compile Include="Views\Home\VacationsAdapter.cs" />
@@ -119,6 +120,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FlexiMvvm.Common.PreRelease">
+      <Version>0.9.7-prerelease</Version>
+    </PackageReference>
     <PackageReference Include="FlexiMvvm.Full.PreRelease">
       <Version>0.9.7-prerelease</Version>
     </PackageReference>
@@ -182,6 +186,7 @@
     <AndroidResource Include="Resources\drawable\tab_indicator_selected.xml" />
     <AndroidResource Include="Resources\drawable\tab_indicator_default.xml" />
     <AndroidResource Include="Resources\drawable\tab_selector.xml" />
+    <AndroidResource Include="Resources\drawable\ic_add.png" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

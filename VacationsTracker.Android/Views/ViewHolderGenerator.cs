@@ -15,6 +15,7 @@ namespace VacationsTracker.Droid.Views
          private Android.Support.V4.Widget.SwipeRefreshLayout refresher;
          private Android.Support.V7.Widget.Toolbar homeToolbar;
          private Android.Support.V7.Widget.RecyclerView recyclerView;
+         private Android.Support.Design.Widget.FloatingActionButton fab;
 
         public HomeActivityViewHolder( Activity activity)
         {
@@ -34,6 +35,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.V7.Widget.RecyclerView RecyclerView =>
             recyclerView ?? (recyclerView = activity.FindViewById<Android.Support.V7.Widget.RecyclerView>(Resource.Id.recycler_view));
+
+        
+        public Android.Support.Design.Widget.FloatingActionButton Fab =>
+            fab ?? (fab = activity.FindViewById<Android.Support.Design.Widget.FloatingActionButton>(Resource.Id.fab));
     }
 
     public partial class LoginActivityViewHolder

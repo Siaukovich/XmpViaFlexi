@@ -84,6 +84,12 @@
     <item name="android:textColor">@android:color/darker_gray</item>
   </style>
 
+  <style name="FabStyle">
+    <item name="android:layout_width">@dimen/FabDefaultRadius</item>
+    <item name="android:layout_height">@dimen/FabDefaultRadius</item>
+    <item name="android:src">@drawable/ic_add</item>
+  </style>
+
   <style name="SeparatorStyle">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">@dimen/SeparatorDefaultThickness</item>

@@ -2,6 +2,7 @@
 
 <android.support.v4.widget.SwipeRefreshLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/refresher"
 	android:fitsSystemWindows="true"
     android:layout_width="match_parent"
@@ -33,10 +34,24 @@
 
 		</android.support.v7.widget.Toolbar>
 
-		<android.support.v7.widget.RecyclerView
-			android:id="@+id/recycler_view"
+		<FrameLayout
+			android:orientation="vertical"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"/>
+			android:layout_height="match_parent">
+
+			<android.support.v7.widget.RecyclerView
+				android:id="@+id/recycler_view"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"/>
+
+			 <android.support.design.widget.FloatingActionButton
+				android:id="@+id/fab"
+				style="@style/FabStyle"
+				android:layout_gravity="bottom|end"
+				android:layout_marginRight="@dimen/Inset3x"
+				android:layout_marginBottom="@dimen/Inset5x"/>
+
+		</FrameLayout>
 
 	</LinearLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

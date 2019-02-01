@@ -3,8 +3,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
+using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
+using Android.Widget;
+using FlexiMvvm;
 using FlexiMvvm.Bindings;
+using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 
@@ -34,6 +38,11 @@ namespace VacationsTracker.Droid.Views.Home
             ViewHolder.RecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
 
             ViewHolder.Refresher.Refresh += OnRefresh;
+
+            ViewHolder.Fab.ClickWeakSubscribe((sender, args) =>
+                Toast.MakeText(this, "Button clicked", ToastLength.Short).Show());
+
+            ViewHolder.RecyclerView.AddOnScrollListener(new HideFabOnScrollListener(ViewHolder.Fab));
         }
 
         protected override async void OnResume()
