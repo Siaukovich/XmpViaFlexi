@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
+using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using ICommand = FlexiMvvm.Commands.ICommand;
@@ -38,6 +40,33 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
         public ICommand CreateNewVacationCommand => CommandProvider.Get(CreateNewVacation);
+
+        public ICommand<NavigationMenuItem> FilterVacationsCommand => CommandProvider.Get<NavigationMenuItem>(FilterVacations);
+
+        private async void FilterVacations(NavigationMenuItem item)
+        {
+            var vacations = await _vacationsRepository.GetVacationsAsync();
+
+            switch (item)
+            {
+                case NavigationMenuItem.All:
+                    break;
+
+                case NavigationMenuItem.Open:
+                    vacations = vacations.Where(v => v.Status == VacationStatus.Approved);
+                    break;
+
+                case NavigationMenuItem.Closed:
+                    vacations = vacations.Where(v => v.Status == VacationStatus.Closed);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(item), item, null);
+            }
+
+            Vacations.Clear();
+            VacationsAddRange(vacations);
+        }
 
         private void VacationSelected(VacationCellViewModel vacationCellViewModel)
         {
@@ -73,24 +102,22 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         {
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
-            var list = vacations.ToList();
+            VacationsAddRange(vacations);
+        }
 
-            for (var i = list.Count - 2; i >= 0; i--)
+        private void VacationsAddRange(IEnumerable<VacationCellViewModel> vacations)
+        {
+            if (Vacations.Any())
             {
-                if (list[i].SeparatorVisible)
-                {
-                    break;
-                }
-
-                list[i].SeparatorVisible = true;
+                Vacations.Last().SeparatorVisible = true;
             }
 
-            if (list.Count != 0)
+            if (vacations.Any())
             {
-                list[list.Count - 1].SeparatorVisible = false;
+                vacations.Last().SeparatorVisible = false;
             }
 
-            Vacations.AddRange(list);
+            Vacations.AddRange(vacations);
         }
     }
 }

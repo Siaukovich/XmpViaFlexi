@@ -12,10 +12,12 @@ namespace VacationsTracker.Droid.Views
     {
          private readonly Activity activity;
 
+         private Android.Support.V4.Widget.DrawerLayout drawerLayout;
          private Android.Support.V4.Widget.SwipeRefreshLayout refresher;
          private Android.Support.V7.Widget.Toolbar homeToolbar;
          private Android.Support.V7.Widget.RecyclerView recyclerView;
          private Android.Support.Design.Widget.FloatingActionButton fab;
+         private Android.Support.Design.Widget.NavigationView navigationView;
 
         public HomeActivityViewHolder( Activity activity)
         {
@@ -23,6 +25,10 @@ namespace VacationsTracker.Droid.Views
 
             this.activity = activity;
         }
+
+        
+        public Android.Support.V4.Widget.DrawerLayout DrawerLayout =>
+            drawerLayout ?? (drawerLayout = activity.FindViewById<Android.Support.V4.Widget.DrawerLayout>(Resource.Id.drawer_layout));
 
         
         public Android.Support.V4.Widget.SwipeRefreshLayout Refresher =>
@@ -39,6 +45,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.Design.Widget.FloatingActionButton Fab =>
             fab ?? (fab = activity.FindViewById<Android.Support.Design.Widget.FloatingActionButton>(Resource.Id.fab));
+
+        
+        public Android.Support.Design.Widget.NavigationView NavigationView =>
+            navigationView ?? (navigationView = activity.FindViewById<Android.Support.Design.Widget.NavigationView>(Resource.Id.navigation_view));
     }
 
     public partial class LoginActivityViewHolder
@@ -321,6 +331,13 @@ namespace VacationsTracker.Droid.Views
         public TextView TextViewVacationName =>
             textViewVacationName ?? (textViewVacationName = rootView.FindViewById<TextView>(Resource.Id.text_view_vacation_name));
     }
+
+    /*
+    "LayoutDefinitionOptions" are not specified for "navigation_menu" layout file therefore view holder can't be generated for it.
+    public partial class MenuNavigationViewHolder
+    {
+    }
+    */
 
 }
 // ReSharper restore All

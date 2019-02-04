@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
   <dimen name="InsetHalf">4dp</dimen>
   <dimen name="Inset1x">8dp</dimen>
   <dimen name="Inset2x">16dp</dimen>
@@ -23,4 +23,5 @@
   <dimen name="VacationMonthDefaultHeight">24dp</dimen>
   <dimen name="VacationYearDefaultHeight">16dp</dimen>
   <dimen name="FabDefaultRadius">48dp</dimen>
+  <dimen name="design_navigation_separator_vertical_padding" tools:override="true">0dp</dimen>
 </resources>
