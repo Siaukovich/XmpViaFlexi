@@ -1,10 +1,17 @@
-﻿using UIKit;
+﻿using Cirrious.FluentLayouts.Touch;
+using FlexiMvvm.Views;
+using UIKit;
+using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views.Login
 {
     public class LoginView : LayoutView
     {
-        private UILabel TitleLabel { get; set; }
+        public UITextField LoginTextField { get; private set; }
+
+        public UITextField PasswordTextField { get; private set; }
+
+        public UIButton LoginButton { get; private set; }
 
         protected override void SetupSubviews()
         {
@@ -12,18 +19,20 @@ namespace VacationsTracker.iOS.Views.Login
 
             BackgroundColor = UIColor.White;
 
-            TitleLabel = new UILabel
-            {
-                Text = "Login View Controller",
-                TextColor = UIColor.Green
-            };
+            LoginTextField = new UITextField().SetDefaultTextFieldStyle();
+
+            PasswordTextField = new UITextField().SetDefaultTextFieldStyle();
+
+            LoginButton = new UIButton().SetPrimaryButtonStyle("Login");
         }
 
         protected override void SetupLayout()
         {
             base.SetupLayout();
 
-            this.AddLayoutSubview(TitleLabel);
+            this.AddLayoutSubview(LoginTextField)
+                .AddLayoutSubview(PasswordTextField)
+                .AddLayoutSubview(LoginButton);
         }
 
         protected override void SetupLayoutConstraints()
@@ -32,10 +41,7 @@ namespace VacationsTracker.iOS.Views.Login
 
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
-            this.AddConstraints(
-                TitleLabel.AtLeftOf(this),
-                TitleLabel.WithSameCenterY(this),
-                TitleLabel.AtRightOf(this));
+
         }
     }
 }
