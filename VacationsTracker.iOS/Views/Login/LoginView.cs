@@ -7,6 +7,10 @@ namespace VacationsTracker.iOS.Views.Login
 {
     public class LoginView : LayoutView
     {
+        public UIImageView BackgroundImage { get; private set; }
+
+        public UITextField InvalidCredentialsTextField { get; private set; }
+
         public UITextField LoginTextField { get; private set; }
 
         public UITextField PasswordTextField { get; private set; }
@@ -17,11 +21,11 @@ namespace VacationsTracker.iOS.Views.Login
         {
             base.SetupSubviews();
 
-            BackgroundColor = UIColor.White;
+            BackgroundImage = new UIImageView().SetDefaultBackgroundImage();
 
-            LoginTextField = new UITextField().SetDefaultTextFieldStyle();
+            LoginTextField = new UITextField().SetDefaultTextFieldStyle("Login");
 
-            PasswordTextField = new UITextField().SetDefaultTextFieldStyle();
+            PasswordTextField = new UITextField().SetDefaultTextFieldStyle("Password");
 
             LoginButton = new UIButton().SetPrimaryButtonStyle("Login");
         }
@@ -30,7 +34,8 @@ namespace VacationsTracker.iOS.Views.Login
         {
             base.SetupLayout();
 
-            this.AddLayoutSubview(LoginTextField)
+            this.AddLayoutSubview(BackgroundImage)
+                .AddLayoutSubview(LoginTextField)
                 .AddLayoutSubview(PasswordTextField)
                 .AddLayoutSubview(LoginButton);
         }
@@ -42,16 +47,28 @@ namespace VacationsTracker.iOS.Views.Login
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
             this.AddConstraints(
-                LoginTextField.AtLeftOf(this, AppDimens.Inset1X),
-                LoginTextField.AtRightOf(this, AppDimens.Inset1X),
-                LoginTextField.Height().EqualTo(AppDimens.Inset1X),
-                LoginTextField.Above(PasswordTextField, 23));
+                BackgroundImage.WithSameLeft(this),
+                BackgroundImage.WithSameTop(this),
+                BackgroundImage.WithSameRight(this),
+                BackgroundImage.WithSameBottom(this));
 
             this.AddConstraints(
-                PasswordTextField.AtLeftOf(this),
+                LoginTextField.AtLeftOf(this, AppDimens.Inset5X),
+                LoginTextField.AtRightOf(this, AppDimens.Inset5X),
+                LoginTextField.Height().EqualTo(AppDimens.DefaultTextFieldHeight),
+                LoginTextField.Above(PasswordTextField, AppDimens.Inset2X));
+
+            this.AddConstraints(
+                PasswordTextField.WithSameLeft(LoginTextField),
                 PasswordTextField.WithSameCenterY(this),
-                PasswordTextField.AtRightOf(this, 33),
-                PasswordTextField.Height().EqualTo(56));
+                PasswordTextField.WithSameRight(LoginTextField),
+                PasswordTextField.Height().EqualTo(AppDimens.DefaultTextFieldHeight));
+
+            this.AddConstraints(
+                LoginButton.AtLeftOf(this, AppDimens.Inset8X),
+                LoginButton.AtRightOf(this, AppDimens.Inset8X),
+                LoginButton.Below(PasswordTextField, AppDimens.Inset2X),
+                LoginButton.Height().EqualTo(AppDimens.DefaultButtonHeight));
         }
     }
 }

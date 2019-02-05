@@ -16,6 +16,11 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
         public ICommand LoginCommand => CommandProvider.GetForAsync(Login);
 
+        public string UserLogin { get; set; }
+
+        public string UserPassword { get; set; }
+
+        public bool ValidCredentials { get; set; } = true;
 
         private async Task Login()
         {
@@ -23,7 +28,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
             await Task.Delay(500);
 
-            _navigationService.NavigateToHome(this);
+            ValidCredentials = (UserLogin == "a") && (UserPassword == "b");
+
+            if (ValidCredentials)
+            {
+                _navigationService.NavigateToHome(this);
+            }
         }
     }
 }
