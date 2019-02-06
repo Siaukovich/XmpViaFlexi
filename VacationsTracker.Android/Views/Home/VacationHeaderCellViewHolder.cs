@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using Android.Views;
+﻿using Android.Views;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using VacationsTracker.Core.Presentation.ViewModels.Home;

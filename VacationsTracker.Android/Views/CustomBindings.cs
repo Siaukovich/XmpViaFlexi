@@ -2,7 +2,6 @@
 using Android.Widget;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Bindings.Custom;
-using VacationsTracker.Core.Domain;
 
 namespace VacationsTracker.Droid.Views
 {

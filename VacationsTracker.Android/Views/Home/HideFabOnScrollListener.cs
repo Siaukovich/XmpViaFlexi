@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Android.Support.Design.Widget;
+﻿using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
 using FlexiMvvm;
 
