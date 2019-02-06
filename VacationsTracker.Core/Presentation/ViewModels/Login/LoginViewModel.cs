@@ -9,6 +9,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
     {
         private readonly INavigationService _navigationService;
 
+        private bool _validCredentials = true;
+
         public LoginViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -20,7 +22,11 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
         public string UserPassword { get; set; }
 
-        public bool ValidCredentials { get; private set; } = true;
+        public bool ValidCredentials
+        {
+            get => _validCredentials;
+            set => Set(ref _validCredentials, value);
+        }
 
         private async Task Login()
         {
@@ -28,7 +34,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
             await Task.Delay(500);
 
-            _navigationService.NavigateToHome(this);
+            ValidCredentials = (UserLogin == "A") && (UserPassword == "B");
+
+            //if (ValidCredentials)
+            //{
+            //    _navigationService.NavigateToHome(this);
+            //}
         }
     }
 }
