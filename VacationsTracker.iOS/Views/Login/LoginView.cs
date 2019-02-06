@@ -59,7 +59,7 @@ namespace VacationsTracker.iOS.Views.Login
             this.AddConstraints(
                 InvalidCredentialsLabel.WithSameLeft(LoginTextField),
                 InvalidCredentialsLabel.WithSameRight(LoginTextField),
-                InvalidCredentialsLabel.Height().EqualTo(100),
+                InvalidCredentialsLabel.Height().EqualTo(AppDimens.DefaultErrorMessageHeight),
                 InvalidCredentialsLabel.Above(LoginTextField, AppDimens.Inset3X));
 
             this.AddConstraints(
