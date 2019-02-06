@@ -21,7 +21,7 @@ namespace VacationsTracker.iOS.Themes
         {
             label.Text = text;
 
-            label.BackgroundColor = UIColor.White;
+            label.BackgroundColor = AppColors.WhiteColor;
             label.TextColor = AppColors.ErrorTextColor;
             label.TextAlignment = UITextAlignment.Center;
 
@@ -39,7 +39,7 @@ namespace VacationsTracker.iOS.Themes
                 textField.Placeholder = placeholder;
             }
 
-            textField.BackgroundColor = UIColor.White;
+            textField.BackgroundColor = AppColors.WhiteColor;
             textField.SetLeftPaddingTo(5);
 
             return textField;
