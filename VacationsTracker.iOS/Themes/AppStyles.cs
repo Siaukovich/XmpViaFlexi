@@ -19,8 +19,9 @@ namespace VacationsTracker.iOS.Themes
 
         public static UILabel SetErrorLabelStyle(this UILabel label, string text)
         {
-            label.BackgroundColor = UIColor.White;
             label.Text = text;
+
+            label.BackgroundColor = UIColor.White;
             label.TextColor = AppColors.ErrorTextColor;
             label.TextAlignment = UITextAlignment.Center;
 
@@ -39,7 +40,7 @@ namespace VacationsTracker.iOS.Themes
             }
 
             textField.BackgroundColor = UIColor.White;
-            SetLeftPadding(textField, 5);
+            textField.SetLeftPaddingTo(5);
 
             return textField;
         }
@@ -51,7 +52,7 @@ namespace VacationsTracker.iOS.Themes
             return imageView;
         }
 
-        private static void SetLeftPadding(UITextField textField, int paddingWidth)
+        private static void SetLeftPaddingTo(this UITextField textField, int paddingWidth)
         {
             var paddingView = new UIView(new CGRect(0, 0, paddingWidth, AppDimens.DefaultTextFieldHeight));
             textField.LeftView = paddingView;
