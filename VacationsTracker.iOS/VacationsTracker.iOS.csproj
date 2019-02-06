@@ -64,6 +64,7 @@
     <Compile Include="Bootstrappers\IosBootstrapper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
     <Compile Include="Themes\AppStyles.cs" />
     <Compile Include="Views\Login\LoginView.cs" />

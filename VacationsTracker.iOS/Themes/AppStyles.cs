@@ -1,16 +1,10 @@
-﻿using System;
-using Cirrious.FluentLayouts.Touch;
-using CoreGraphics;
+﻿using CoreGraphics;
 using UIKit;
 
 namespace VacationsTracker.iOS.Themes
 {
     public static class AppStyles
     {
-        private static readonly UIColor LightBlueColor = GetColorFromHex(0x41C0DA);
-
-        private static readonly UIColor ErrorTextColor = GetColorFromHex(0x800000);
-
         public static UIButton SetPrimaryButtonStyle(this UIButton button, string text = null)
         {
             if (text != null)
@@ -18,7 +12,7 @@ namespace VacationsTracker.iOS.Themes
                 button.SetTitle(text, UIControlState.Normal);
             }
 
-            button.BackgroundColor = LightBlueColor;
+            button.BackgroundColor = AppColors.LightBlueColor;
 
             return button;
         }
@@ -27,7 +21,7 @@ namespace VacationsTracker.iOS.Themes
         {
             label.BackgroundColor = UIColor.White;
             label.Text = text;
-            label.TextColor = ErrorTextColor;
+            label.TextColor = AppColors.ErrorTextColor;
             label.TextAlignment = UITextAlignment.Center;
 
             label.WrapText();
@@ -73,15 +67,6 @@ namespace VacationsTracker.iOS.Themes
         {
             label.Layer.MasksToBounds = true;
             label.Layer.CornerRadius = cornerRadius;
-        }
-
-        private static UIColor GetColorFromHex(int hexValue)
-        {
-            return UIColor.FromRGB(
-                ((hexValue & 0xFF0000) >> 16) / 255.0f,
-                ((hexValue & 0xFF00) >> 8) / 255.0f,
-                (hexValue & 0xFF) / 255.0f
-            );
         }
     }
 }
