@@ -27,6 +27,14 @@ namespace VacationsTracker.iOS.Views.Login
             bindingSet.Bind(View.InvalidCredentialsLabel)
                 .For(v => v.Hidden)
                 .To(vm => vm.ValidCredentials);
+
+            bindingSet.Bind(View.LoginTextField)
+                .For(v => v.TextAndEditingChangedBinding())
+                .To(vm => vm.UserLogin);
+
+            bindingSet.Bind(View.PasswordTextField)
+                .For(v => v.TextAndEditingChangedBinding())
+                .To(vm => vm.UserPassword);
         }
     }
 }
