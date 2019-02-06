@@ -67,6 +67,10 @@
     <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
     <Compile Include="Themes\AppStyles.cs" />
+    <Compile Include="Views\Home\HomeView.cs" />
+    <Compile Include="Views\Home\HomeViewController.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationItemView.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationItemViewCell.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginViewController.cs" />
     <Compile Include="Views\RootNavigationController.cs" />

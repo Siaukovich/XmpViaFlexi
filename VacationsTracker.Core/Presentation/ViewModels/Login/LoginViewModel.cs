@@ -34,12 +34,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
             await Task.Delay(500);
 
-            ValidCredentials = (UserLogin == "A") && (UserPassword == "B");
+            //ValidCredentials = (UserLogin == "A") && (UserPassword == "B");
 
-            //if (ValidCredentials)
-            //{
-            //    _navigationService.NavigateToHome(this);
-            //}
+            if (ValidCredentials)
+            {
+                _navigationService.NavigateToHome(this);
+            }
         }
     }
 }
