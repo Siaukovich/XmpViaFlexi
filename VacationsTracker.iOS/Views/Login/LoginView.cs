@@ -9,7 +9,7 @@ namespace VacationsTracker.iOS.Views.Login
     {
         public UIImageView BackgroundImage { get; private set; }
 
-        public UITextField InvalidCredentialsTextField { get; private set; }
+        public UILabel InvalidCredentialsLabel { get; private set; }
 
         public UITextField LoginTextField { get; private set; }
 
@@ -23,6 +23,9 @@ namespace VacationsTracker.iOS.Views.Login
 
             BackgroundImage = new UIImageView().SetDefaultBackgroundImage();
 
+            InvalidCredentialsLabel = new UILabel()
+                .SetErrorLabelStyle("Please, retry your login and password pair.");
+
             LoginTextField = new UITextField().SetDefaultTextFieldStyle("Login");
 
             PasswordTextField = new UITextField().SetDefaultTextFieldStyle("Password");
@@ -35,6 +38,7 @@ namespace VacationsTracker.iOS.Views.Login
             base.SetupLayout();
 
             this.AddLayoutSubview(BackgroundImage)
+                .AddLayoutSubview(InvalidCredentialsLabel)
                 .AddLayoutSubview(LoginTextField)
                 .AddLayoutSubview(PasswordTextField)
                 .AddLayoutSubview(LoginButton);
@@ -51,6 +55,12 @@ namespace VacationsTracker.iOS.Views.Login
                 BackgroundImage.WithSameTop(this),
                 BackgroundImage.WithSameRight(this),
                 BackgroundImage.WithSameBottom(this));
+
+            this.AddConstraints(
+                InvalidCredentialsLabel.WithSameLeft(LoginTextField),
+                InvalidCredentialsLabel.WithSameRight(LoginTextField),
+                InvalidCredentialsLabel.Height().EqualTo(100),
+                InvalidCredentialsLabel.Above(LoginTextField, AppDimens.Inset3X));
 
             this.AddConstraints(
                 LoginTextField.AtLeftOf(this, AppDimens.Inset5X),

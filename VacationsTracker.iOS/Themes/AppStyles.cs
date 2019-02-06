@@ -1,4 +1,6 @@
-﻿using CoreGraphics;
+﻿using System;
+using Cirrious.FluentLayouts.Touch;
+using CoreGraphics;
 using UIKit;
 
 namespace VacationsTracker.iOS.Themes
@@ -6,6 +8,8 @@ namespace VacationsTracker.iOS.Themes
     public static class AppStyles
     {
         private static readonly UIColor LightBlueColor = GetColorFromHex(0x41C0DA);
+
+        private static readonly UIColor ErrorTextColor = GetColorFromHex(0x800000);
 
         public static UIButton SetPrimaryButtonStyle(this UIButton button, string text = null)
         {
@@ -19,6 +23,20 @@ namespace VacationsTracker.iOS.Themes
             return button;
         }
 
+        public static UILabel SetErrorLabelStyle(this UILabel label, string text)
+        {
+            label.BackgroundColor = UIColor.White;
+            label.Text = text;
+            label.TextColor = ErrorTextColor;
+            label.TextAlignment = UITextAlignment.Center;
+
+            label.WrapText();
+
+            label.SetCornerRadiusTo(5);
+
+            return label;
+        }
+
         public static UITextField SetDefaultTextFieldStyle(this UITextField textField, string placeholder = null)
         {
             if (placeholder != null)
@@ -27,9 +45,7 @@ namespace VacationsTracker.iOS.Themes
             }
 
             textField.BackgroundColor = UIColor.White;
-            var paddingView = new UIView(new CGRect(0, 0, 5, AppDimens.DefaultTextFieldHeight));
-            textField.LeftView = paddingView;
-            textField.LeftViewMode = UITextFieldViewMode.Always;
+            SetLeftPadding(textField, 5);
 
             return textField;
         }
@@ -39,6 +55,24 @@ namespace VacationsTracker.iOS.Themes
             imageView.Image = UIImage.FromBundle("LoginBackground");
 
             return imageView;
+        }
+
+        private static void SetLeftPadding(UITextField textField, int paddingWidth)
+        {
+            var paddingView = new UIView(new CGRect(0, 0, paddingWidth, AppDimens.DefaultTextFieldHeight));
+            textField.LeftView = paddingView;
+            textField.LeftViewMode = UITextFieldViewMode.Always;
+        }
+
+        private static void WrapText(this UILabel label)
+        {
+            label.Lines = 0;
+        }
+
+        private static void SetCornerRadiusTo(this UIView label, int cornerRadius)
+        {
+            label.Layer.MasksToBounds = true;
+            label.Layer.CornerRadius = cornerRadius;
         }
 
         private static UIColor GetColorFromHex(int hexValue)
