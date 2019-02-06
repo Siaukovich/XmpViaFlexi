@@ -22,6 +22,7 @@ namespace VacationsTracker.iOS.Views.Home
                 typeof(VacationItemViewCell),
                 VacationItemViewCell.CellId);
             VacationsTableView.AllowsSelection = true;
+            VacationsTableView.SeparatorColor = UIColor.Clear;
         }
 
         protected override void SetupLayout()

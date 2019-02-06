@@ -52,6 +52,42 @@ namespace VacationsTracker.iOS.Themes
             return imageView;
         }
 
+        public static UILabel SetDurationLabelStyle(this UILabel label)
+        {
+            label.TextColor = AppColors.LightBlueColor;
+            label.Font = UIFont.BoldSystemFontOfSize(AppDimens.DefaultDurationFontSize);
+
+            return label;
+        }
+
+        public static UILabel SetTypeLabelStyle(this UILabel label)
+        {
+            label.Font = UIFont.SystemFontOfSize(12);
+            label.TextColor = AppColors.GrayColor;
+
+            return label;
+        }
+
+        public static UILabel SetStatusLabelStyle(this UILabel label)
+        {
+            label.Font = UIFont.SystemFontOfSize(12);
+            label.TextColor = AppColors.GrayColor;
+
+            return label;
+        }
+
+        public static UIView SetSeparatorStyle(this UIView separator, UIColor color = null)
+        {
+            if (color == null)
+            {
+                color = AppColors.GrayColor;
+            }
+
+            separator.BackgroundColor = color;
+
+            return separator;
+        }
+
         private static void SetLeftPaddingTo(this UITextField textField, int paddingWidth)
         {
             var paddingView = new UIView(new CGRect(0, 0, paddingWidth, AppDimens.DefaultTextFieldHeight));

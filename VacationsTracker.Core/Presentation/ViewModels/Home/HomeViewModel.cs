@@ -39,9 +39,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public ICommand CreateNewVacationCommand => CommandProvider.Get(CreateNewVacation);
 
-        public ICommand<NavigationMenuItem> FilterVacationsCommand => CommandProvider.Get<NavigationMenuItem>(FilterVacations);
+        public ICommand<NavigationMenuItem> FilterVacationsCommand => CommandProvider.GetForAsync<NavigationMenuItem>(FilterVacations);
 
-        private async void FilterVacations(NavigationMenuItem item)
+        private async Task FilterVacations(NavigationMenuItem item)
         {
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
@@ -105,9 +105,14 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         private void VacationsAddRange(IEnumerable<VacationCellViewModel> vacations)
         {
-            if (Vacations.Any())
+            //if (Vacations.Any())
+            //{
+            //    Vacations.Last().SeparatorVisible = true;
+            //}
+
+            foreach (var v in vacations)
             {
-                Vacations.Last().SeparatorVisible = true;
+                v.SeparatorVisible = true;
             }
 
             if (vacations.Any())

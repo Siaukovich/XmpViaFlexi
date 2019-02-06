@@ -1,4 +1,6 @@
-﻿namespace VacationsTracker.iOS.Themes
+﻿using System;
+
+namespace VacationsTracker.iOS.Themes
 {
     public static class AppDimens
     {
@@ -23,5 +25,9 @@
         public static int DefaultButtonHeight => 48;
 
         public static int DefaultErrorMessageHeight => 80;
+
+        public static int DefaultTypeImageSize => 48;
+
+        public static int DefaultDurationFontSize => 20;
     }
 }

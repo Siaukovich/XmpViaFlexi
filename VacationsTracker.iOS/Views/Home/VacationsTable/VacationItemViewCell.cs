@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Globalization;
 using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
+using FlexiMvvm.ValueConverters;
+using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
+using VacationsTracker.iOS.Views.ValueConverters;
 
 namespace VacationsTracker.iOS.Views.Home.VacationsTable
 {
@@ -33,7 +37,38 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
         {
             base.Bind(bindingSet);
 
-            //TODO define bindings
+            bindingSet.Bind(View.StatusLabel)
+                .For(v => v.Text)
+                .To(vm => vm.Status)
+                .WithConvertion<VacationStatusValueConverter>();
+
+            bindingSet.Bind(View.TypeLabel)
+                .For(v => v.Text)
+                .To(vm => vm.Type)
+                .WithConvertion<VacationTypeValueConverter>();
+
+            bindingSet.Bind(View.DurationLabel)
+                .For(v => v.Text)
+                .To(vm => vm.Duration)
+                .WithConvertion<DurationValueConverter>();
+
+            bindingSet.Bind(View.TypeImage)
+                .For(v => v.Image)
+                .To(vm => vm.Status)
+                .WithConvertion<TypeToImageValueConverter>();
+
+            bindingSet.Bind(View.Separator)
+                .For(v => v.Hidden)
+                .To(vm => !vm.SeparatorVisible);
+            //.WithConvertion<C>();
+        }
+
+        class C : ValueConverter<bool, bool>
+        {
+            protected override ConversionResult<bool> Convert(bool value, Type targetType, object parameter, CultureInfo culture)
+            {
+                return ConversionResult<bool>.SetValue(!value);
+            }
         }
     }
 }

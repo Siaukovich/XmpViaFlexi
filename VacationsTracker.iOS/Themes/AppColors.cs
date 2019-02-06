@@ -10,6 +10,8 @@ namespace VacationsTracker.iOS.Themes
 
         public static readonly UIColor LightGreenColor = GetColorFromHex(0xA0CC4B);
 
+        public static readonly UIColor GrayColor = UIColor.LightGray;
+
         public static readonly UIColor WhiteColor = UIColor.White;
 
         private static UIColor GetColorFromHex(int hexValue)
