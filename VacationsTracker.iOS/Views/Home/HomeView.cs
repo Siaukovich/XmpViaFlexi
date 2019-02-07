@@ -14,15 +14,19 @@ namespace VacationsTracker.iOS.Views.Home
         {
             base.SetupSubviews();
 
-            //TODO create class AppColors
             BackgroundColor = AppColors.WhiteColor;
 
             VacationsTableView = new UITableView();
             VacationsTableView.RegisterClassForCellReuse(
                 typeof(VacationItemViewCell),
                 VacationItemViewCell.CellId);
-            VacationsTableView.AllowsSelection = true;
-            VacationsTableView.SeparatorColor = UIColor.Clear;
+
+            VacationsTableView.RegisterClassForHeaderFooterViewReuse(
+                typeof(VacationTableFooterViewCell),
+                VacationTableFooterViewCell.CellId);
+
+            //VacationsTableView.AllowsSelection = true;
+            VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
         }
 
         protected override void SetupLayout()

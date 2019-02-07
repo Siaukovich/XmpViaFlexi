@@ -54,13 +54,13 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 
             bindingSet.Bind(View.TypeImage)
                 .For(v => v.Image)
-                .To(vm => vm.Status)
+                .To(vm => vm.Type)
                 .WithConvertion<TypeToImageValueConverter>();
 
             bindingSet.Bind(View.Separator)
                 .For(v => v.Hidden)
-                .To(vm => !vm.SeparatorVisible);
-            //.WithConvertion<C>();
+                .To(vm => vm.SeparatorVisible)
+                .WithConvertion<InvertValueConverter>();
         }
 
         class C : ValueConverter<bool, bool>

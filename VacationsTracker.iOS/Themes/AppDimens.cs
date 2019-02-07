@@ -4,6 +4,8 @@ namespace VacationsTracker.iOS.Themes
 {
     public static class AppDimens
     {
+        public static int InsetHalf => 4;
+
         public static int Inset1X => 8;
 
         public static int Inset2X => 16;
@@ -29,5 +31,9 @@ namespace VacationsTracker.iOS.Themes
         public static int DefaultTypeImageSize => 48;
 
         public static int DefaultDurationFontSize => 20;
+
+        public static int DefaultFontSize => 12;
+
+        public static int DefaultSeparatorSize => 1;
     }
 }

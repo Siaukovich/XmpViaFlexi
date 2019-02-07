@@ -2,6 +2,8 @@
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
+using UIKit;
+using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 
@@ -28,10 +30,13 @@ namespace VacationsTracker.iOS.Views.Home
 
             VacationsSource = new UITableViewObservablePlainSource(
                 View.VacationsTableView,
-                _ => VacationItemViewCell.CellId)
+                _ => VacationItemViewCell.CellId, 
+                null,
+                () => VacationTableFooterViewCell.CellId)
             {
                 Items = ViewModel.Vacations
             };
+            
 
             View.VacationsTableView.Source = VacationsSource;
         }

@@ -12,9 +12,23 @@ namespace VacationsTracker.iOS.Themes
                 button.SetTitle(text, UIControlState.Normal);
             }
 
-            button.BackgroundColor = AppColors.LightBlueColor;
+            button.SetMainBackgroundColorStyle();
 
             return button;
+        }
+
+        public static UIView SetMainBackgroundColorStyle(this UIView view)
+        {
+            view.BackgroundColor = AppColors.LightBlueColor;
+
+            return view;
+        }
+
+        public static UILabel SetMainBackgroundColorStyle(this UILabel label)
+        {
+            ((UIView) label).SetMainBackgroundColorStyle();
+
+            return label;
         }
 
         public static UILabel SetErrorLabelStyle(this UILabel label, string text)
@@ -52,17 +66,9 @@ namespace VacationsTracker.iOS.Themes
             return imageView;
         }
 
-        public static UILabel SetDurationLabelStyle(this UILabel label)
-        {
-            label.TextColor = AppColors.LightBlueColor;
-            label.Font = UIFont.BoldSystemFontOfSize(AppDimens.DefaultDurationFontSize);
-
-            return label;
-        }
-
         public static UILabel SetTypeLabelStyle(this UILabel label)
         {
-            label.Font = UIFont.SystemFontOfSize(12);
+            label.SetDefaultFontSize();
             label.TextColor = AppColors.GrayColor;
 
             return label;
@@ -70,7 +76,7 @@ namespace VacationsTracker.iOS.Themes
 
         public static UILabel SetStatusLabelStyle(this UILabel label)
         {
-            label.Font = UIFont.SystemFontOfSize(12);
+            label.SetDefaultFontSize();
             label.TextColor = AppColors.GrayColor;
 
             return label;
@@ -86,6 +92,41 @@ namespace VacationsTracker.iOS.Themes
             separator.BackgroundColor = color;
 
             return separator;
+        }
+
+        public static UILabel SetTextMainColorStyle(this UILabel label)
+        {
+            label.TextColor = AppColors.LightBlueColor;
+
+            return label;
+        }
+
+        public static UILabel SetsSecondaryColorTextStyle(this UILabel label)
+        {
+            label.TextColor = AppColors.LightGreenColor;
+
+            return label;
+        }
+
+        public static UILabel SetDefaultFontSize(this UILabel label)
+        {
+            label.SetFontSize(AppDimens.DefaultFontSize);
+
+            return label;
+        }
+
+        public static UILabel SetFontSize(this UILabel label, int fontSize)
+        {
+            label.Font = UIFont.SystemFontOfSize(fontSize);
+
+            return label;
+        }
+
+        public static UILabel SetBoldFontSize(this UILabel label, int fontSize)
+        {
+            label.Font = UIFont.BoldSystemFontOfSize(fontSize);
+
+            return label;
         }
 
         private static void SetLeftPaddingTo(this UITextField textField, int paddingWidth)

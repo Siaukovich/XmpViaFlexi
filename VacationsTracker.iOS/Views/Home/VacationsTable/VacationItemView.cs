@@ -25,7 +25,8 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             
             TypeImage = new UIImageView();
 
-            DurationLabel = new UILabel().SetDurationLabelStyle();
+            DurationLabel = new UILabel().SetTextMainColorStyle()
+                                         .SetBoldFontSize(AppDimens.DefaultDurationFontSize);
 
             TypeLabel = new UILabel().SetTypeLabelStyle();
 
@@ -61,11 +62,11 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 
             this.AddConstraints(
                 DurationLabel.ToRightOf(TypeImage, AppDimens.Inset1X),
-                DurationLabel.AtTopOf(TypeImage, 4));
+                DurationLabel.AtTopOf(TypeImage, AppDimens.InsetHalf));
 
             this.AddConstraints(
                 TypeLabel.ToRightOf(TypeImage, AppDimens.Inset1X),
-                TypeLabel.AtBottomOf(TypeImage, 4));
+                TypeLabel.AtBottomOf(TypeImage, AppDimens.InsetHalf));
 
             this.AddConstraints(
                 StatusLabel.AtRightOf(this, AppDimens.Inset1X),
@@ -75,7 +76,7 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
                 Separator.WithSameLeft(DurationLabel),
                 Separator.WithSameRight(this),
                 Separator.WithSameBottom(this),
-                Separator.Height().EqualTo(1));
+                Separator.Height().EqualTo(AppDimens.DefaultSeparatorSize));
         }
     }
 }
