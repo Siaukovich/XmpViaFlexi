@@ -1,21 +1,35 @@
-﻿using CoreGraphics;
+﻿using System;
+using CoreGraphics;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
+using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.iOS.Themes;
+using VacationsTracker.iOS.Views.Details.VacationsPager;
 using VacationsTracker.iOS.Views.ValueConverters;
 
 namespace VacationsTracker.iOS.Views.Details
 {
-    public class VacationDetailsViewController : FlxBindableViewController<VacationDetailsViewModel, VacationDetailsParameters>
+    public class VacationDetailsViewController
+        : FlxBindableViewController<VacationDetailsViewModel, VacationDetailsParameters>
     {
+        private UIPageViewController VacationsPageViewController { get; set; }
+
+        private UIPageViewControllerObservableDataSource VacationsDataSource { get; set; }
+
+        private UIBarButtonItem SaveButton { get; } = BarButtonFactory.GetSaveButton();
+
         public new VacationDetailsView View
         {
             get => (VacationDetailsView)base.View.NotNull();
             set => base.View = value;
+        }
+
+        public VacationDetailsViewController(VacationDetailsParameters parameters) : base(parameters)
+        {
         }
 
         public override void LoadView()
@@ -23,13 +37,23 @@ namespace VacationsTracker.iOS.Views.Details
             View = new VacationDetailsView();
         }
 
-        private UIBarButtonItem SaveButton { get; } = BarButtonFactory.GetSaveButton();
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
             Title = "Request";
+
+            VacationsPageViewController = new UIPageViewController(
+                UIPageViewControllerTransitionStyle.Scroll,
+                UIPageViewControllerNavigationOrientation.Horizontal);
+
+            VacationsDataSource = new UIPageViewControllerObservableDataSource(
+                VacationsPageViewController,
+                PagerFactory);
+
+            this.AddChildViewControllerAndView(VacationsPageViewController, View.VacationsPager);
+
+            VacationsPageViewController.DataSource = VacationsDataSource;
         }
 
         public override void ViewWillAppear(bool animated)
@@ -83,9 +107,14 @@ namespace VacationsTracker.iOS.Views.Details
                 .To(vm => vm.SaveCommand);
         }
 
-        public VacationDetailsViewController(VacationDetailsParameters parameters) : base(parameters)
+        private UIViewController PagerFactory(object parameters)
         {
-            
+            if (parameters is VacationTypePagerParameters pagerParameters)
+            {
+                return new VacationTypePagerViewController(pagerParameters);
+            }
+
+            throw new ArgumentException(nameof(parameters));
         }
     }
 }

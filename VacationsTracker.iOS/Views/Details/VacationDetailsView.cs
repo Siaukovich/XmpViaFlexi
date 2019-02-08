@@ -8,7 +8,7 @@ namespace VacationsTracker.iOS.Views.Details
 {
     public class VacationDetailsView : LayoutView
     { 
-        public UIView Pager { get; private set; }
+        public UIView VacationsPager { get; private set; }
 
         public UIView AboveDatesSeparator { get; private set; }
         
@@ -38,7 +38,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             this.BackgroundColor = AppColors.WhiteColor;
 
-            Pager = new UIView().SetMainBackgroundColorStyle();
+            VacationsPager = new UIView().SetMainBackgroundColorStyle();
 
             AboveDatesSeparator = new UIView().SetSeparatorStyle(AppColors.LightBlueColor);
 
@@ -68,7 +68,7 @@ namespace VacationsTracker.iOS.Views.Details
         {
             base.SetupLayout();
 
-            this.AddLayoutSubview(Pager)
+            this.AddLayoutSubview(VacationsPager)
                 .AddLayoutSubview(AboveDatesSeparator)
                 .AddLayoutSubview(StartDayView)
                 .AddLayoutSubview(StartDayLabel)
@@ -79,7 +79,7 @@ namespace VacationsTracker.iOS.Views.Details
                 .AddLayoutSubview(EndMonthLabel)
                 .AddLayoutSubview(EndYearLabel)
                 .AddLayoutSubview(BelowDatesSeparator)
-                .AddLayoutSubview(StatusSegmentedControl);
+                .AddLayoutSubview(StatusSegmentedControl)
         }
 
         protected override void SetupLayoutConstraints()
@@ -91,13 +91,13 @@ namespace VacationsTracker.iOS.Views.Details
             var halfWidth = UIScreen.MainScreen.Bounds.Width / 2;
 
             this.AddConstraints(
-                Pager.AtLeftOf(this),
-                Pager.AtTopOf(this),
-                Pager.AtRightOf(this),
-                Pager.Height().EqualTo(200));
+                VacationsPager.AtLeftOf(this),
+                VacationsPager.AtTopOf(this),
+                VacationsPager.AtRightOf(this),
+                VacationsPager.Height().EqualTo(200));
 
             this.AddConstraints(
-                AboveDatesSeparator.Below(Pager, AppDimens.Inset1X),
+                AboveDatesSeparator.Below(VacationsPager, AppDimens.Inset1X),
                 AboveDatesSeparator.Height().EqualTo(AppDimens.DefaultSeparatorSize));
 
             this.AddConstraints(
