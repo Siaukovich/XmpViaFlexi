@@ -1,8 +1,12 @@
-﻿using FlexiMvvm;
+﻿using CoreGraphics;
+using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views;
+using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
+using VacationsTracker.iOS.Themes;
+using VacationsTracker.iOS.Views.ValueConverters;
 
 namespace VacationsTracker.iOS.Views.Details
 {
@@ -19,10 +23,20 @@ namespace VacationsTracker.iOS.Views.Details
             View = new VacationDetailsView();
         }
 
+        private UIBarButtonItem SaveButton { get; } = BarButtonFactory.GetSaveButton();
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
+            Title = "Request";
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            NavigationItem.RightBarButtonItem = SaveButton;
         }
 
         public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
@@ -58,6 +72,15 @@ namespace VacationsTracker.iOS.Views.Details
                 .For(v => v.Text)
                 .To(vm => vm.Vacation.End)
                 .WithConvertion<DateTimeToYearValueConverter>();
+
+            bindingSet.Bind(View.StatusSegmentedControl)
+                .For(v => v.SelectedSegmentAndValueChangedBinding())
+                .To(vm => vm.Vacation.Status)
+                .WithConvertion<VacationStatusSegmentedControlConverter>();
+
+            bindingSet.Bind(SaveButton)
+                .For(v => v.NotNull().ClickedBinding())
+                .To(vm => vm.SaveCommand);
         }
 
         public VacationDetailsViewController(VacationDetailsParameters parameters) : base(parameters)

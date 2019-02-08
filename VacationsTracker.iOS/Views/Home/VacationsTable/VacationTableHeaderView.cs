@@ -17,7 +17,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             BackgroundColor = AppColors.WhiteColor;
 
             RefreshTimeLabel = new UILabel();
-            RefreshTimeLabel.Text = "aaa";
         }
 
         protected override void SetupLayout()
@@ -32,9 +31,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             base.SetupLayoutConstraints();
 
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
-
-            this.AddConstraints(
-                this.Height().NotNull().EqualTo(56));
 
             this.AddConstraints(
                 RefreshTimeLabel.FullSizeOf(this));

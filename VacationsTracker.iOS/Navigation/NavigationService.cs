@@ -39,7 +39,9 @@ namespace VacationsTracker.iOS.Navigation
 
         public void NavigateBackToHome(VacationDetailsViewModel fromViewModel)
         {
-            throw new System.NotImplementedException();
+            var vacationDetailsController =
+                GetViewController<VacationDetailsViewModel, VacationDetailsViewController>(fromViewModel);
+            vacationDetailsController.NotNull().NavigationController.PopViewController(true);
         }
 
         public void NavigateToNewVacation(HomeViewModel fromViewModel)

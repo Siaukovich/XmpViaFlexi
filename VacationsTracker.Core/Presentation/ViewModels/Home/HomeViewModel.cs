@@ -17,7 +17,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
-        private DateTime _refreshedDateTime = DateTime.Now;
+        private DateTime _refreshedDateTime;
         private bool _isRefreshing;
 
         public HomeViewModel(
@@ -88,24 +88,24 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public async Task Refresh()
         {
-            this.IsRefreshing = true;
+            IsRefreshing = true;
 
             await Task.Delay(1000);
 
             await ReloadVacations();
 
-            this.IsRefreshing = false;
+            IsRefreshing = false;
 
-            this.RefreshedDateTime = DateTime.Now;
+            RefreshedDateTime = DateTime.Now;
         }
 
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
 
-            RefreshedDateTime = DateTime.Now;
-
             await LoadVacations();
+
+            RefreshedDateTime = DateTime.Now;
         }
 
         private async Task ReloadVacations()

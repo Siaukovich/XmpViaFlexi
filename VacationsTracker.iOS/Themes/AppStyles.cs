@@ -129,6 +129,16 @@ namespace VacationsTracker.iOS.Themes
             return label;
         }
 
+        public static UIBarButtonItem SetBarButtonStyle(this UIBarButtonItem button, string title = null)
+        {
+            if (title != null)
+            {
+                button.Title = title;
+            }
+
+            return button;
+        }
+
         private static void SetLeftPaddingTo(this UITextField textField, int paddingWidth)
         {
             var paddingView = new UIView(new CGRect(0, 0, paddingWidth, AppDimens.DefaultTextFieldHeight));

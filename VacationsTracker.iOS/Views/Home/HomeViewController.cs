@@ -1,9 +1,9 @@
-﻿using FlexiMvvm;
+﻿using System;
+using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
 using UIKit;
-using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 
@@ -24,6 +24,17 @@ namespace VacationsTracker.iOS.Views.Home
             View = new HomeView();
         }
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            var selection = this.View.VacationsTableView.IndexPathForSelectedRow;
+            if (selection != null)
+            {
+                View.VacationsTableView.DeselectRow(selection, false);
+            }
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -38,7 +49,7 @@ namespace VacationsTracker.iOS.Views.Home
                 ItemsContext = ViewModel
             };
             
-
+            Title = "All requests";
             View.VacationsTableView.Source = VacationsSource;
         }
 

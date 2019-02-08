@@ -7,8 +7,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 {
     internal class VacationItemView : LayoutView
     {
-        // TODO vacation cell View
-
         public UIImageView TypeImage { get; private set; }
 
         public UILabel DurationLabel { get; private set; }

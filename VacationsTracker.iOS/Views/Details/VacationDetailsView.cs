@@ -7,7 +7,7 @@ using VacationsTracker.iOS.Themes;
 namespace VacationsTracker.iOS.Views.Details
 {
     public class VacationDetailsView : LayoutView
-    {
+    { 
         public UIView Pager { get; private set; }
 
         public UIView AboveDatesSeparator { get; private set; }
@@ -30,6 +30,7 @@ namespace VacationsTracker.iOS.Views.Details
 
         public UIView BelowDatesSeparator { get; private set; }
 
+        public UISegmentedControl StatusSegmentedControl { get; private set; }
 
         protected override void SetupSubviews()
         {
@@ -59,6 +60,8 @@ namespace VacationsTracker.iOS.Views.Details
 
             BelowDatesSeparator = new UIView().SetSeparatorStyle(AppColors.LightBlueColor);
 
+            StatusSegmentedControl = new UISegmentedControl("Approved", "Closed");
+            StatusSegmentedControl.TintColor = AppColors.LightGreenColor;
         }
 
         protected override void SetupLayout()
@@ -75,7 +78,8 @@ namespace VacationsTracker.iOS.Views.Details
                 .AddLayoutSubview(EndDayLabel)
                 .AddLayoutSubview(EndMonthLabel)
                 .AddLayoutSubview(EndYearLabel)
-                .AddLayoutSubview(BelowDatesSeparator);
+                .AddLayoutSubview(BelowDatesSeparator)
+                .AddLayoutSubview(StatusSegmentedControl);
         }
 
         protected override void SetupLayoutConstraints()
@@ -139,6 +143,10 @@ namespace VacationsTracker.iOS.Views.Details
                 BelowDatesSeparator.Below(EndDayView),
                 BelowDatesSeparator.AtRightOf(this),
                 BelowDatesSeparator.Height().EqualTo(AppDimens.DefaultSeparatorSize));
+
+            this.AddConstraints(
+                StatusSegmentedControl.Below(BelowDatesSeparator, AppDimens.Inset2X),
+                StatusSegmentedControl.WithSameCenterX(this));
         }
     }
 }

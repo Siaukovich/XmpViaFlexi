@@ -67,6 +67,7 @@
     <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
     <Compile Include="Themes\AppStyles.cs" />
+    <Compile Include="Views\BarButtonFactory.cs" />
     <Compile Include="Views\Details\VacationDetailsViewController.cs" />
     <Compile Include="Views\Details\VacationDetailsView.cs" />
     <Compile Include="Views\Home\HomeView.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Views\RootNavigationController.cs" />
     <BundleResource Include="splash.jpg" />
     <Compile Include="Views\ValueConverters\TypeToImageValueConverter.cs" />
+    <Compile Include="Views\ValueConverters\VacationStatusSegmentedControlConverter.cs" />
     <None Include="Info.plist" />
     <Compile Include="Navigation\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +194,9 @@
     <ImageAsset Include="Assets.xcassets\IconRequestPlum.imageset\Icon_Request_Plum.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ToolbarBg.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -202,6 +207,9 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\Login_bg.jpg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ToolbarBg.imageset\toolbarBg.png">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
