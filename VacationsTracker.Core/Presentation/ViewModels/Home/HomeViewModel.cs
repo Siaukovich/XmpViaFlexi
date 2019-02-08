@@ -18,6 +18,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
         private DateTime _refreshedDateTime = DateTime.Now;
+        private bool _isRefreshing;
 
         public HomeViewModel(
             INavigationService navigationService,
@@ -35,11 +36,19 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             set => Set(ref _refreshedDateTime, value);
         }
 
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set => Set(ref _isRefreshing, value);
+        }
+
         public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
         public ICommand CreateNewVacationCommand => CommandProvider.Get(CreateNewVacation);
 
         public ICommand<NavigationMenuItem> FilterVacationsCommand => CommandProvider.GetForAsync<NavigationMenuItem>(FilterVacations);
+
+        public ICommand RefreshCommand => CommandProvider.GetForAsync(Refresh);
 
         private async Task FilterVacations(NavigationMenuItem item)
         {
@@ -79,12 +88,22 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public async Task Refresh()
         {
+            this.IsRefreshing = true;
+
+            await Task.Delay(1000);
+
             await ReloadVacations();
+
+            this.IsRefreshing = false;
+
+            this.RefreshedDateTime = DateTime.Now;
         }
 
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
+
+            RefreshedDateTime = DateTime.Now;
 
             await LoadVacations();
         }

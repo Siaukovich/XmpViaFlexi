@@ -8,7 +8,7 @@ namespace VacationsTracker.Core.Presentation.ValueConverters
     {
         protected override ConversionResult<string> Convert(DateTime value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ConversionResult<string>.SetValue($"Last updated at: {value.ToString(CultureInfo.CurrentCulture)}");
+            return ConversionResult<string>.SetValue($"Last updated: {value.ToString(CultureInfo.CurrentCulture)}");
         }
     }
 }

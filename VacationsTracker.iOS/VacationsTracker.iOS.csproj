@@ -75,6 +75,8 @@
     <Compile Include="Views\Home\VacationsTable\VacationItemViewCell.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationTableFooterView.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationTableFooterViewCell.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationTableHeaderViewCell.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationTableHeaderView.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginViewController.cs" />
     <Compile Include="Views\RootNavigationController.cs" />
