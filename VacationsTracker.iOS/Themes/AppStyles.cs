@@ -1,5 +1,6 @@
 ﻿using System;
 using CoreGraphics;
+using Foundation;
 using UIKit;
 
 namespace VacationsTracker.iOS.Themes
@@ -51,6 +52,13 @@ namespace VacationsTracker.iOS.Themes
             pageControl.CurrentPageIndicatorTintColor = AppColors.LightBlueColor;
 
             return pageControl;
+        }
+
+        public static UIDatePicker SetTextColor(this UIDatePicker picker, UIColor textColor)
+        {
+            picker.SetValueForKey(textColor, new NSString("textColor"));
+
+            return picker;
         }
 
         public static UILabel SetErrorLabelStyle(this UILabel label, string text)

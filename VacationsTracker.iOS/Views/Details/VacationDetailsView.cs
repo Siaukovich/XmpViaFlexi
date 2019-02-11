@@ -2,6 +2,7 @@
 using System.Drawing;
 using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
+using Foundation;
 using UIKit;
 using VacationsTracker.iOS.Themes;
 
@@ -35,6 +36,11 @@ namespace VacationsTracker.iOS.Views.Details
 
         public UISegmentedControl StatusSegmentedControl { get; private set; }
 
+        public UIDatePicker VacationStartDatePicker { get; private set; }
+
+        public UIDatePicker VacationEndDatePicker { get; private set; }
+
+
         protected override void SetupSubviews()
         {
             base.SetupSubviews();
@@ -67,6 +73,12 @@ namespace VacationsTracker.iOS.Views.Details
 
             StatusSegmentedControl = new UISegmentedControl("Approved", "Closed");
             StatusSegmentedControl.TintColor = AppColors.LightGreenColor;
+
+            VacationStartDatePicker = new UIDatePicker().SetTextColor(AppColors.LightBlueColor);
+            SetupDatePicker(VacationStartDatePicker);
+
+            VacationEndDatePicker = new UIDatePicker().SetTextColor(AppColors.LightGreenColor);
+            SetupDatePicker(VacationEndDatePicker);
         }
 
         protected override void SetupLayout()
@@ -85,7 +97,9 @@ namespace VacationsTracker.iOS.Views.Details
                 .AddLayoutSubview(EndMonthLabel)
                 .AddLayoutSubview(EndYearLabel)
                 .AddLayoutSubview(BelowDatesSeparator)
-                .AddLayoutSubview(StatusSegmentedControl);
+                .AddLayoutSubview(StatusSegmentedControl)
+                .AddLayoutSubview(VacationStartDatePicker)
+                .AddLayoutSubview(VacationEndDatePicker);
         }
 
         protected override void SetupLayoutConstraints()
@@ -159,6 +173,20 @@ namespace VacationsTracker.iOS.Views.Details
             this.AddConstraints(
                 StatusSegmentedControl.Below(BelowDatesSeparator, AppDimens.Inset2X),
                 StatusSegmentedControl.WithSameCenterX(this));
+
+            this.AddConstraints(
+                VacationStartDatePicker.WithRelativeHeight(this, (nfloat)0.25),
+                VacationStartDatePicker.AtBottomOf(this));
+
+            this.AddConstraints(
+                VacationEndDatePicker.WithRelativeHeight(this, (nfloat)0.25),
+                VacationEndDatePicker.AtBottomOf(this));
+        }
+
+        private void SetupDatePicker(UIDatePicker picker)
+        {
+            picker.Mode = UIDatePickerMode.Date;
+            picker.Hidden = true;
         }
     }
 }

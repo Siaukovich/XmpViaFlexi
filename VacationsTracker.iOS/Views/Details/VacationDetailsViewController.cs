@@ -4,10 +4,12 @@ using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
+using Foundation;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Droid.Views.ValueConverters;
+using VacationsTracker.iOS.Helpers;
 using VacationsTracker.iOS.Themes;
 using VacationsTracker.iOS.Views.Details.VacationsTypePager;
 using VacationsTracker.iOS.Views.ValueConverters;
@@ -58,7 +60,49 @@ namespace VacationsTracker.iOS.Views.Details
                 (sender, args) => View.VacationPageControl.CurrentPage = args.Index;
 
             VacationsPageViewController.DataSource = VacationsDataSource;
+
+            var tapGesture = new UITapGestureRecognizer(OnStartDayViewTap);
+            View.StartDayView.AddGestureRecognizer(tapGesture);
+            View.VacationStartDatePicker.ValueChangedWeakSubscribe(StartDateValueChangedHandler);
+
+            tapGesture = new UITapGestureRecognizer(OnEndDayViewTap);
+            View.EndDayView.AddGestureRecognizer(tapGesture);
+            View.VacationEndDatePicker.ValueChangedWeakSubscribe(StartEndValueChangedHandler);
         }
+
+        private void OnStartDayViewTap()
+        {
+            View.VacationEndDatePicker.Hidden = true;
+
+            View.VacationStartDatePicker.Date = ViewModel.Vacation.Start.ToNSDate();
+            View.VacationStartDatePicker.Hidden = false;
+        }
+
+        private void OnEndDayViewTap()
+        {
+            View.VacationStartDatePicker.Hidden = true;
+
+            View.VacationEndDatePicker.Date = ViewModel.Vacation.End.ToNSDate();
+            View.VacationEndDatePicker.Hidden = false;
+        }
+
+        private void StartDateValueChangedHandler(object sender, EventArgs args)
+        {
+            if (sender is UIDatePicker picker)
+            {
+                var date = (DateTime) picker.Date;
+                ViewModel.Vacation.Start = date;
+            }
+        }
+        private void StartEndValueChangedHandler(object sender, EventArgs args)
+        {
+            if (sender is UIDatePicker picker)
+            {
+                var date = (DateTime) picker.Date;
+                ViewModel.Vacation.End = date;
+            }
+        }
+
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
