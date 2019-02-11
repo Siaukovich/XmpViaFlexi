@@ -66,8 +66,11 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
+    <Compile Include="Themes\AppStrings.cs" />
     <Compile Include="Themes\AppStyles.cs" />
     <Compile Include="Views\BarButtonFactory.cs" />
+    <Compile Include="Views\Details\VacationsTypePager\VacationTypePagerView.cs" />
+    <Compile Include="Views\Details\VacationsTypePager\VacationTypePagerViewController.cs" />
     <Compile Include="Views\Details\VacationDetailsViewController.cs" />
     <Compile Include="Views\Details\VacationDetailsView.cs" />
     <Compile Include="Views\Home\HomeView.cs" />
@@ -218,6 +221,10 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VacationsTracker.Android\VacationsTracker.Droid.csproj">
+      <Project>{CDD1C44A-AFF0-489C-8497-8A0C32238B39}</Project>
+      <Name>VacationsTracker.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VacationsTracker.Core\VacationsTracker.Core.csproj">
       <Project>{47bbac44-275a-4718-80ac-62a218ef914a}</Project>
       <Name>VacationsTracker.Core</Name>

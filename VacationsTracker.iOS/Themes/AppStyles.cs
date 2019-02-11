@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using System;
+using CoreGraphics;
 using UIKit;
 
 namespace VacationsTracker.iOS.Themes
@@ -29,6 +30,27 @@ namespace VacationsTracker.iOS.Themes
             ((UIView) label).SetMainBackgroundColorStyle();
 
             return label;
+        }
+
+        public static UILabel SetPagerLabelStyle(this UILabel label)
+        {
+            label.SetBoldFontSize(30);
+            label.TextColor = AppColors.GrayColor;
+
+            return label;
+        }
+
+        public static UIPageControl SetDefaultPagerStyle(this UIPageControl pageControl, int? pages = null)
+        {
+            if (pages != null)
+            {
+                pageControl.Pages = (nint) pages;
+            }
+
+            pageControl.PageIndicatorTintColor = AppColors.GrayColor;
+            pageControl.CurrentPageIndicatorTintColor = AppColors.LightBlueColor;
+
+            return pageControl;
         }
 
         public static UILabel SetErrorLabelStyle(this UILabel label, string text)

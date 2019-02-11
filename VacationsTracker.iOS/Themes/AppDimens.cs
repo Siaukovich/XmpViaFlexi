@@ -30,6 +30,8 @@ namespace VacationsTracker.iOS.Themes
 
         public static int DefaultTypeImageSize => 48;
 
+        public static int DefaultSelectorTypeImageSize => 96;
+
         public static int DefaultDurationFontSize => 20;
 
         public static int DefaultFontSize => 12;

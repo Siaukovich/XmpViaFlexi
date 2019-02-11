@@ -7,8 +7,9 @@ using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
+using VacationsTracker.Droid.Views.ValueConverters;
 using VacationsTracker.iOS.Themes;
-using VacationsTracker.iOS.Views.Details.VacationsPager;
+using VacationsTracker.iOS.Views.Details.VacationsTypePager;
 using VacationsTracker.iOS.Views.ValueConverters;
 
 namespace VacationsTracker.iOS.Views.Details
@@ -53,9 +54,11 @@ namespace VacationsTracker.iOS.Views.Details
 
             this.AddChildViewControllerAndView(VacationsPageViewController, View.VacationsPager);
 
+            VacationsDataSource.CurrentItemIndexChanged +=
+                (sender, args) => View.VacationPageControl.CurrentPage = args.Index;
+
             VacationsPageViewController.DataSource = VacationsDataSource;
         }
-
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
@@ -66,6 +69,15 @@ namespace VacationsTracker.iOS.Views.Details
         public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
         {
             base.Bind(bindingSet);
+
+            bindingSet.Bind(VacationsDataSource)
+                .For(v => v.Items)
+                .To(vm => vm.VacationTypes);
+
+            bindingSet.Bind(VacationsDataSource)
+                .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
+                .To(vm => vm.Vacation.Type)
+                .WithConvertion<TypeToPagerItemValueConverter>();
 
             bindingSet.Bind(View.StartDayLabel)
                 .For(v => v.Text)
