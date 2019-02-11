@@ -26,11 +26,13 @@ namespace VacationsTracker.iOS.Views.Home
             View = new HomeView();
         }
 
-        public override void ViewWillAppear(bool animated)
+        public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
 
             NavigationItem.RightBarButtonItem = NewButton;
+
+            await ViewModel.Refresh();
 
             var selection = this.View.VacationsTableView.IndexPathForSelectedRow;
             if (selection != null)
