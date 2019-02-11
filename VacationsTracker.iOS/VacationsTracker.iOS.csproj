@@ -84,6 +84,8 @@
     <Compile Include="Views\Home\VacationsTable\VacationTableHeaderView.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginViewController.cs" />
+    <Compile Include="Views\New\NewVacationView.cs" />
+    <Compile Include="Views\New\NewVacationViewController.cs" />
     <Compile Include="Views\RootNavigationController.cs" />
     <BundleResource Include="splash.jpg" />
     <Compile Include="Views\ValueConverters\TypeToImageValueConverter.cs" />

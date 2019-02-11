@@ -9,5 +9,10 @@ namespace VacationsTracker.iOS.Views
         {
             return new UIBarButtonItem(AppStrings.Save, UIBarButtonItemStyle.Done, null);
         }
+
+        public static UIBarButtonItem GetNewButton()
+        {
+            return new UIBarButtonItem(AppStrings.New, UIBarButtonItemStyle.Done, null);
+        }
     }
 }

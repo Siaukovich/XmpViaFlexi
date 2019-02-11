@@ -1,4 +1,6 @@
-﻿namespace VacationsTracker.iOS.Themes
+﻿using UIKit;
+
+namespace VacationsTracker.iOS.Themes
 {
     internal static class AppStrings
     {
@@ -7,5 +9,7 @@
         public static string Select => "Select";
 
         public static string Back => "Back";
+
+        public static string New => "New";
     }
 }

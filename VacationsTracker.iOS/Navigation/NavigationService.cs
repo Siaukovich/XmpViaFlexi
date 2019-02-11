@@ -11,6 +11,7 @@ using VacationsTracker.iOS.Views;
 using VacationsTracker.iOS.Views.Details;
 using VacationsTracker.iOS.Views.Home;
 using VacationsTracker.iOS.Views.Login;
+using VacationsTracker.iOS.Views.New;
 
 namespace VacationsTracker.iOS.Navigation
 {
@@ -46,12 +47,16 @@ namespace VacationsTracker.iOS.Navigation
 
         public void NavigateToNewVacation(HomeViewModel fromViewModel)
         {
-            throw new System.NotImplementedException();
+            var homeViewController = GetViewController<HomeViewModel, HomeViewController>(fromViewModel);
+
+            homeViewController.NotNull().NavigationController.PushViewController(new NewVacationViewController(), true);
         }
 
         public void NavigateBackToHome(NewVacationViewModel fromViewModel)
         {
-            throw new System.NotImplementedException();
+            var vacationDetailsController =
+                GetViewController<NewVacationViewModel, NewVacationViewController>(fromViewModel);
+            vacationDetailsController.NotNull().NavigationController.PopViewController(true);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace VacationsTracker.iOS.Views.Home
     {
         private UITableViewObservablePlainSource VacationsSource { get; set; }
 
+        private UIBarButtonItem NewButton { get; } = BarButtonFactory.GetNewButton();
+
         public new HomeView View
         {
             get => (HomeView)base.View.NotNull();
@@ -27,6 +29,8 @@ namespace VacationsTracker.iOS.Views.Home
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
+
+            NavigationItem.RightBarButtonItem = NewButton;
 
             var selection = this.View.VacationsTableView.IndexPathForSelectedRow;
             if (selection != null)
@@ -72,6 +76,10 @@ namespace VacationsTracker.iOS.Views.Home
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.ValueChangedBinding())
                 .To(vm => vm.RefreshCommand);
+
+            bindingSet.Bind(NewButton)
+                .For(v => v.NotNull().ClickedBinding())
+                .To(vm => vm.CreateNewVacationCommand);
         }
     }
 }
