@@ -14,6 +14,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
+        private DateTime _startDate;
+        private DateTime _endDate;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
@@ -32,8 +34,23 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
                 Enum.GetValues(typeof(VacationType))
                     .Cast<VacationType>().Select(t => new VacationTypePagerParameters(t)));
 
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set => Set(ref _startDate, value);
+        }
+
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set => Set(ref _endDate, value);
+        }
+
         private async void Save()
         {
+            Vacation.Start = _startDate;
+            Vacation.End = _endDate;
+
             await _vacationsRepository.UpdateVacationAsync(Vacation);
             _navigationService.NavigateBackToHome(this);
         }
@@ -43,6 +60,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             await base.InitializeAsync(parameters);
 
             Vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
+            StartDate = Vacation.Start;
+            EndDate = Vacation.End;
         }
     }
 }

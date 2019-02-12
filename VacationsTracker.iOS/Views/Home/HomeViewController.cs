@@ -32,7 +32,9 @@ namespace VacationsTracker.iOS.Views.Home
 
             NavigationItem.RightBarButtonItem = NewButton;
 
+            //UIView.AnimationsEnabled = false;
             await ViewModel.Refresh();
+            //UIView.AnimationsEnabled = true;
 
             var selection = this.View.VacationsTableView.IndexPathForSelectedRow;
             if (selection != null)
