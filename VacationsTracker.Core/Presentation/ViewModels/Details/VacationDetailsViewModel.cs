@@ -14,8 +14,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
+
+        private string _vacationId;
+
         private DateTime _startDate;
         private DateTime _endDate;
+        private VacationType _type;
+        private VacationStatus _status;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
@@ -24,8 +29,6 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
         }
-
-        public VacationCellViewModel Vacation { get; set; }
 
         public ICommand SaveCommand => CommandProvider.Get(Save);
 
@@ -46,12 +49,30 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             set => Set(ref _endDate, value);
         }
 
+        public VacationType Type
+        {
+            get => _type;
+            set => Set(ref _type, value);
+        }
+
+        public VacationStatus Status
+        {
+            get => _status;
+            set => Set( ref _status, value);
+        }
+
         private async void Save()
         {
-            Vacation.Start = _startDate;
-            Vacation.End = _endDate;
+            var vacation = new VacationCellViewModel
+            {
+                Id = _vacationId,
+                Start = _startDate,
+                End = _endDate,
+                Status = _status,
+                Type = _type
+            };
 
-            await _vacationsRepository.UpdateVacationAsync(Vacation);
+            await _vacationsRepository.UpdateVacationAsync(vacation);
             _navigationService.NavigateBackToHome(this);
         }
 
@@ -59,9 +80,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
         {
             await base.InitializeAsync(parameters);
 
-            Vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
-            StartDate = Vacation.Start;
-            EndDate = Vacation.End;
+            var vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
+
+            (_vacationId, StartDate, EndDate, Status, Type) = vacation;
         }
     }
 }

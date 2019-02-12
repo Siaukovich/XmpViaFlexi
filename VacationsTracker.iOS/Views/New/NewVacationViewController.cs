@@ -69,7 +69,7 @@ namespace VacationsTracker.iOS.Views.New
         {
             View.VacationEndDatePicker.Hidden = true;
 
-            View.VacationStartDatePicker.Date = ViewModel.Vacation.Start.ToNSDate();
+            View.VacationStartDatePicker.Date = ViewModel.StartDate.ToNSDate();
             View.VacationStartDatePicker.Hidden = false;
         }
 
@@ -77,7 +77,7 @@ namespace VacationsTracker.iOS.Views.New
         {
             View.VacationStartDatePicker.Hidden = true;
 
-            View.VacationEndDatePicker.Date = ViewModel.Vacation.End.ToNSDate();
+            View.VacationEndDatePicker.Date = ViewModel.EndDate.ToNSDate();
             View.VacationEndDatePicker.Hidden = false;
         }
 
@@ -86,7 +86,7 @@ namespace VacationsTracker.iOS.Views.New
             if (sender is UIDatePicker picker)
             {
                 var date = (DateTime)picker.Date;
-                ViewModel.Vacation.Start = date;
+                ViewModel.StartDate = date;
             }
         }
         private void StartEndValueChangedHandler(object sender, EventArgs args)
@@ -94,7 +94,7 @@ namespace VacationsTracker.iOS.Views.New
             if (sender is UIDatePicker picker)
             {
                 var date = (DateTime)picker.Date;
-                ViewModel.Vacation.End = date;
+                ViewModel.EndDate = date;
             }
         }
 
@@ -115,42 +115,42 @@ namespace VacationsTracker.iOS.Views.New
 
             bindingSet.Bind(VacationsDataSource)
                 .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
-                .To(vm => vm.Vacation.Type)
+                .To(vm => vm.Type)
                 .WithConvertion<TypeToPagerItemValueConverter>();
 
             bindingSet.Bind(View.StartDayLabel)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(View.StartMonthLabel)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(View.StartYearLabel)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(View.EndDayLabel)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(View.EndMonthLabel)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(View.EndYearLabel)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(View.StatusSegmentedControl)
                 .For(v => v.SelectedSegmentAndValueChangedBinding())
-                .To(vm => vm.Vacation.Status)
+                .To(vm => vm.Status)
                 .WithConvertion<VacationStatusSegmentedControlConverter>();
 
             bindingSet.Bind(SaveButton)

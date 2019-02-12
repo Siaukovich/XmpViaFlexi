@@ -16,6 +16,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels.New
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
 
+        private string _vacationId;
+
+        private DateTime _startDate;
+        private DateTime _endDate;
+        private VacationType _type;
+        private VacationStatus _status;
+
         public NewVacationViewModel(
             INavigationService navigationService,
             IVacationsRepository vacationsRepository)
@@ -24,7 +31,6 @@ namespace VacationsTracker.Core.Presentation.ViewModels.New
             _vacationsRepository = vacationsRepository;
         }
 
-        public VacationCellViewModel Vacation { get; set; }
 
         public ICommand SaveCommand => CommandProvider.Get(Save);
 
@@ -33,9 +39,42 @@ namespace VacationsTracker.Core.Presentation.ViewModels.New
                 Enum.GetValues(typeof(VacationType))
                     .Cast<VacationType>().Select(t => new VacationTypePagerParameters(t)));
 
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set => Set(ref _startDate, value);
+        }
+
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set => Set(ref _endDate, value);
+        }
+
+        public VacationType Type
+        {
+            get => _type;
+            set => Set(ref _type, value);
+        }
+
+        public VacationStatus Status
+        {
+            get => _status;
+            set => Set(ref _status, value);
+        }
+
         private async void Save()
         {
-            await _vacationsRepository.SaveVacationAsync(Vacation);
+            var vacation = new VacationCellViewModel
+            {
+                Id = _vacationId,
+                Start = _startDate,
+                End = _endDate,
+                Status = _status,
+                Type = _type
+            };
+
+            await _vacationsRepository.SaveVacationAsync(vacation);
             _navigationService.NavigateBackToHome(this);
         }
 
@@ -43,7 +82,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.New
         {
             await base.InitializeAsync();
 
-            Vacation = VacationCellViewModel.GetNew;
+            var vacation = VacationCellViewModel.GetNew;
+
+            (_vacationId, StartDate, EndDate, Status, Type) = vacation;
         }
     }
 }

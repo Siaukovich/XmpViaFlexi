@@ -98,7 +98,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             bindingSet.Bind(VacationsDataSource)
                 .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
-                .To(vm => vm.Vacation.Type)
+                .To(vm => vm.Type)
                 .WithConvertion<TypeToPagerItemValueConverter>();
 
             bindingSet.Bind(View.StartDayLabel)
@@ -133,7 +133,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             bindingSet.Bind(View.StatusSegmentedControl)
                 .For(v => v.SelectedSegmentAndValueChangedBinding())
-                .To(vm => vm.Vacation.Status)
+                .To(vm => vm.Status)
                 .WithConvertion<VacationStatusSegmentedControlConverter>();
 
             bindingSet.Bind(SaveButton)

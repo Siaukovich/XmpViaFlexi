@@ -112,6 +112,7 @@ namespace VacationsTracker.iOS.Views.New
 
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
+            // TODO
             var halfWidth = UIScreen.MainScreen.Bounds.Width / 2;
 
             this.AddConstraints(

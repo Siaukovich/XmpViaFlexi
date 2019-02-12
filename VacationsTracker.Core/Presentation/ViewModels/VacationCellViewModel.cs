@@ -51,5 +51,14 @@ namespace VacationsTracker.Core.Presentation.ViewModels
             get => _separatorVisible;
             set => Set(ref _separatorVisible, value);
         }
+
+        public void Deconstruct(out string id, out DateTime start, out DateTime end, out VacationStatus status, out VacationType type)
+        {
+            id = Id;
+            start = Start;
+            end = End;
+            status = Status;
+            type = Type;
+        }
     }
 }
