@@ -4,6 +4,7 @@ using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using Foundation;
 using UIKit;
+using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
@@ -50,38 +51,39 @@ namespace VacationsTracker.iOS.Views.Details
 
             VacationsPager = new UIView();
 
-            VacationPageControl = new UIPageControl().SetDefaultPagerStyle(pages: 5);
+            VacationPageControl = new UIPageControl().SetPrimaryPagerStyle();
+            VacationPageControl.Pages = Enum.GetValues(typeof(VacationType)).Length;
 
-            AboveDatesSeparator = new UIView().SetSeparatorStyle(AppColors.LightBlueColor);
+            AboveDatesSeparator = new UIView().SetSeparator1Style();
 
             StartDayView = new UIView();
 
-            StartDayLabel = new UILabel().SetTextMainColorStyle().SetBoldFontSize(60);
+            StartDayLabel = new UILabel().SetDisplay1Style();
 
-            StartMonthLabel = new UILabel().SetTextMainColorStyle().SetBoldFontSize(30);
+            StartMonthLabel = new UILabel().SetDisplay2Style();
 
-            StartYearLabel = new UILabel().SetTextMainColorStyle().SetBoldFontSize(25);
+            StartYearLabel = new UILabel().SetDisplay3Style();
 
             EndDayView = new UIView();
 
-            EndDayLabel = new UILabel().SetsSecondaryColorTextStyle().SetBoldFontSize(60);
+            EndDayLabel = new UILabel().SetDisplay4Style();
 
-            EndMonthLabel = new UILabel().SetsSecondaryColorTextStyle().SetBoldFontSize(30);
+            EndMonthLabel = new UILabel().SetDisplay5Style();
 
-            EndYearLabel = new UILabel().SetsSecondaryColorTextStyle().SetBoldFontSize(25);
+            EndYearLabel = new UILabel().SetDisplay6Style();
 
-            BelowDatesSeparator = new UIView().SetSeparatorStyle(AppColors.LightBlueColor);
+            BelowDatesSeparator = new UIView().SetSeparator1Style();
 
             StatusSegmentedControl = new UISegmentedControl(
                 Strings.VacationStatus_Approved, 
                 Strings.VacationStatus_Closed);
 
-            StatusSegmentedControl.TintColor = AppColors.LightGreenColor;
+            StatusSegmentedControl.SetPrimarySegmentControlStyle();
 
-            VacationStartDatePicker = new UIDatePicker().SetTextColor(AppColors.LightBlueColor);
+            VacationStartDatePicker = new UIDatePicker().SetPrimaryDatePickerStyle();
             SetupDatePicker(VacationStartDatePicker);
 
-            VacationEndDatePicker = new UIDatePicker().SetTextColor(AppColors.LightGreenColor);
+            VacationEndDatePicker = new UIDatePicker().SetSecondaryDatePickerStyle();
             SetupDatePicker(VacationEndDatePicker);
         }
 

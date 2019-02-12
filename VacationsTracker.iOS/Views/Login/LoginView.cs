@@ -1,6 +1,7 @@
 ﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views.Login
@@ -21,16 +22,16 @@ namespace VacationsTracker.iOS.Views.Login
         {
             base.SetupSubviews();
 
-            BackgroundImage = new UIImageView().SetDefaultBackgroundImage();
+            BackgroundImage = new UIImageView();
+            BackgroundImage.Image = UIImage.FromBundle("LoginBackground");
 
-            InvalidCredentialsLabel = new UILabel()
-                .SetErrorLabelStyle("Please, retry your login and password pair.");
+            InvalidCredentialsLabel = new UILabel().SetErrorLabelStyle(Strings.LoginPage_Error);
 
-            LoginTextField = new UITextField().SetDefaultTextFieldStyle("Login");
+            LoginTextField = new UITextField().SetDefaultTextFieldStyle(Strings.LoginPage_LoginPlaceholder);
 
-            PasswordTextField = new UITextField().SetDefaultTextFieldStyle("Password");
+            PasswordTextField = new UITextField().SetDefaultTextFieldStyle(Strings.LoginPage_PasswordPlaceholder);
 
-            LoginButton = new UIButton().SetPrimaryButtonStyle("Login");
+            LoginButton = new UIButton().SetPrimaryButtonStyle(Strings.LoginPage_SignIn);
         }
 
         protected override void SetupLayout()

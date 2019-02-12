@@ -3705,6 +3705,9 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f090010
 			public const int abc_toolbar_collapse_description = 2131296272;
 			
+			// aapt resource value: 0x7f090027
+			public const int app_name = 2131296295;
+			
 			// aapt resource value: 0x7f09001e
 			public const int appbar_scrolling_view_behavior = 2131296286;
 			
@@ -3714,35 +3717,35 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f090020
 			public const int character_counter_pattern = 2131296288;
 			
-			// aapt resource value: 0x7f090027
-			public const int create_new_vacation_button_text = 2131296295;
-			
 			// aapt resource value: 0x7f090028
-			public const int home_page_title = 2131296296;
+			public const int create_new_vacation_button_text = 2131296296;
 			
 			// aapt resource value: 0x7f090029
-			public const int login_page_error = 2131296297;
+			public const int home_page_title = 2131296297;
 			
 			// aapt resource value: 0x7f09002a
-			public const int login_page_login_placeholder = 2131296298;
+			public const int login_page_error = 2131296298;
 			
 			// aapt resource value: 0x7f09002b
-			public const int login_page_password_placeholder = 2131296299;
+			public const int login_page_login_placeholder = 2131296299;
 			
 			// aapt resource value: 0x7f09002c
-			public const int login_page_sign_in = 2131296300;
+			public const int login_page_password_placeholder = 2131296300;
 			
 			// aapt resource value: 0x7f09002d
-			public const int navigation_view_all = 2131296301;
+			public const int login_page_sign_in = 2131296301;
 			
 			// aapt resource value: 0x7f09002e
-			public const int navigation_view_closed = 2131296302;
+			public const int navigation_view_all = 2131296302;
 			
 			// aapt resource value: 0x7f09002f
-			public const int navigation_view_open = 2131296303;
+			public const int navigation_view_closed = 2131296303;
 			
 			// aapt resource value: 0x7f090030
-			public const int new_vacation_page_title = 2131296304;
+			public const int navigation_view_open = 2131296304;
+			
+			// aapt resource value: 0x7f090031
+			public const int new_vacation_page_title = 2131296305;
 			
 			// aapt resource value: 0x7f090021
 			public const int password_toggle_content_description = 2131296289;
@@ -3759,8 +3762,8 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f090025
 			public const int path_password_strike_through = 2131296293;
 			
-			// aapt resource value: 0x7f090031
-			public const int save_navigation_button_text = 2131296305;
+			// aapt resource value: 0x7f090032
+			public const int save_navigation_button_text = 2131296306;
 			
 			// aapt resource value: 0x7f090011
 			public const int search_menu_title = 2131296273;
@@ -3768,14 +3771,14 @@ namespace VacationsTracker.Droid
 			// aapt resource value: 0x7f090026
 			public const int status_bar_notification_info_overflow = 2131296294;
 			
-			// aapt resource value: 0x7f090032
-			public const int vacation_details_page_title = 2131296306;
-			
 			// aapt resource value: 0x7f090033
-			public const int vacation_status_approved = 2131296307;
+			public const int vacation_details_page_title = 2131296307;
 			
 			// aapt resource value: 0x7f090034
-			public const int vacation_status_closed = 2131296308;
+			public const int vacation_status_approved = 2131296308;
+			
+			// aapt resource value: 0x7f090035
+			public const int vacation_status_closed = 2131296309;
 			
 			static String()
 			{

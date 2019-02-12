@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Vacation Tracker</string>
     <string name="create_new_vacation_button_text">New</string>
     <string name="home_page_title">All Requests</string>
     <string name="login_page_error">Please, retry your login and password pair.</string>

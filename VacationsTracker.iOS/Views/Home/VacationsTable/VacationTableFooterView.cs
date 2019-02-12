@@ -15,7 +15,7 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 
             this.BackgroundColor = AppColors.WhiteColor;
 
-            Separator = new UIView().SetSeparatorStyle();
+            Separator = new UIView().SetSeparator2Style();
         }
 
         protected override void SetupLayout()

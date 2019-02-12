@@ -16,7 +16,7 @@ namespace VacationsTracker.iOS.Views.Details.VacationsTypePager
             base.SetupSubviews();
 
             VacationImageView = new UIImageView();
-            VacationTypeLabel = new UILabel().SetPagerLabelStyle();
+            VacationTypeLabel = new UILabel().SetHeadline1Style();
         }
 
         protected override void SetupLayout()

@@ -23,14 +23,13 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             
             TypeImage = new UIImageView();
 
-            DurationLabel = new UILabel().SetTextMainColorStyle()
-                                         .SetBoldFontSize(AppDimens.DefaultDurationFontSize);
+            DurationLabel = new UILabel().SetHeadline2Style();
 
-            TypeLabel = new UILabel().SetTypeLabelStyle();
+            TypeLabel = new UILabel().SetSubhead1Style();
 
-            StatusLabel = new UILabel().SetStatusLabelStyle();
+            StatusLabel = new UILabel().SetSubhead1Style();
 
-            Separator = new UIView().SetSeparatorStyle();
+            Separator = new UIView().SetSeparator2Style();
         }
 
         protected override void SetupLayout()

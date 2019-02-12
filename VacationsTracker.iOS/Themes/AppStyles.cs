@@ -19,6 +19,62 @@ namespace VacationsTracker.iOS.Themes
             return button;
         }
 
+        public static UILabel SetHeadline1Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.GrayColor, 30);
+
+            return label;
+        }
+
+        public static UILabel SetHeadline2Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightBlueColor, AppDimens.DefaultDurationFontSize);
+
+            return label;
+        }
+
+        public static UILabel SetDisplay1Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightBlueColor, 60);
+
+            return label;
+        }
+
+        public static UILabel SetDisplay2Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightBlueColor, 30);
+
+            return label;
+        }
+
+        public static UILabel SetDisplay3Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightBlueColor, 25);
+
+            return label;
+        }
+
+        public static UILabel SetDisplay4Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightGreenColor, 60);
+
+            return label;
+        }
+
+        public static UILabel SetDisplay5Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightGreenColor, 30);
+
+            return label;
+        }
+
+        public static UILabel SetDisplay6Style(this UILabel label, string text = null)
+        {
+            label.SetDisplayStyle(text, AppColors.LightGreenColor, 25);
+
+            return label;
+        }
+
         public static UIView SetMainBackgroundColorStyle(this UIView view)
         {
             view.BackgroundColor = AppColors.LightBlueColor;
@@ -26,37 +82,31 @@ namespace VacationsTracker.iOS.Themes
             return view;
         }
 
-        public static UILabel SetMainBackgroundColorStyle(this UILabel label)
+        public static UISegmentedControl SetPrimarySegmentControlStyle(this UISegmentedControl segmentedControl)
         {
-            ((UIView) label).SetMainBackgroundColorStyle();
+            segmentedControl.TintColor = AppColors.LightGreenColor;
 
-            return label;
+            return segmentedControl;
         }
 
-        public static UILabel SetPagerLabelStyle(this UILabel label)
+        public static UIPageControl SetPrimaryPagerStyle(this UIPageControl pageControl)
         {
-            label.SetBoldFontSize(30);
-            label.TextColor = AppColors.GrayColor;
-
-            return label;
-        }
-
-        public static UIPageControl SetDefaultPagerStyle(this UIPageControl pageControl, int? pages = null)
-        {
-            if (pages != null)
-            {
-                pageControl.Pages = (nint) pages;
-            }
-
             pageControl.PageIndicatorTintColor = AppColors.GrayColor;
             pageControl.CurrentPageIndicatorTintColor = AppColors.LightBlueColor;
 
             return pageControl;
         }
 
-        public static UIDatePicker SetTextColor(this UIDatePicker picker, UIColor textColor)
+        public static UIDatePicker SetPrimaryDatePickerStyle(this UIDatePicker picker)
         {
-            picker.SetValueForKey(textColor, new NSString("textColor"));
+            picker.SetValueForKey(AppColors.LightBlueColor, new NSString("textColor"));
+
+            return picker;
+        }
+
+        public static UIDatePicker SetSecondaryDatePickerStyle(this UIDatePicker picker)
+        {
+            picker.SetValueForKey(AppColors.LightGreenColor, new NSString("textColor"));
 
             return picker;
         }
@@ -89,14 +139,7 @@ namespace VacationsTracker.iOS.Themes
             return textField;
         }
 
-        public static UIImageView SetDefaultBackgroundImage(this UIImageView imageView)
-        {
-            imageView.Image = UIImage.FromBundle("LoginBackground");
-
-            return imageView;
-        }
-
-        public static UILabel SetTypeLabelStyle(this UILabel label)
+        public static UILabel SetSubhead1Style(this UILabel label)
         {
             label.SetDefaultFontSize();
             label.TextColor = AppColors.GrayColor;
@@ -104,69 +147,40 @@ namespace VacationsTracker.iOS.Themes
             return label;
         }
 
-        public static UILabel SetStatusLabelStyle(this UILabel label)
+        public static UIView SetSeparator1Style(this UIView separator)
         {
-            label.SetDefaultFontSize();
-            label.TextColor = AppColors.GrayColor;
-
-            return label;
-        }
-
-        public static UIView SetSeparatorStyle(this UIView separator, UIColor color = null)
-        {
-            if (color == null)
-            {
-                color = AppColors.GrayColor;
-            }
-
-            separator.BackgroundColor = color;
+            separator.BackgroundColor = AppColors.LightBlueColor;
 
             return separator;
         }
 
-        public static UILabel SetTextMainColorStyle(this UILabel label)
+        public static UIView SetSeparator2Style(this UIView separator)
         {
-            label.TextColor = AppColors.LightBlueColor;
+            separator.BackgroundColor = AppColors.GrayColor;
 
-            return label;
+            return separator;
         }
 
-        public static UILabel SetsSecondaryColorTextStyle(this UILabel label)
-        {
-            label.TextColor = AppColors.LightGreenColor;
-
-            return label;
-        }
-
-        public static UILabel SetDefaultFontSize(this UILabel label)
+        private static void SetDefaultFontSize(this UILabel label)
         {
             label.SetFontSize(AppDimens.DefaultFontSize);
-
-            return label;
         }
 
-        public static UILabel SetFontSize(this UILabel label, int fontSize)
+        private static void SetFontSize(this UILabel label, int fontSize)
         {
             label.Font = UIFont.SystemFontOfSize(fontSize);
-
-            return label;
         }
 
-        public static UILabel SetBoldFontSize(this UILabel label, int fontSize)
+        private static void SetBoldFontSize(this UILabel label, int fontSize)
         {
             label.Font = UIFont.BoldSystemFontOfSize(fontSize);
-
-            return label;
         }
 
-        public static UIBarButtonItem SetBarButtonStyle(this UIBarButtonItem button, string title = null)
+        private static void SetDisplayStyle(this UILabel label, string text, UIColor textColor, int fontSize)
         {
-            if (title != null)
-            {
-                button.Title = title;
-            }
-
-            return button;
+            label.SetText(text);
+            label.SetBoldFontSize(fontSize);
+            label.TextColor = textColor;
         }
 
         private static void SetLeftPaddingTo(this UITextField textField, int paddingWidth)
@@ -185,6 +199,14 @@ namespace VacationsTracker.iOS.Themes
         {
             label.Layer.MasksToBounds = true;
             label.Layer.CornerRadius = cornerRadius;
+        }
+
+        private static void SetText(this UILabel label, string text)
+        {
+            if (text != null)
+            {
+                label.Text = text;
+            }
         }
     }
 }
