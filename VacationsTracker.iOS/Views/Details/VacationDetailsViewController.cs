@@ -8,6 +8,7 @@ using Foundation;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.Droid.Views.ValueConverters;
 using VacationsTracker.iOS.Helpers;
 using VacationsTracker.iOS.Themes;
@@ -44,7 +45,7 @@ namespace VacationsTracker.iOS.Views.Details
         {
             base.ViewDidLoad();
 
-            Title = "Request";
+            Title = Strings.VacationDetailsPage_Title;
 
             VacationsPageViewController = new UIPageViewController(
                 UIPageViewControllerTransitionStyle.Scroll,

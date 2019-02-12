@@ -1,4 +1,5 @@
 ﻿using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views
@@ -7,12 +8,12 @@ namespace VacationsTracker.iOS.Views
     {
         public static UIBarButtonItem GetSaveButton()
         {
-            return new UIBarButtonItem(AppStrings.Save, UIBarButtonItemStyle.Done, null);
+            return new UIBarButtonItem(Strings.SaveNavigationButton_Text, UIBarButtonItemStyle.Done, null);
         }
 
         public static UIBarButtonItem GetNewButton()
         {
-            return new UIBarButtonItem(AppStrings.New, UIBarButtonItemStyle.Done, null);
+            return new UIBarButtonItem(Strings.CreateNewVacationButton_Text, UIBarButtonItemStyle.Done, null);
         }
     }
 }

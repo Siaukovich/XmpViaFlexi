@@ -4,19 +4,19 @@
   <group android:id="@+id/group_all">
     <item
       android:id="@+id/navigation_all"
-      android:title="All" />
+      android:title="@string/navigation_view_all" />
   </group>
 
   <group android:id="@+id/group_open">
     <item
       android:id="@+id/navigation_open"
-      android:title="Open" />
+      android:title="@string/navigation_view_open" />
   </group>
 
   <group android:id="@+id/group_closed">
     <item
       android:id="@+id/navigation_closed"
-      android:title="Closed" />
+      android:title="@string/navigation_view_closed" />
   </group>
 
 </menu>

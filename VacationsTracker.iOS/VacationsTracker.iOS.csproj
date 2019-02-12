@@ -67,7 +67,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
-    <Compile Include="Themes\AppStrings.cs" />
     <Compile Include="Themes\AppStyles.cs" />
     <Compile Include="Views\BarButtonFactory.cs" />
     <Compile Include="Views\Details\VacationsTypePager\VacationTypePagerView.cs" />

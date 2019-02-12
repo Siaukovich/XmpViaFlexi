@@ -4,6 +4,7 @@ using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using Foundation;
 using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views.Details
@@ -71,7 +72,10 @@ namespace VacationsTracker.iOS.Views.Details
 
             BelowDatesSeparator = new UIView().SetSeparatorStyle(AppColors.LightBlueColor);
 
-            StatusSegmentedControl = new UISegmentedControl("Approved", "Closed");
+            StatusSegmentedControl = new UISegmentedControl(
+                Strings.VacationStatus_Approved, 
+                Strings.VacationStatus_Closed);
+
             StatusSegmentedControl.TintColor = AppColors.LightGreenColor;
 
             VacationStartDatePicker = new UIDatePicker().SetTextColor(AppColors.LightBlueColor);
