@@ -9,6 +9,7 @@ using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
+using VacationsTracker.Core.Resources;
 using ICommand = FlexiMvvm.Commands.ICommand;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Home
@@ -29,6 +30,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         }
 
         public RangeObservableCollection<VacationCellViewModel> Vacations { get; } = new RangeObservableCollection<VacationCellViewModel>();
+
+        public RangeObservableCollection<TabItemViewModel> TabItems { get; } = new RangeObservableCollection<TabItemViewModel>();
 
         public DateTime RefreshedDateTime
         {
@@ -106,6 +109,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             await LoadVacations();
 
             RefreshedDateTime = DateTime.Now;
+
+            TabItems.AddRange(new []
+            {
+                new TabItemViewModel(Strings.NavigationView_All, FilterVacationsCommand),
+                new TabItemViewModel(Strings.NavigationView_Open, FilterVacationsCommand),
+                new TabItemViewModel(Strings.NavigationView_Closed, FilterVacationsCommand),
+            });
         }
 
         private async Task ReloadVacations()

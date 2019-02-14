@@ -56,7 +56,7 @@ namespace VacationsTracker.Droid.Views.Home
             SetSupportActionBar(ViewHolder.HomeToolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.Title = "All requests";
+            SupportActionBar.Title = Resources.GetString(Resource.String.home_page_title);
         }
 
         private void SetRoundUserImage()
