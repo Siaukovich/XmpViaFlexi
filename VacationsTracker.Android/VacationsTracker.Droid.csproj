@@ -81,6 +81,7 @@
     <Compile Include="Views\ValueConverters\RadioGroupValueConverter.cs" />
     <Compile Include="Views\ValueConverters\SeparatorVisibilityValueConverter.cs" />
     <Compile Include="Views\ValueConverters\TypeToPagerItemValueConverter.cs" />
+    <Compile Include="Views\ValueConverters\VisibilityValueConverter.cs" />
     <Compile Include="Views\ViewHolderGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

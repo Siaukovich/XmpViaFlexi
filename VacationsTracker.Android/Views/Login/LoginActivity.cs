@@ -3,6 +3,7 @@ using Android.OS;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
+using VacationsTracker.Droid.Views.ValueConverters;
 
 namespace VacationsTracker.Droid.Views.Login
 {
@@ -25,6 +26,19 @@ namespace VacationsTracker.Droid.Views.Login
         public override void Bind(BindingSet<LoginViewModel> bindingSet)
         {
             base.Bind(bindingSet);
+
+            bindingSet.Bind(ViewHolder.InvalidCredentialsText)
+                .For(v => v.Visibility)
+                .To(vm => vm.ValidCredentials)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.LoginEntry)
+                .For(v => v.TextAndTextChangedBinding())
+                .To(vm => vm.UserLogin);
+
+            bindingSet.Bind(ViewHolder.PasswordEntry)
+                .For(v => v.TextAndTextChangedBinding())
+                .To(vm => vm.UserPassword);
 
             bindingSet.Bind(ViewHolder.LoginButton)
                 .For(v => v.ClickBinding())
