@@ -102,6 +102,18 @@ namespace VacationsTracker.Droid.Views.Home
                 .For(v => v.NavigationItemSelectedBinding())
                 .To(vm => vm.FilterVacationsCommand)
                 .WithConvertion<NavigationMenuItemValueConverter>();
+
+            bindingSet.Bind(ViewHolder.Refresher)
+                .For(v => v.BeginRefreshingBinding())
+                .To(vm => vm.IsRefreshing);
+
+            bindingSet.Bind(ViewHolder.Refresher)
+                .For(v => v.EndRefreshingBinding())
+                .To(vm => vm.IsRefreshing);
+
+            bindingSet.Bind(ViewHolder.Refresher)
+                .For(v => v.ValueChangedBinding())
+                .To(vm => vm.RefreshCommand);
         }
 
         private async void OnRefresh(object sender, EventArgs args)
