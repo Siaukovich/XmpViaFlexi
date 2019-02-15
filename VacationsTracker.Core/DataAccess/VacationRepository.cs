@@ -134,7 +134,18 @@ namespace VacationsTracker.Core.DataAccess
             return Task.FromResult(vacation);
         }
 
-        public Task UpdateVacationAsync(VacationCellViewModel vacation)
+        public async Task UpsertVacationAsync(VacationCellViewModel vacation)
+        {
+            if (vacation.Id == Guid.Empty.ToString())
+            {
+                await SaveNewVacationAsync(vacation);
+                return;
+            }
+
+            await UpdateVacationAsync(vacation);
+        }
+
+        private static Task UpdateVacationAsync(VacationCellViewModel vacation)
         {
             int index = -1;
             for (var i = 0; i < _vacations.Count; i++)
@@ -154,7 +165,7 @@ namespace VacationsTracker.Core.DataAccess
             return Task.CompletedTask;
         }
 
-        public Task SaveVacationAsync(VacationCellViewModel vacation)
+        private Task SaveNewVacationAsync(VacationCellViewModel vacation)
         {
             vacation.Id = Guid.NewGuid().ToString();
 

@@ -10,7 +10,7 @@ using VacationsTracker.iOS.Views.Home.VacationsTable;
 
 namespace VacationsTracker.iOS.Views.Home
 {
-    internal class HomeViewController : FlxBindableViewController<HomeViewModel>
+    internal class HomeViewController : FlxBindableTabBarController<HomeViewModel>
     {
         private UITableViewObservablePlainSource VacationsSource { get; set; }
 
@@ -60,6 +60,26 @@ namespace VacationsTracker.iOS.Views.Home
             
             Title = Strings.HomePage_Title;
             View.VacationsTableView.Source = VacationsSource;
+
+            SetupTabs();
+        }
+
+        private void SetupTabs()
+        {
+            var viewControllers = new UIViewController[ViewModel.TabItems.Count];
+            for (var index = 0; index < ViewModel.TabItems.Count; index++)
+            {
+                viewControllers[index] = CreateTab(ViewModel.TabItems[index]);
+            }
+
+            ViewControllers = viewControllers;
+        }
+
+        private UIViewController CreateTab(TabItemViewModel tab)
+        {
+            var viewController = new UIViewController { Title = tab.Title };
+
+            return viewController;
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)

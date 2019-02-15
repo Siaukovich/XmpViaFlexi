@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace VacationsTracker.Core.DTO
 {
-    internal class BaseResultOfVacationRequests
+    internal class BaseResultOfSingleVacationRequest
     {
         [JsonProperty("code")]
         public BaseClassCode Code { get; set; }
@@ -12,6 +11,6 @@ namespace VacationsTracker.Core.DTO
         public string Message { get; set; }
 
         [JsonProperty("result")]
-        public IEnumerable<VacationDto> Result { get; set; }
+        public VacationDto Result { get; set; }
     }
 }

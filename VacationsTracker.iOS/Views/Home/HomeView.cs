@@ -1,6 +1,7 @@
 ﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 
@@ -9,6 +10,8 @@ namespace VacationsTracker.iOS.Views.Home
     internal class HomeView : LayoutView
     {
         public UITableView VacationsTableView { get; private set; }
+
+        public UITabBar VacationsTabBar { get; private set; }
 
         protected override void SetupSubviews()
         {
@@ -31,6 +34,8 @@ namespace VacationsTracker.iOS.Views.Home
 
             VacationsTableView.RefreshControl = new UIRefreshControl();
 
+            VacationsTabBar = new UITabBar();
+
             //VacationsTableView.AllowsSelection = true;
             VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
         }
@@ -39,7 +44,8 @@ namespace VacationsTracker.iOS.Views.Home
         {
             base.SetupLayout();
 
-            this.AddLayoutSubview(VacationsTableView);
+            this.AddLayoutSubview(VacationsTableView)
+                .AddLayoutSubview(VacationsTabBar);
         }
 
         protected override void SetupLayoutConstraints()
@@ -48,7 +54,14 @@ namespace VacationsTracker.iOS.Views.Home
 
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
-            this.AddConstraints(VacationsTableView.FullSizeOf(this));
+            this.AddConstraints(
+                VacationsTableView.AtLeftOf(this),
+                VacationsTableView.AtTopOf(this),
+                VacationsTableView.AtRightOf(this),
+                VacationsTableView.Above(VacationsTabBar)
+            );
+
+            this.AddConstraints(VacationsTabBar.AtBottomOf(this));
         }
     }
 }

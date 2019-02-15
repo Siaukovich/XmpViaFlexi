@@ -47,13 +47,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
                 .WithExpressionAsync(cancellationToken => _userRepository.AuthorizeAsync(UserLogin, UserPassword))
                 .OnSuccess(isSuccess =>
                 {
-                    Debug.WriteLine("Trying navigate");
-                    if (isSuccess)
+                    ValidCredentials = isSuccess;
+                    if (ValidCredentials)
                     {
                         _navigationService.NavigateToHome(this);
                     }
                 })
-                .OnError<Exception>(error => Debug.WriteLine(error.Exception.Message))
                 .ExecuteAsync();
         }
     }
