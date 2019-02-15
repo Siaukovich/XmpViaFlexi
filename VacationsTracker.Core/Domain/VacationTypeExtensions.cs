@@ -10,9 +10,9 @@ namespace VacationsTracker.Core.Domain
             {
                 case VacationType.Regular:
                     return "Regular";
-                case VacationType.SickDays:
+                case VacationType.Sick:
                     return "Sick days";
-                case VacationType.ExceptionalLeave:
+                case VacationType.Exceptional:
                     return "Exceptional leave";
                 case VacationType.Overtime:
                     return "Overtime";

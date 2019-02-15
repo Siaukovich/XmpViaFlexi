@@ -34,7 +34,7 @@ namespace VacationsTracker.Core.DataAccess
                     Start = new DateTime(2018, 11, 2),
                     End = new DateTime(2018, 11, 4),
                     Status = VacationStatus.Closed,
-                    Type = VacationType.SickDays
+                    Type = VacationType.Sick
                 },
                 new VacationCellViewModel
                 {
@@ -42,7 +42,7 @@ namespace VacationsTracker.Core.DataAccess
                     Start = new DateTime(2018, 07, 11),
                     End = new DateTime(2018, 07, 13),
                     Status = VacationStatus.Closed,
-                    Type = VacationType.ExceptionalLeave
+                    Type = VacationType.Exceptional
                 },
                 new VacationCellViewModel
                 {

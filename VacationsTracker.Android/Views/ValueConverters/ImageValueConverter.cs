@@ -16,11 +16,11 @@ namespace VacationsTracker.Droid.Views.ValueConverters
                     imageId = Resource.Drawable.Icon_Request_Green;
                     break;
 
-                case VacationType.SickDays:
+                case VacationType.Sick:
                     imageId = Resource.Drawable.Icon_Request_Plum;
                     break;
 
-                case VacationType.ExceptionalLeave:
+                case VacationType.Exceptional:
                     imageId = Resource.Drawable.Icon_Request_Gray;
                     break;
 

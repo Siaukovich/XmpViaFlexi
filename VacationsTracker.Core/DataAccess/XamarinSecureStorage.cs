@@ -1,50 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Xamarin.Essentials;
 
 namespace VacationsTracker.Core.DataAccess
 {
     public class XamarinSecureStorage : ISecureStorage
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="key"></param>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <returns></returns>
-        public async Task<string> GetAsync(string key)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
+        public Task<string> GetAsync([NotNull] string key) => SecureStorage.GetAsync(key);
 
-            return await SecureStorage.GetAsync(key);
-        }
+        public Task SetAsync([NotNull] string key, [NotNull] string value) => SecureStorage.SetAsync(key, value);
 
-        public async Task SetAsync(string key, string value)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
+        public bool Remove([NotNull] string key) => SecureStorage.Remove(key);
 
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            await SecureStorage.SetAsync(key, value);
-        }
-
-        public bool Remove(string key)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException(nameof(key));
-            }
-
-            return SecureStorage.Remove(key);
-        }
+        public void RemoveAll() => SecureStorage.RemoveAll();
     }
 }

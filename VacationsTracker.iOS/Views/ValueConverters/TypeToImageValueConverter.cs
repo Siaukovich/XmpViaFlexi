@@ -17,10 +17,10 @@ namespace VacationsTracker.iOS.Views.ValueConverters
                 case VacationType.Regular:
                     image = UIImage.FromBundle("IconRequestGreen");
                     break;
-                case VacationType.SickDays:
+                case VacationType.Sick:
                     image = UIImage.FromBundle("IconRequestPlum");
                     break;
-                case VacationType.ExceptionalLeave:
+                case VacationType.Exceptional:
                     image = UIImage.FromBundle("IconRequestGray");
                     break;
                 case VacationType.Overtime:

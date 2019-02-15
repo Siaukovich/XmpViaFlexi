@@ -9,5 +9,7 @@ namespace VacationsTracker.Core.DataAccess
         Task SetAsync(string key, string value);
 
         bool Remove(string key);
+
+        void RemoveAll();
     }
 }
