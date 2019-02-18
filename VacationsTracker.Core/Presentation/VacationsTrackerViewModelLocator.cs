@@ -31,7 +31,8 @@ namespace VacationsTracker.Core.Presentation
 
             factory.Register(() => new HomeViewModel(
                 _dependencyProvider.Get<INavigationService>(),
-                _dependencyProvider.Get<IVacationsRepository>()));
+                _dependencyProvider.Get<IVacationsRepository>(),
+                _dependencyProvider.Get<IOperationFactory>()));
 
             factory.Register(() => new VacationDetailsViewModel(
                 _dependencyProvider.Get<INavigationService>(),

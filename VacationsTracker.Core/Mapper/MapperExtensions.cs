@@ -38,6 +38,7 @@ namespace VacationsTracker.Core.Mapper
                 Start = viewModel.Start,
                 End = viewModel.End,
                 VacationStatus = viewModel.Status,
+                CreatedBy = "string",
                 VacationType = viewModel.Type
             };
 

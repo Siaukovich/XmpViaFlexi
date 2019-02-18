@@ -91,11 +91,11 @@ namespace VacationsTracker.iOS.Views.Home
 
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.BeginRefreshingBinding())
-                .To(vm => vm.IsRefreshing);
+                .To(vm => vm.Loading);
 
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.EndRefreshingBinding())
-                .To(vm => vm.IsRefreshing);
+                .To(vm => vm.Loading);
 
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.ValueChangedBinding())

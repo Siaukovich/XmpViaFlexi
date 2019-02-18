@@ -105,22 +105,15 @@ namespace VacationsTracker.Droid.Views.Home
 
             bindingSet.Bind(ViewHolder.Refresher)
                 .For(v => v.BeginRefreshingBinding())
-                .To(vm => vm.IsRefreshing);
+                .To(vm => vm.Loading);
 
             bindingSet.Bind(ViewHolder.Refresher)
                 .For(v => v.EndRefreshingBinding())
-                .To(vm => vm.IsRefreshing);
+                .To(vm => vm.Loading);
 
             bindingSet.Bind(ViewHolder.Refresher)
                 .For(v => v.ValueChangedBinding())
                 .To(vm => vm.RefreshCommand);
-        }
-
-        private async void OnRefresh(object sender, EventArgs args)
-        {
-            await Task.Delay(1000);
-            ViewHolder.Refresher.Refreshing = false;
-            ViewModel.RefreshedDateTime = DateTime.Now;
         }
     }
 }

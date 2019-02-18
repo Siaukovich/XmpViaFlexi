@@ -1,29 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
+using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
-using VacationsTracker.Core.Resources;
+using VacationsTracker.Core.Operations;
 using ICommand = FlexiMvvm.Commands.ICommand;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Home
 {
-    public class HomeViewModel : ViewModelBase
+    public class HomeViewModel : ViewModelBase, Operations.IViewModelWithOperation
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
         private DateTime _refreshedDateTime;
-        private bool _isRefreshing;
+        private bool _loading;
 
         public HomeViewModel(
             INavigationService navigationService,
-            IVacationsRepository vacationsRepository)
+            IVacationsRepository vacationsRepository,
+            IOperationFactory operationFactory)
+                : base(operationFactory)
         {
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
@@ -31,18 +36,16 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public RangeObservableCollection<VacationCellViewModel> Vacations { get; } = new RangeObservableCollection<VacationCellViewModel>();
 
-        public RangeObservableCollection<TabItemViewModel> TabItems { get; } = new RangeObservableCollection<TabItemViewModel>();
-
         public DateTime RefreshedDateTime
         {
             get => _refreshedDateTime;
             set => Set(ref _refreshedDateTime, value);
         }
 
-        public bool IsRefreshing
+        public bool Loading
         {
-            get => _isRefreshing;
-            set => Set(ref _isRefreshing, value);
+            get => _loading;
+            set => Set(ref _loading, value);
         }
 
         public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
@@ -89,33 +92,16 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             _navigationService.NavigateToNewVacation(this);
         }
 
-        public async Task Refresh()
+        public Task Refresh()
         {
-            IsRefreshing = true;
-
-            await Task.Delay(1000);
-
-            await ReloadVacations();
-
-            IsRefreshing = false;
-
-            RefreshedDateTime = DateTime.Now;
-        }
-
-        protected override async Task InitializeAsync()
-        {
-            await base.InitializeAsync();
-
-            await LoadVacations();
-
-            RefreshedDateTime = DateTime.Now;
-
-            TabItems.AddRange(new []
-            {
-                new TabItemViewModel(Strings.NavigationView_All, FilterVacationsCommand),
-                new TabItemViewModel(Strings.NavigationView_Open, FilterVacationsCommand),
-                new TabItemViewModel(Strings.NavigationView_Closed, FilterVacationsCommand),
-            });
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithInternetConnectionCondition()
+                  .WithLoadingNotification()
+                  .WithExpressionAsync(token => ReloadVacations())
+                  .OnSuccess(() => RefreshedDateTime = DateTime.Now)
+                  .OnError<AuthenticationException>(ex => Debug.WriteLine(ex))
+                  .ExecuteAsync();
         }
 
         private async Task ReloadVacations()
@@ -134,22 +120,18 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         private void VacationsAddRange(IEnumerable<VacationCellViewModel> vacations)
         {
-            //if (Vacations.Any())
-            //{
-            //    Vacations.Last().SeparatorVisible = true;
-            //}
-
-            foreach (var v in vacations)
+            if (Vacations.Any())
             {
-                v.SeparatorVisible = true;
+                Vacations.Last().SeparatorVisible = true;
             }
 
-            if (vacations.Any())
+            var vacationList = vacations.ToList();
+            if (vacationList.Any())
             {
-                vacations.Last().SeparatorVisible = false;
+                vacationList.Last().SeparatorVisible = false;
             }
 
-            Vacations.AddRange(vacations);
+            Vacations.AddRange(vacationList);
         }
     }
 }
