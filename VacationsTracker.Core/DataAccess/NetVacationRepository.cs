@@ -12,32 +12,30 @@ namespace VacationsTracker.Core.DataAccess
     {
         private readonly IVacationApi _vacationApi;
 
-        private const string BaseUrl = "http://localhost:5000/api/vts/workflow";
-
-        public NetVacationRepository([NotNull] IVacationApi vacationApi)
+        public NetVacationRepository(IVacationApi vacationApi)
         {
             _vacationApi = vacationApi;
         }
 
         public async Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync()
         {
-            var response = await _vacationApi.GetAsync<BaseResultOfMultipleVacationRequest>(BaseUrl);
+            var response = await _vacationApi.GetVacationsAsync();
 
-            return response.Result.Select(v => v.ToVacationCellViewModel());
+            return response.Select(v => v.ToVacationCellViewModel());
         }
 
-        public async Task<VacationCellViewModel> GetVacationAsync([NotNull] string vacationId)
+        public async Task<VacationCellViewModel> GetVacationAsync([NotNull] string id)
         {
-            var response = await _vacationApi.GetAsync<BaseResultOfSingleVacationRequest>($"{BaseUrl}/{vacationId}");
+            var response = await _vacationApi.GetVacationAsync(id);
 
-            return response.Result.ToVacationCellViewModel();
+            return response.ToVacationCellViewModel();
         }
 
         public async Task UpsertVacationAsync([NotNull] VacationCellViewModel vacationViewModel)
         {
             var vacationDto = vacationViewModel.ToVacationDto();
 
-            await _vacationApi.PostAsync($"{BaseUrl}", vacationDto);
+            await _vacationApi.UpsertVacationAsync(vacationDto);
         }
     }
 }

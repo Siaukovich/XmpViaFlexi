@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Globalization;
 using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
-using FlexiMvvm.ValueConverters;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 

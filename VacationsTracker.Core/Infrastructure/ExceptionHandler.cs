@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using FlexiMvvm.Operations;
@@ -14,6 +13,10 @@ namespace VacationsTracker.Core.Infrastructure
             switch (error.Exception)
             {
             }
+
+            Debug.WriteLine("oops...");
+
+            Debug.WriteLine(error.Exception);
 
             return  Task.CompletedTask;
         }

@@ -1,35 +1,43 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using VacationsTracker.Core.DTO;
 
 namespace VacationsTracker.Core.DataAccess
 {
     internal class VacationApi : IVacationApi
     {
-        private readonly HttpClient _client;
+        private readonly IVacationContext _context;
 
-        public VacationApi()
+        public VacationApi(IVacationContext context)
         {
-            _client = new HttpClient();
+            _context = context;
         }
 
-        public async Task<T> GetAsync<T>(string url)
+        public async Task<IEnumerable<VacationDto>> GetVacationsAsync()
         {
-            var response = await _client.GetAsync(url);
-            var jsonBody = await response.Content.ReadAsStringAsync();
-            var obj = JsonConvert.DeserializeObject<T>(jsonBody);
+            var response = await _context.GetAsync<BaseResultOfMultipleVacationRequest>(string.Empty);
 
-            return obj;
+            return response.Result;
         }
 
-        public Task<T> PostAsync<T>(string url, T obj)
+        public async Task<VacationDto> GetVacationAsync(string id)
         {
-            throw new System.NotImplementedException();
+            var response = await _context.GetAsync<BaseResultOfSingleVacationRequest>($"/{id}");
+
+            return response.Result;
         }
 
-        public Task<T> DeleteAsync<T>(string url)
+        public async Task<VacationDto> UpsertVacationAsync(VacationDto vacation)
         {
-            throw new System.NotImplementedException();
+            if (vacation.Id == Guid.Empty.ToString())
+            {
+                vacation.Created = DateTime.MinValue;
+            }
+
+            var response = await _context.PostAsync<VacationDto, BaseResultOfSingleVacationRequest>(string.Empty, vacation);
+
+            return response.Result;
         }
     }
 }

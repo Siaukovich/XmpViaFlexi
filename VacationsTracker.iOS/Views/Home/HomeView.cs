@@ -1,7 +1,6 @@
 ﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using UIKit;
-using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 

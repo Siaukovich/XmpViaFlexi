@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VacationsTracker.iOS.Themes
+﻿namespace VacationsTracker.iOS.Themes
 {
     public static class AppDimens
     {

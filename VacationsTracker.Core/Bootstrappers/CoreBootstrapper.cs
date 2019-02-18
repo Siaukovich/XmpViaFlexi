@@ -6,6 +6,7 @@ using VacationsTracker.Core.Application.Connectivity;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Infrastructure;
 using VacationsTracker.Core.Infrastructure.Connectivity;
+using VacationsTracker.Core.Operations;
 using VacationsTracker.Core.Presentation;
 using Connectivity = VacationsTracker.Core.Infrastructure.Connectivity.Connectivity;
 
@@ -25,11 +26,24 @@ namespace VacationsTracker.Core.Bootstrappers
         {
             simpleIoc.Register<IConnectivity>(() => Connectivity.Instance);
             simpleIoc.Register<IErrorHandler>(() => new ExceptionHandler());
-            simpleIoc.Register<IConnectivityService>(() => new ConnectivityService(simpleIoc.Get<IConnectivity>()),
+
+            simpleIoc.Register<IConnectivityService>(
+                () => new ConnectivityService(simpleIoc.Get<IConnectivity>()),
                 Reuse.Singleton);
-            simpleIoc.Register<IVacationsRepository>(() => new VacationRepository());
-            simpleIoc.Register<IUserRepository>(() => new UserRepository());
-            simpleIoc.Register<IOperationFactory>(() => new OperationFactory(simpleIoc, simpleIoc.Get<IErrorHandler>()));
+
+            simpleIoc.Register<ISecureStorage>(() => new XamarinSecureStorage(), Reuse.Singleton);
+
+            simpleIoc.Register<IVacationContext>(() => new VacationContext(simpleIoc.Get<ISecureStorage>()));
+            simpleIoc.Register<IVacationApi>(() => new VacationApi(simpleIoc.Get<IVacationContext>()));
+            simpleIoc.Register<IVacationsRepository>(() => new NetVacationRepository(simpleIoc.Get<IVacationApi>()));
+
+            simpleIoc.Register<IUserRepository>(() => new UserRepository(simpleIoc.Get<ISecureStorage>()));
+
+            simpleIoc.Register<IDependencyProvider>(() => new DependencyProvider(simpleIoc.Get<IConnectivityService>()));
+
+            simpleIoc.Register<IOperationFactory>(() => new OperationFactory(
+                simpleIoc.Get<IDependencyProvider>(),
+                simpleIoc.Get<IErrorHandler>()));
         }
 
         private void SetupViewModelLocator(IDependencyProvider dependencyProvider)

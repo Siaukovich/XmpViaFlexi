@@ -1,6 +1,5 @@
 ﻿using UIKit;
 using VacationsTracker.Core.Resources;
-using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views
 {

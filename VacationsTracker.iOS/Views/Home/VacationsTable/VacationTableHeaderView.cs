@@ -1,5 +1,4 @@
 ﻿using Cirrious.FluentLayouts.Touch;
-using FlexiMvvm;
 using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.iOS.Themes;

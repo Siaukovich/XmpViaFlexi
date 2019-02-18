@@ -1,14 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
+using VacationsTracker.Core.DTO;
 
 namespace VacationsTracker.Core.DataAccess
 {
     public interface IVacationApi
     {
-        Task<T> GetAsync<T>([NotNull] string url);
+        Task<IEnumerable<VacationDto>> GetVacationsAsync();
 
-        Task<T> PostAsync<T>([NotNull] string url, [NotNull] T obj);
+        Task<VacationDto> GetVacationAsync(string id);
 
-        Task<T> DeleteAsync<T>([NotNull] string url);
+        Task<VacationDto> UpsertVacationAsync([NotNull] VacationDto vacation);
     }
 }

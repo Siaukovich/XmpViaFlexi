@@ -4,9 +4,6 @@ namespace VacationsTracker.Core.Domain
 {
     public enum VacationType
     {
-        [EnumMember(Value = "Undefined")]
-        Undefined,
-
         [EnumMember(Value = "Regular")]
         Regular,
 

@@ -1,21 +1,22 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using FlexiMvvm;
 using FlexiMvvm.Commands;
 using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Operations;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Login
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase, Operations.IViewModelWithOperation
     {
         private readonly INavigationService _navigationService;
         private readonly IUserRepository _userRepository;
 
         private bool _validCredentials = true;
+        private bool _loading;
 
         public LoginViewModel(
             INavigationService navigationService, 
@@ -39,21 +40,24 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
             set => Set(ref _validCredentials, value);
         }
 
-        private async Task Login()
+        public bool Loading
         {
-            await Task.Delay(500);
+            get => _loading;
+            set => Set(ref _loading, value);
+        }
 
-            await OperationFactory.CreateOperation(OperationContext)
-                .WithExpressionAsync(cancellationToken => _userRepository.AuthorizeAsync(UserLogin, UserPassword))
-                .OnSuccess(isSuccess =>
-                {
-                    ValidCredentials = isSuccess;
-                    if (ValidCredentials)
-                    {
-                        _navigationService.NavigateToHome(this);
-                    }
-                })
-                .ExecuteAsync();
+        private Task Login()
+        {
+            ValidCredentials = true;
+
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithLoadingNotification()
+                  .WithInternetConnectionCondition()
+                  .WithExpressionAsync(async token => await _userRepository.AuthorizeAsync(UserLogin, UserPassword))
+                  .OnSuccess(() => _navigationService.NavigateToHome(this))
+                  .OnError<AuthenticationException>(_ => ValidCredentials = false)
+                  .ExecuteAsync();
         }
     }
 }

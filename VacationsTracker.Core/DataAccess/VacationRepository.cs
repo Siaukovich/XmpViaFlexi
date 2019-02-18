@@ -127,22 +127,22 @@ namespace VacationsTracker.Core.DataAccess
             return Task.FromResult<IEnumerable<VacationCellViewModel>>(_vacations);
         }
 
-        public Task<VacationCellViewModel> GetVacationAsync(string vacationId)
+        public Task<VacationCellViewModel> GetVacationAsync(string id)
         {
-            var vacation = _vacations.SingleOrDefault(v => v.Id == vacationId);
+            var vacation = _vacations.SingleOrDefault(v => v.Id == id);
 
             return Task.FromResult(vacation);
         }
 
-        public async Task UpsertVacationAsync(VacationCellViewModel vacation)
+        public async Task UpsertVacationAsync(VacationCellViewModel vacationViewModel)
         {
-            if (vacation.Id == Guid.Empty.ToString())
+            if (vacationViewModel.Id == Guid.Empty.ToString())
             {
-                await SaveNewVacationAsync(vacation);
+                await SaveNewVacationAsync(vacationViewModel);
                 return;
             }
 
-            await UpdateVacationAsync(vacation);
+            await UpdateVacationAsync(vacationViewModel);
         }
 
         private static Task UpdateVacationAsync(VacationCellViewModel vacation)

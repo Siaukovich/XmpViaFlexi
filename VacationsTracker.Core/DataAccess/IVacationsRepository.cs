@@ -8,8 +8,8 @@ namespace VacationsTracker.Core.DataAccess
     {
         Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync();
 
-        Task<VacationCellViewModel> GetVacationAsync(string vacationId);
+        Task<VacationCellViewModel> GetVacationAsync(string id);
 
-        Task UpsertVacationAsync(VacationCellViewModel vacation);
+        Task UpsertVacationAsync(VacationCellViewModel vacationViewModel);
     }
 }

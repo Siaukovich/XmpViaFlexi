@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using VacationsTracker.Core.Domain;
+﻿using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.DTO;
 using VacationsTracker.Core.Presentation.ViewModels;
 

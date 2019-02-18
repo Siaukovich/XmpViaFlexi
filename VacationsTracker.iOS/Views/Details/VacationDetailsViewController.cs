@@ -1,17 +1,13 @@
 ﻿using System;
-using CoreGraphics;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
-using Foundation;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Resources;
 using VacationsTracker.Droid.Views.ValueConverters;
-using VacationsTracker.iOS.Helpers;
-using VacationsTracker.iOS.Themes;
 using VacationsTracker.iOS.Views.Details.VacationsTypePager;
 using VacationsTracker.iOS.Views.ValueConverters;
 

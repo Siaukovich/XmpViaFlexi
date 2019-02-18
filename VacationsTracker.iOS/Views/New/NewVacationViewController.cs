@@ -9,7 +9,6 @@ using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.New;
 using VacationsTracker.Droid.Views.ValueConverters;
 using VacationsTracker.iOS.Helpers;
-using VacationsTracker.iOS.Views.Details;
 using VacationsTracker.iOS.Views.Details.VacationsTypePager;
 using VacationsTracker.iOS.Views.ValueConverters;
 
