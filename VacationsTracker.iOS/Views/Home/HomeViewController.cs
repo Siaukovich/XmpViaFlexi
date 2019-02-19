@@ -65,13 +65,13 @@ namespace VacationsTracker.iOS.Views.Home
 
         private void SetupTabs()
         {
-            var viewControllers = new UIViewController[ViewModel.TabItems.Count];
-            for (var index = 0; index < ViewModel.TabItems.Count; index++)
-            {
-                viewControllers[index] = CreateTab(ViewModel.TabItems[index]);
-            }
+            //var viewControllers = new UIViewController[ViewModel.TabItems.Count];
+            //for (var index = 0; index < ViewModel.TabItems.Count; index++)
+            //{
+            //    viewControllers[index] = CreateTab(ViewModel.TabItems[index]);
+            //}
 
-            ViewControllers = viewControllers;
+            //ViewControllers = viewControllers;
         }
 
         private UIViewController CreateTab(TabItemViewModel tab)

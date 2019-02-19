@@ -13,10 +13,10 @@ namespace VacationsTracker.Core.DataAccess
 
         public VacationContext(ISecureStorage _storage)
         {
-            var token = _storage.GetAsync("id_token").Result;
+            var token = _storage.GetAsync(Settings.TokenStorageKey).Result;
             _client = new RestClient
             {
-                BaseUrl = new Uri("https://vts-v2.azurewebsites.net/api/vts/workflow"),
+                BaseUrl = new Uri(Settings.VacationApiUrlLocal),
                 Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer")
             };
         }
@@ -24,13 +24,6 @@ namespace VacationsTracker.Core.DataAccess
         public async Task<TResponse> GetAsync<TResponse>(string resource) 
             where TResponse : new()
         {
-            //using (var c = new HttpClient())
-            //{
-            //    var r = await c.GetAsync("https://vts-v2.azurewebsites.net/api/vts/workflow");
-            //    var b = await r.Content.ReadAsStringAsync();
-            //    Debug.WriteLine(b);
-            //}
-
             var request = new RestRequest(resource);
             var response = await _client.GetAsync<TResponse>(request);
 

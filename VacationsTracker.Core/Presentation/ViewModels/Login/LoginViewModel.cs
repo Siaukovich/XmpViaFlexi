@@ -1,10 +1,16 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Security.Authentication;
 using System.Threading.Tasks;
+
 using FlexiMvvm;
 using FlexiMvvm.Commands;
 using FlexiMvvm.Operations;
+
 using VacationsTracker.Core.DataAccess;
+using VacationsTracker.Core.Domain;
+using VacationsTracker.Core.Domain.Exceptions;
+using VacationsTracker.Core.Exceptions;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Operations;
 
@@ -54,9 +60,19 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
                   .CreateOperation(OperationContext)
                   .WithLoadingNotification()
                   .WithInternetConnectionCondition()
-                  .WithExpressionAsync(async token => await _userRepository.AuthorizeAsync(UserLogin, UserPassword))
+                  .WithExpressionAsync(token =>
+                  {
+                      var user = new User(UserLogin, UserPassword);
+
+                      user.ValidateCredentials();
+
+                      return _userRepository.AuthorizeAsync(user, token);
+                  })
                   .OnSuccess(() => _navigationService.NavigateToHome(this))
                   .OnError<AuthenticationException>(_ => ValidCredentials = false)
+                  .OnError<InvalidCredentialsException>(_ => ValidCredentials = false)
+                  .OnError<InternetConnectionException>(_ => { })
+                  .OnError<Exception>(error => Debug.WriteLine(error.Exception))
                   .ExecuteAsync();
         }
     }
