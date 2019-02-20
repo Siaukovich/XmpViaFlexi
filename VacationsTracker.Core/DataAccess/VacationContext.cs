@@ -16,7 +16,7 @@ namespace VacationsTracker.Core.DataAccess
             var token = _storage.GetAsync(Settings.TokenStorageKey).Result;
             _client = new RestClient
             {
-                BaseUrl = new Uri(Settings.VacationApiUrlLocal),
+                BaseUrl = new Uri(Settings.VacationApiUrl),
                 Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer")
             };
         }
