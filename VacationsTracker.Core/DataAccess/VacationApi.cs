@@ -46,5 +46,12 @@ namespace VacationsTracker.Core.DataAccess
 
             return response.Result;
         }
+
+        public async Task DeleteVacationAsync(string id, CancellationToken token = default)
+        {
+            token.ThrowIfCancellationRequested();
+
+            await _context.DeleteAsync<BaseResultOfSingleVacationRequest>($"/{id}", token);
+        }
     }
 }

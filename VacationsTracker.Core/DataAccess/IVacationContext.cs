@@ -10,5 +10,8 @@ namespace VacationsTracker.Core.DataAccess
 
         Task<TResponse> PostAsync<TRequest, TResponse>(string resource, TRequest requestBody, CancellationToken token = default)  
             where TResponse : new();
+
+        Task<TResponse> DeleteAsync<TResponse>(string resource, CancellationToken token = default)
+            where TResponse : new();
     }
 }

@@ -43,5 +43,12 @@ namespace VacationsTracker.Core.DataAccess
 
             await _vacationApi.UpsertVacationAsync(vacationDto, token);
         }
+
+        public async Task DeleteVacationAsync(string id, CancellationToken token = default)
+        {
+            token.ThrowIfCancellationRequested();
+
+            await _vacationApi.DeleteVacationAsync(id, token);
+        }
     }
 }

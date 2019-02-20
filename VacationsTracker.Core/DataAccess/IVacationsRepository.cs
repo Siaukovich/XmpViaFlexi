@@ -12,5 +12,7 @@ namespace VacationsTracker.Core.DataAccess
         Task<VacationCellViewModel> GetVacationAsync(string id, CancellationToken token = default);
 
         Task UpsertVacationAsync(VacationCellViewModel vacationViewModel, CancellationToken token = default);
+
+        Task DeleteVacationAsync(string id, CancellationToken token = default);
     }
 }

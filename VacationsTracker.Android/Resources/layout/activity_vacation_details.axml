@@ -12,6 +12,13 @@
         android:id="@+id/details_toolbar"
         style="@style/ToolbarTheme">
 
+		<Button
+			android:id="@+id/delete_request_button"
+			android:text="@string/delete_navigation_button_text"
+			android:layout_gravity="center|left"
+			android:minWidth="0dp"
+			style="@style/ToolbarButtonStyle2"/>
+
 		<TextView
 			android:text="@string/vacation_details_page_title"
             style="@style/ToolbarTitleStyle" />
@@ -20,7 +27,7 @@
 			android:id="@+id/save_request_button"
 			android:text="@string/save_navigation_button_text"
 			android:layout_gravity="center|right"
-			style="@style/ToolbarButtonStyle"/>
+			style="@style/ToolbarButtonStyle1"/>
 
 	</android.support.v7.widget.Toolbar>
 

@@ -89,6 +89,7 @@ namespace VacationsTracker.Droid.Views
          private readonly Activity activity;
 
          private Android.Support.V7.Widget.Toolbar detailsToolbar;
+         private Button deleteRequestButton;
          private Button saveRequestButton;
          private Android.Support.V4.View.ViewPager vacationTypePager;
          private Android.Support.Design.Widget.TabLayout tabDots;
@@ -114,6 +115,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.V7.Widget.Toolbar DetailsToolbar =>
             detailsToolbar ?? (detailsToolbar = activity.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.details_toolbar));
+
+        
+        public Button DeleteRequestButton =>
+            deleteRequestButton ?? (deleteRequestButton = activity.FindViewById<Button>(Resource.Id.delete_request_button));
 
         
         public Button SaveRequestButton =>
@@ -331,6 +336,13 @@ namespace VacationsTracker.Droid.Views
         public TextView TextViewVacationName =>
             textViewVacationName ?? (textViewVacationName = rootView.FindViewById<TextView>(Resource.Id.text_view_vacation_name));
     }
+
+    /*
+    "LayoutDefinitionOptions" are not specified for "navigation_header" layout file therefore view holder can't be generated for it.
+    public partial class HeaderNavigationViewHolder
+    {
+    }
+    */
 
     /*
     "LayoutDefinitionOptions" are not specified for "navigation_menu" layout file therefore view holder can't be generated for it.

@@ -13,5 +13,7 @@ namespace VacationsTracker.Core.DataAccess
         Task<VacationDto> GetVacationAsync(string id, CancellationToken token = default);
 
         Task<VacationDto> UpsertVacationAsync([NotNull] VacationDto vacation, CancellationToken token = default);
+
+        Task DeleteVacationAsync(string id, CancellationToken token = default);
     }
 }

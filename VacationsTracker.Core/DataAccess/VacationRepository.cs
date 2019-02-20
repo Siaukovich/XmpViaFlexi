@@ -146,6 +146,11 @@ namespace VacationsTracker.Core.DataAccess
             await UpdateVacationAsync(vacationViewModel);
         }
 
+        public Task DeleteVacationAsync(string id, CancellationToken token = default)
+        {
+            throw new NotImplementedException();
+        }
+
         private static Task UpdateVacationAsync(VacationCellViewModel vacation)
         {
             int index = -1;

@@ -61,6 +61,15 @@ namespace VacationsTracker.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vacation Tracker.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New.
         /// </summary>
         public static string CreateNewVacationButton_Text {
@@ -70,7 +79,16 @@ namespace VacationsTracker.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All Requests.
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string DeleteNavigationButton_Text {
+            get {
+                return ResourceManager.GetString("DeleteNavigationButton_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requests.
         /// </summary>
         public static string HomePage_Title {
             get {
@@ -160,7 +178,7 @@ namespace VacationsTracker.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Request Details.
+        ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string VacationDetailsPage_Title {
             get {

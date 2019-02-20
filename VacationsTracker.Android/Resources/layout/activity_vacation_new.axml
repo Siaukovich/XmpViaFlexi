@@ -20,7 +20,7 @@
 			android:id="@+id/save_request_button"
 			android:text="@string/save_navigation_button_text"
 			android:layout_gravity="center|right"
-			style="@style/ToolbarButtonStyle"/>
+			style="@style/ToolbarButtonStyle1"/>
 
 	</android.support.v7.widget.Toolbar>
 

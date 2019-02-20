@@ -41,6 +41,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
 
         public ICommand SaveCommand => CommandProvider.GetForAsync(Save);
 
+        public ICommand DeleteCommand => CommandProvider.GetForAsync(Delete);
+
         public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; }
             = new RangeObservableCollection<VacationTypePagerParameters>(
                 Enum.GetValues(typeof(VacationType))
@@ -92,6 +94,19 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
                   .WithInternetConnectionCondition()
                   .WithLoadingNotification()
                   .WithExpressionAsync(token => _vacationsRepository.UpsertVacationAsync(vacation, token))
+                  .OnSuccess(() => _navigationService.NavigateBackToHome(this))
+                  .OnError<InternetConnectionException>(_ => { })
+                  .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                  .ExecuteAsync();
+        }
+
+        private Task Delete()
+        {
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithInternetConnectionCondition()
+                  .WithLoadingNotification()
+                  .WithExpressionAsync(token => _vacationsRepository.DeleteVacationAsync(_vacationId, token))
                   .OnSuccess(() => _navigationService.NavigateBackToHome(this))
                   .OnError<InternetConnectionException>(_ => { })
                   .OnError<Exception>(error => Debug.WriteLine(error.Exception))

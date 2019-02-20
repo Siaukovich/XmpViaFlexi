@@ -12,9 +12,9 @@ namespace VacationsTracker.Core.DataAccess
     {
         private readonly IRestClient _client;
 
-        public VacationContext(ISecureStorage _storage)
+        public VacationContext(ISecureStorage storage)
         {
-            var token = _storage.GetAsync(Settings.TokenStorageKey).Result;
+            var token = storage.GetAsync(Settings.TokenStorageKey).Result;
 
             _client = new RestClient
             {
@@ -44,6 +44,16 @@ namespace VacationsTracker.Core.DataAccess
 
             var request = GetRequest(resource, requestBody);
             var response = await _client.PostAsync<TResponse>(request);
+
+            return response;
+        }
+
+        public async Task<TResponse> DeleteAsync<TResponse>(string resource, CancellationToken token = default) where TResponse : new()
+        {
+            token.ThrowIfCancellationRequested();
+
+            var request = new RestRequest(resource, Method.DELETE);
+            var response = await _client.DeleteAsync<TResponse>(request);
 
             return response;
         }

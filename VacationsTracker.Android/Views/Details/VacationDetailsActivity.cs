@@ -98,6 +98,10 @@ namespace VacationsTracker.Droid.Views.Details
                 .For(v => v.ClickBinding())
                 .To(vm => vm.SaveCommand);
 
+            bindingSet.Bind(ViewHolder.DeleteRequestButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.DeleteCommand);
+
             bindingSet.Bind(ViewHolder.VacationTypePager)
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
                 .To(vm => vm.Type)
