@@ -60,5 +60,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels
             status = Status;
             type = Type;
         }
+
+        public void Deconstruct(out DateTime start, out DateTime end, out VacationStatus status, out VacationType type)
+        {
+            start = Start;
+            end = End;
+            status = Status;
+            type = Type;
+        }
     }
 }

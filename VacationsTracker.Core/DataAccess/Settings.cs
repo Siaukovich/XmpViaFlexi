@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VacationsTracker.Core.DataAccess
+﻿namespace VacationsTracker.Core.DataAccess
 {
     internal static class Settings
     {

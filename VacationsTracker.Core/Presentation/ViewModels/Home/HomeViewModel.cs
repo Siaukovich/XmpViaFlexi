@@ -10,6 +10,7 @@ using FlexiMvvm.Commands;
 using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Domain;
+using VacationsTracker.Core.Exceptions;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Operations;
@@ -56,10 +57,21 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public ICommand RefreshCommand => CommandProvider.GetForAsync(Refresh);
 
-        private async Task FilterVacations(NavigationMenuItem item)
+        private Task FilterVacations(NavigationMenuItem item)
         {
-            var vacations = await _vacationsRepository.GetVacationsAsync();
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithInternetConnectionCondition()
+                  .WithLoadingNotification()
+                  .WithExpressionAsync(token => _vacationsRepository.GetVacationsAsync(token))
+                  .OnSuccess(vacations => FilterVacations(item, vacations))
+                  .OnError<InternetConnectionException>(_ => { })
+                  .OnError<AuthenticationException>(ex => Debug.WriteLine(ex))
+                  .ExecuteAsync();
+        }
 
+        private void FilterVacations(NavigationMenuItem item, IEnumerable<VacationCellViewModel> vacations)
+        {
             switch (item)
             {
                 case NavigationMenuItem.All:
@@ -100,6 +112,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
                   .WithLoadingNotification()
                   .WithExpressionAsync(token => ReloadVacations())
                   .OnSuccess(() => RefreshedDateTime = DateTime.Now)
+                  .OnError<InternetConnectionException>(_ => { })
                   .OnError<AuthenticationException>(ex => Debug.WriteLine(ex))
                   .ExecuteAsync();
         }
@@ -111,11 +124,21 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             await LoadVacations();
         }
 
-        private async Task LoadVacations()
+        private Task LoadVacations()
         {
-            var vacations = await _vacationsRepository.GetVacationsAsync();
-
-            VacationsAddRange(vacations);
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithInternetConnectionCondition()
+                  .WithLoadingNotification()
+                  .WithExpressionAsync(token => _vacationsRepository.GetVacationsAsync(token))
+                  .OnSuccess(vacations =>
+                  {
+                      VacationsAddRange(vacations);
+                      RefreshedDateTime = DateTime.Now;
+                  })
+                  .OnError<InternetConnectionException>(_ => { })
+                  .OnError<AuthenticationException>(ex => Debug.WriteLine(ex))
+                  .ExecuteAsync();
         }
 
         private void VacationsAddRange(IEnumerable<VacationCellViewModel> vacations)

@@ -1,10 +1,8 @@
-﻿using System.Net.Http;
-using System.Security.Authentication;
+﻿using System.Security.Authentication;
 using System.Threading;
 using System.Threading.Tasks;
 using IdentityModel.Client;
 using VacationsTracker.Core.Domain;
-using VacationsTracker.Core.Resources;
 
 namespace VacationsTracker.Core.DataAccess
 {
@@ -17,11 +15,11 @@ namespace VacationsTracker.Core.DataAccess
             _storage = storage;
         }
 
-        public async Task AuthorizeAsync(User user, CancellationToken cancellationToken)
+        public async Task AuthorizeAsync(User user, CancellationToken token = default)
         {
             var discoveryClient = new DiscoveryClient(Settings.IdentityServiceUrl);
             discoveryClient.Policy.RequireHttps = false;
-            var identityServer = await discoveryClient.GetAsync();
+            var identityServer = await discoveryClient.GetAsync(token);
 
             if (identityServer.IsError)
             {
@@ -37,7 +35,7 @@ namespace VacationsTracker.Core.DataAccess
                 user.Login,
                 user.Password,
                 Settings.Scope,
-                cancellationToken: cancellationToken);
+                cancellationToken: token);
 
             if (userTokenResponse.IsError || userTokenResponse.AccessToken == null)
             {

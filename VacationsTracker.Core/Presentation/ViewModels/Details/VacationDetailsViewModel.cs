@@ -1,16 +1,22 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+
 using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
+using FlexiMvvm.Operations;
+
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Domain;
+using VacationsTracker.Core.Exceptions;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Operations;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Details
 {
-    public class VacationDetailsViewModel : ViewModelBase<VacationDetailsParameters>
+    public class VacationDetailsViewModel : ViewModelBase<VacationDetailsParameters>, Operations.IViewModelWithOperation
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
@@ -21,16 +27,19 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
         private DateTime _endDate;
         private VacationType _type;
         private VacationStatus _status;
+        private bool _loading;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
-            IVacationsRepository vacationsRepository)
+            IVacationsRepository vacationsRepository,
+            IOperationFactory operationFactory)
+                : base(operationFactory)
         {
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
         }
 
-        public ICommand SaveCommand => CommandProvider.Get(Save);
+        public ICommand SaveCommand => CommandProvider.GetForAsync(Save);
 
         public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; }
             = new RangeObservableCollection<VacationTypePagerParameters>(
@@ -61,7 +70,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             set => Set( ref _status, value);
         }
 
-        private async void Save()
+        public bool Loading
+        {
+            get => _loading;
+            set => Set(ref _loading, value);
+        }
+
+        private Task Save()
         {
             var vacation = new VacationCellViewModel
             {
@@ -72,17 +87,34 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
                 Type = _type
             };
 
-            await _vacationsRepository.UpsertVacationAsync(vacation);
-            _navigationService.NavigateBackToHome(this);
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithInternetConnectionCondition()
+                  .WithLoadingNotification()
+                  .WithExpressionAsync(token => _vacationsRepository.UpsertVacationAsync(vacation, token))
+                  .OnSuccess(() => _navigationService.NavigateBackToHome(this))
+                  .OnError<InternetConnectionException>(_ => { })
+                  .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                  .ExecuteAsync();
         }
 
         protected override async Task InitializeAsync(VacationDetailsParameters parameters)
         {
             await base.InitializeAsync(parameters);
 
-            var vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
-
-            (_vacationId, StartDate, EndDate, Status, Type) = vacation;
+            await OperationFactory
+                 .CreateOperation(OperationContext)
+                 .WithInternetConnectionCondition()
+                 .WithLoadingNotification()
+                 .WithExpressionAsync(token =>
+                 {
+                     var id = parameters.NotNull().VacationId;
+                     return _vacationsRepository.GetVacationAsync(id, token);
+                 })
+                 .OnSuccess(vacation => (_vacationId, StartDate, EndDate, Status, Type) = vacation)
+                 .OnError<InternetConnectionException>(_ => { })
+                 .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                 .ExecuteAsync();
         }
     }
 }

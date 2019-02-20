@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Presentation.ViewModels;
@@ -122,19 +123,19 @@ namespace VacationsTracker.Core.DataAccess
 
         public VacationCellViewModel this[int i] => _vacations[i];
 
-        public Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync()
+        public Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync(CancellationToken token = default)
         {
             return Task.FromResult<IEnumerable<VacationCellViewModel>>(_vacations);
         }
 
-        public Task<VacationCellViewModel> GetVacationAsync(string id)
+        public Task<VacationCellViewModel> GetVacationAsync(string id, CancellationToken token = default)
         {
             var vacation = _vacations.SingleOrDefault(v => v.Id == id);
 
             return Task.FromResult(vacation);
         }
 
-        public async Task UpsertVacationAsync(VacationCellViewModel vacationViewModel)
+        public async Task UpsertVacationAsync(VacationCellViewModel vacationViewModel, CancellationToken token = default)
         {
             if (vacationViewModel.Id == Guid.Empty.ToString())
             {

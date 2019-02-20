@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
@@ -14,6 +15,7 @@ namespace VacationsTracker.Core.DataAccess
         public VacationContext(ISecureStorage _storage)
         {
             var token = _storage.GetAsync(Settings.TokenStorageKey).Result;
+
             _client = new RestClient
             {
                 BaseUrl = new Uri(Settings.VacationApiUrl),
@@ -21,18 +23,25 @@ namespace VacationsTracker.Core.DataAccess
             };
         }
 
-        public async Task<TResponse> GetAsync<TResponse>(string resource) 
+        public async Task<TResponse> GetAsync<TResponse>(string resource, CancellationToken token = default) 
             where TResponse : new()
         {
+            token.ThrowIfCancellationRequested();
+
             var request = new RestRequest(resource);
             var response = await _client.GetAsync<TResponse>(request);
 
             return response;
         }
 
-        public async Task<TResponse> PostAsync<TRequest, TResponse>(string resource, TRequest requestBody) 
-            where TResponse : new()
+        public async Task<TResponse> PostAsync<TRequest, TResponse>(
+            string resource, 
+            TRequest requestBody,
+            CancellationToken token = default) 
+                where TResponse : new()
         {
+            token.ThrowIfCancellationRequested();
+
             var request = GetRequest(resource, requestBody);
             var response = await _client.PostAsync<TResponse>(request);
 

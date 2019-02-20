@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Android.App;
+﻿using Android.App;
 using Android.Graphics;
 using Android.OS;
 using Android.Support.V4.Graphics.Drawable;

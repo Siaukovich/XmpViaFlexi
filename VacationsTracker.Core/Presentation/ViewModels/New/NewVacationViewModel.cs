@@ -1,38 +1,42 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
+using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Domain;
+using VacationsTracker.Core.Exceptions;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Operations;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.New
 {
-    public class NewVacationViewModel : ViewModelBase
+    public class NewVacationViewModel : ViewModelBase, Operations.IViewModelWithOperation
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
-
-        private string _vacationId;
 
         private DateTime _startDate;
         private DateTime _endDate;
         private VacationType _type;
         private VacationStatus _status;
+        private bool _loading;
 
         public NewVacationViewModel(
             INavigationService navigationService,
-            IVacationsRepository vacationsRepository)
+            IVacationsRepository vacationsRepository,
+            IOperationFactory operationFactory)
+                : base(operationFactory)
         {
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
         }
 
-
-        public ICommand SaveCommand => CommandProvider.Get(Save);
+        public ICommand SaveCommand => CommandProvider.GetForAsync(Save);
 
         public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; }
             = new RangeObservableCollection<VacationTypePagerParameters>(
@@ -63,28 +67,39 @@ namespace VacationsTracker.Core.Presentation.ViewModels.New
             set => Set(ref _status, value);
         }
 
-        private async void Save()
+        public bool Loading
+        {
+            get => _loading;
+            set => Set(ref _loading, value);
+        }
+
+        private Task Save()
         {
             var vacation = new VacationCellViewModel
             {
-                Id = _vacationId,
+                Id = Guid.Empty.ToString(),
                 Start = _startDate,
                 End = _endDate,
                 Status = _status,
                 Type = _type
             };
 
-            await _vacationsRepository.UpsertVacationAsync(vacation);
-            _navigationService.NavigateBackToHome(this);
+            return OperationFactory
+                  .CreateOperation(OperationContext)
+                  .WithInternetConnectionCondition()
+                  .WithLoadingNotification()
+                  .WithExpressionAsync(token => _vacationsRepository.UpsertVacationAsync(vacation, token))
+                  .OnSuccess(() => _navigationService.NavigateBackToHome(this))
+                  .OnError<InternetConnectionException>(_ => { })
+                  .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                  .ExecuteAsync();
         }
 
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
 
-            var vacation = VacationCellViewModel.GetNew;
-
-            (_vacationId, StartDate, EndDate, Status, Type) = vacation;
+            (StartDate, EndDate, Status, Type) = VacationCellViewModel.GetNew;
         }
     }
 }

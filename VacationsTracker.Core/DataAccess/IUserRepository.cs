@@ -6,6 +6,6 @@ namespace VacationsTracker.Core.DataAccess
 {
     public interface IUserRepository
     {
-        Task AuthorizeAsync(User user, CancellationToken cancellationToken);
+        Task AuthorizeAsync(User user, CancellationToken token = default);
     }
 }
