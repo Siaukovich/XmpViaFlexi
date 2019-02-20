@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
+using RestSharp.Serialization;
 
 namespace VacationsTracker.Core.DataAccess
 {
@@ -43,8 +43,8 @@ namespace VacationsTracker.Core.DataAccess
         {
             var request = new RestRequest(url);
 
-            request.AddHeader("Content-type", "application/json");
-            request.AddJsonBody(requestBody);
+            var jsonBody = JsonConvert.SerializeObject(requestBody);
+            request.AddParameter(ContentType.Json, jsonBody, ParameterType.RequestBody);
 
             return request;
         }
