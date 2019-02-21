@@ -28,6 +28,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
         private VacationType _type;
         private VacationStatus _status;
         private bool _loading;
+        private bool _loaded;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
@@ -78,6 +79,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             set => Set(ref _loading, value);
         }
 
+        public bool Loaded
+        {
+            get => _loaded;
+            set => Set(ref _loaded, value);
+        }
+
         private Task Save()
         {
             var vacation = new VacationCellViewModel
@@ -126,7 +133,11 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
                      var id = parameters.NotNull().VacationId;
                      return _vacationsRepository.GetVacationAsync(id, token);
                  })
-                 .OnSuccess(vacation => (_vacationId, StartDate, EndDate, Status, Type) = vacation)
+                 .OnSuccess(vacation =>
+                 {
+                     (_vacationId, StartDate, EndDate, Status, Type) = vacation;
+                     Loaded = true;
+                 })
                  .OnError<InternetConnectionException>(_ => { })
                  .OnError<Exception>(error => Debug.WriteLine(error.Exception))
                  .ExecuteAsync();

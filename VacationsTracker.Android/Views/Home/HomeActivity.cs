@@ -1,13 +1,17 @@
 ﻿using Android.App;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V4.Graphics.Drawable;
 using Android.Support.V7.Widget;
+using Android.Views;
 using Android.Widget;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
+using FlexiMvvm.Weak.Subscriptions;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Droid.Views.ValueConverters;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace VacationsTracker.Droid.Views.Home
 {
@@ -54,7 +58,34 @@ namespace VacationsTracker.Droid.Views.Home
             SetSupportActionBar(ViewHolder.HomeToolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.Title = Resources.GetString(Resource.String.home_page_title);
+            SupportActionBar.SetDisplayShowTitleEnabled(false);
+            
+            // Костыль
+            var dr = GetDrawable(Resource.Drawable.humburger_icon);
+            var bitmap = ((BitmapDrawable)dr).Bitmap;
+            Drawable d = new BitmapDrawable(Resources, Bitmap.CreateScaledBitmap(bitmap, 100, 100, true));
+            ViewHolder.HomeToolbar.NavigationIcon = d;
+
+            //new WeakEventSubscription<Toolbar, Toolbar.NavigationClickEventArgs>(
+            //    ViewHolder.HomeToolbar,
+            //    (toolbar, handler) => toolbar.NavigationClick += handler,
+            //    (toolbar, handler) => toolbar.NavigationClick -= handler,
+            //    OnToolbarNavigationIconClick
+            //);
+
+            ViewHolder.HomeToolbar.NavigationClick += OnToolbarNavigationIconClick;
+        }
+
+        private void OnToolbarNavigationIconClick(object sender, Toolbar.NavigationClickEventArgs args)
+        {
+            if (ViewHolder.DrawerLayout.IsDrawerOpen((int) GravityFlags.Left))
+            {
+                ViewHolder.DrawerLayout.CloseDrawers();
+            }
+            else
+            {
+                ViewHolder.DrawerLayout.OpenDrawer((int) GravityFlags.Left);
+            }
         }
 
         private void SetRoundUserImage()

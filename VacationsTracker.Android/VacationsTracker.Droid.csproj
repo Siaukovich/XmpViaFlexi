@@ -77,6 +77,7 @@
     <Compile Include="Views\New\NewVacationActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />
+    <Compile Include="Views\ValueConverters\InvertVisibilityValueConverter.cs" />
     <Compile Include="Views\ValueConverters\NavigationMenuItemValueConverter.cs" />
     <Compile Include="Views\ValueConverters\RadioGroupValueConverter.cs" />
     <Compile Include="Views\ValueConverters\SeparatorVisibilityValueConverter.cs" />
@@ -204,6 +205,7 @@
     <AndroidResource Include="Resources\drawable\image_unknown_person.png" />
     <AndroidResource Include="Resources\drawable\circleImage.xml" />
     <AndroidResource Include="Resources\drawable\userIcon.xml" />
+    <AndroidResource Include="Resources\drawable\humburger_icon.png" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

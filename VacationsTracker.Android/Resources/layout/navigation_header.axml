@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:paddingTop="@dimen/Inset5x"
+	android:paddingTop="@dimen/Inset2x"
 	android:paddingBottom="@dimen/Inset2x"
 	android:background="@android:color/white">
 

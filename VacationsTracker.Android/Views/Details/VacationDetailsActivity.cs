@@ -106,6 +106,56 @@ namespace VacationsTracker.Droid.Views.Details
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
                 .To(vm => vm.Type)
                 .WithConvertion<TypeToPagerItemValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationTypePager)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.SaveRequestButton)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.DeleteRequestButton)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationStartDay)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationStartMonth)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationStartYear)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationEndDay)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationEndMonth)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationEndYear)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.IndeterminateBar)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loading)
+                .WithConvertion<VisibilityValueConverter>();
         }
 
         private void OnVacationStartDayClick(object sender, EventArgs args)

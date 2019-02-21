@@ -9,7 +9,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels
         public static VacationCellViewModel GetNew => new VacationCellViewModel
         {
             _start = DateTime.Now,
-            _end = DateTime.Now.AddDays(1)
+            _end = DateTime.Now.AddDays(1),
+            _type = VacationType.Regular,
+            _status = VacationStatus.Approved
         };
 
         private VacationType _type;
