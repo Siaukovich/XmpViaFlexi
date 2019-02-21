@@ -7,9 +7,9 @@ namespace VacationsTracker.Droid.Views.ValueConverters
 {
     public class VisibilityValueConverter : ValueConverter<bool, ViewStates>
     {
-        protected override ConversionResult<ViewStates> Convert(bool value, Type targetType, object parameter, CultureInfo culture)
+        protected override ConversionResult<ViewStates> Convert(bool visible, Type targetType, object parameter, CultureInfo culture)
         {
-            var state = value ? ViewStates.Invisible : ViewStates.Visible;
+            var state = visible ? ViewStates.Visible : ViewStates.Invisible;
 
             return ConversionResult<ViewStates>.SetValue(state);
         }

@@ -11,13 +11,13 @@ namespace VacationsTracker.Core.Domain
 
         public User(string login, string password)
         {
-            Login = login ?? throw new ArgumentNullException(nameof(login));
-            Password = password ?? throw new ArgumentNullException(nameof(password));
+            Login = login;
+            Password = password;
         }
 
         public void ValidateCredentials()
         {
-            if (string.IsNullOrWhiteSpace(Login) || string.IsNullOrWhiteSpace(Password))
+            if (Login == null || Password == null)
             {
                 throw new InvalidCredentialsException();
             }

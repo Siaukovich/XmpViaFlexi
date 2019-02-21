@@ -55,6 +55,7 @@ namespace VacationsTracker.Droid.Views
     {
          private readonly Activity activity;
 
+         private ProgressBar indeterminateBar;
          private TextView invalidCredentialsText;
          private EditText loginEntry;
          private EditText passwordEntry;
@@ -66,6 +67,10 @@ namespace VacationsTracker.Droid.Views
 
             this.activity = activity;
         }
+
+        
+        public ProgressBar IndeterminateBar =>
+            indeterminateBar ?? (indeterminateBar = activity.FindViewById<ProgressBar>(Resource.Id.indeterminateBar));
 
         
         public TextView InvalidCredentialsText =>

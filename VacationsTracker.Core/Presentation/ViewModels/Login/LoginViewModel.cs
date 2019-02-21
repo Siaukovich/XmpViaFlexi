@@ -21,7 +21,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
         private readonly INavigationService _navigationService;
         private readonly IUserRepository _userRepository;
 
-        private bool _validCredentials = true;
+        private bool _invalidCredentials = false;
         private bool _loading;
 
         public LoginViewModel(
@@ -40,10 +40,10 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
         public string UserPassword { get; set; }
 
-        public bool ValidCredentials
+        public bool InvalidCredentials
         {
-            get => _validCredentials;
-            set => Set(ref _validCredentials, value);
+            get => _invalidCredentials;
+            set => Set(ref _invalidCredentials, value);
         }
 
         public bool Loading
@@ -54,7 +54,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
         private Task Login()
         {
-            ValidCredentials = true;
+            InvalidCredentials = false;
 
             return OperationFactory
                   .CreateOperation(OperationContext)
@@ -69,8 +69,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
                       return _userRepository.AuthorizeAsync(user, token);
                   })
                   .OnSuccess(() => _navigationService.NavigateToHome(this))
-                  .OnError<AuthenticationException>(_ => ValidCredentials = false)
-                  .OnError<InvalidCredentialsException>(_ => ValidCredentials = false)
+                  .OnError<AuthenticationException>(_ => InvalidCredentials = true)
+                  .OnError<InvalidCredentialsException>(_ => InvalidCredentials = true)
                   .OnError<InternetConnectionException>(_ => { })
                   .OnError<Exception>(error => Debug.WriteLine(error.Exception))
                   .ExecuteAsync();

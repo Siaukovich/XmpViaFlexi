@@ -2,6 +2,7 @@
 using Android.OS;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
+using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
 using VacationsTracker.Droid.Views.ValueConverters;
 
@@ -29,7 +30,7 @@ namespace VacationsTracker.Droid.Views.Login
 
             bindingSet.Bind(ViewHolder.InvalidCredentialsText)
                 .For(v => v.Visibility)
-                .To(vm => vm.ValidCredentials)
+                .To(vm => vm.InvalidCredentials)
                 .WithConvertion<VisibilityValueConverter>();
 
             bindingSet.Bind(ViewHolder.LoginEntry)
@@ -43,6 +44,26 @@ namespace VacationsTracker.Droid.Views.Login
             bindingSet.Bind(ViewHolder.LoginButton)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.LoginCommand);
+
+            bindingSet.Bind(ViewHolder.IndeterminateBar)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loading)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.LoginEntry)
+                .For(v => v.Enabled)
+                .To(vm => vm.Loading)
+                .WithConvertion<InvertValueConverter>();
+
+            bindingSet.Bind(ViewHolder.PasswordEntry)
+                .For(v => v.Enabled)
+                .To(vm => vm.Loading)
+                .WithConvertion<InvertValueConverter>();
+
+            bindingSet.Bind(ViewHolder.LoginButton)
+                .For(v => v.Enabled)
+                .To(vm => vm.Loading)
+                .WithConvertion<InvertValueConverter>();
         }
     }
 }

@@ -123,6 +123,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FlexiMvvm.Bindings.PreRelease">
+      <Version>0.9.7-prerelease</Version>
+    </PackageReference>
     <PackageReference Include="FlexiMvvm.Common.PreRelease">
       <Version>0.9.7-prerelease</Version>
     </PackageReference>
