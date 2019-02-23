@@ -1,26 +1,28 @@
 ﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Mime;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Newtonsoft.Json;
-using RestSharp;
-using RestSharp.Authenticators;
-using RestSharp.Serialization;
+
+using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 
 namespace VacationsTracker.Core.DataAccess
 {
     internal class VacationContext : IVacationContext
     {
-        private readonly IRestClient _client;
+        private readonly HttpClient _client;
 
         public VacationContext(ISecureStorage storage)
         {
             var token = storage.GetAsync(Settings.TokenStorageKey).Result;
 
-            _client = new RestClient
-            {
-                BaseUrl = new Uri(Settings.VacationApiUrl),
-                Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer")
-            };
+            _client = new HttpClient();
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         }
 
         public async Task<TResponse> GetAsync<TResponse>(string resource, CancellationToken token = default) 
@@ -28,10 +30,11 @@ namespace VacationsTracker.Core.DataAccess
         {
             token.ThrowIfCancellationRequested();
 
-            var request = new RestRequest(resource);
-            var response = await _client.GetAsync<TResponse>(request);
+            var request = GetRequest(resource, HttpMethod.Get);
 
-            return response;
+            var responseObj = await SendRequest<TResponse>(request, token);
+
+            return responseObj;
         }
 
         public async Task<TResponse> PostAsync<TRequest, TResponse>(
@@ -42,30 +45,50 @@ namespace VacationsTracker.Core.DataAccess
         {
             token.ThrowIfCancellationRequested();
 
-            var request = GetRequest(resource, requestBody);
-            var response = await _client.PostAsync<TResponse>(request);
+            var request = GetRequest(resource, HttpMethod.Post, requestBody);
 
-            return response;
+            var responseObj = await SendRequest<TResponse>(request, token);
+
+            return responseObj;
         }
 
         public async Task<TResponse> DeleteAsync<TResponse>(string resource, CancellationToken token = default) where TResponse : new()
         {
             token.ThrowIfCancellationRequested();
 
-            var request = new RestRequest(resource, Method.DELETE);
-            var response = await _client.DeleteAsync<TResponse>(request);
+            var request = GetRequest(resource, HttpMethod.Delete);
 
-            return response;
+            var responseObj = await SendRequest<TResponse>(request, token);
+
+            return responseObj;
         }
 
-        private static RestRequest GetRequest<TRequest>(string url, TRequest requestBody)
+        private static HttpRequestMessage GetRequest(string resource, HttpMethod method)
         {
-            var request = new RestRequest(url);
-
-            var jsonBody = JsonConvert.SerializeObject(requestBody);
-            request.AddParameter(ContentType.Json, jsonBody, ParameterType.RequestBody);
+            var requestUri = Settings.VacationApiUrl + resource;
+            var request = new HttpRequestMessage(method, requestUri);
 
             return request;
+        }
+
+        private static HttpRequestMessage GetRequest<TRequest>(string resource, HttpMethod method, TRequest requestBody)
+        {
+            var requestUri = Settings.VacationApiUrl + resource;
+            var request = new HttpRequestMessage(method, requestUri);
+
+            var jsonBody = JsonConvert.SerializeObject(requestBody);
+            request.Content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+            return request;
+        }
+
+        private async Task<TResponse> SendRequest<TResponse>(HttpRequestMessage request, CancellationToken token = default)
+        {
+            var response = await _client.SendAsync(request, token);
+            var content = await response.Content.ReadAsStringAsync();
+            var responseObj = JsonConvert.DeserializeObject<TResponse>(content);
+
+            return responseObj;
         }
     }
 }

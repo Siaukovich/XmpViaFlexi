@@ -1,6 +1,7 @@
 ﻿using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views;
+using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
 
 namespace VacationsTracker.iOS.Views.Login
@@ -26,7 +27,8 @@ namespace VacationsTracker.iOS.Views.Login
 
             bindingSet.Bind(View.InvalidCredentialsLabel)
                 .For(v => v.Hidden)
-                .To(vm => vm.InvalidCredentials);
+                .To(vm => vm.ErrorOccured)
+                .WithConvertion<InvertValueConverter>();
 
             bindingSet.Bind(View.LoginTextField)
                 .For(v => v.TextAndEditingChangedBinding())

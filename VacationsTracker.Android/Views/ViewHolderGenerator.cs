@@ -193,6 +193,7 @@ namespace VacationsTracker.Droid.Views
 
          private Android.Support.V7.Widget.Toolbar detailsToolbar;
          private Button saveRequestButton;
+         private ProgressBar indeterminateBar;
          private Android.Support.V4.View.ViewPager vacationTypePager;
          private Android.Support.Design.Widget.TabLayout tabDots;
          private RelativeLayout dateStart;
@@ -221,6 +222,10 @@ namespace VacationsTracker.Droid.Views
         
         public Button SaveRequestButton =>
             saveRequestButton ?? (saveRequestButton = activity.FindViewById<Button>(Resource.Id.save_request_button));
+
+        
+        public ProgressBar IndeterminateBar =>
+            indeterminateBar ?? (indeterminateBar = activity.FindViewById<ProgressBar>(Resource.Id.indeterminateBar));
 
         
         public Android.Support.V4.View.ViewPager VacationTypePager =>

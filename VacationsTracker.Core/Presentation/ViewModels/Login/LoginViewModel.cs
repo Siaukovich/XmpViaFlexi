@@ -13,6 +13,7 @@ using VacationsTracker.Core.Domain.Exceptions;
 using VacationsTracker.Core.Exceptions;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Operations;
+using VacationsTracker.Core.Resources;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Login
 {
@@ -21,8 +22,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
         private readonly INavigationService _navigationService;
         private readonly IUserRepository _userRepository;
 
-        private bool _invalidCredentials = false;
+        private bool _errorOccured = false;
         private bool _loading;
+        private string _errorMessage;
 
         public LoginViewModel(
             INavigationService navigationService, 
@@ -40,10 +42,16 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
         public string UserPassword { get; set; }
 
-        public bool InvalidCredentials
+        public string ErrorMessage
         {
-            get => _invalidCredentials;
-            set => Set(ref _invalidCredentials, value);
+            get => _errorMessage;
+            set => Set(ref _errorMessage, value);
+        }
+
+        public bool ErrorOccured
+        {
+            get => _errorOccured;
+            set => Set(ref _errorOccured, value);
         }
 
         public bool Loading
@@ -54,7 +62,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
 
         private Task Login()
         {
-            InvalidCredentials = false;
+            ErrorOccured = false;
 
             return OperationFactory
                   .CreateOperation(OperationContext)
@@ -69,11 +77,18 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
                       return _userRepository.AuthorizeAsync(user, token);
                   })
                   .OnSuccess(() => _navigationService.NavigateToHome(this))
-                  .OnError<AuthenticationException>(_ => InvalidCredentials = true)
-                  .OnError<InvalidCredentialsException>(_ => InvalidCredentials = true)
-                  .OnError<InternetConnectionException>(_ => { })
-                  .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                  .OnError<AuthenticationException>(_ => SetError(Strings.LoginPage_InvalidCredentials))
+                  .OnError<EmptyPasswordException>(_ => SetError(Strings.LoginPage_InvalidPassword))
+                  .OnError<EmptyLoginException>(_ => SetError(Strings.LoginPage_InvalidLogin))
+                  .OnError<InternetConnectionException>(_ => SetError(Strings.LoginPage_NoInternet))
+                  .OnError<Exception>(error => SetError(Strings.LoginPage_UnknownError))
                   .ExecuteAsync();
+        }
+
+        private void SetError(string message)
+        {
+            ErrorMessage = message;
+            ErrorOccured = true;
         }
     }
 }

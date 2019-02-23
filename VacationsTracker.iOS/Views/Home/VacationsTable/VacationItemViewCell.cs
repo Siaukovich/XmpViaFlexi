@@ -4,7 +4,6 @@ using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
-using FlexiMvvm.ValueConverters;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels;
@@ -64,14 +63,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
                 .For(v => v.Hidden)
                 .To(vm => vm.SeparatorVisible)
                 .WithConvertion<InvertValueConverter>();
-        }
-
-        class C : ValueConverter<bool, bool>
-        {
-            protected override ConversionResult<bool> Convert(bool value, Type targetType, object parameter, CultureInfo culture)
-            {
-                return ConversionResult<bool>.SetValue(!value);
-            }
         }
     }
 }

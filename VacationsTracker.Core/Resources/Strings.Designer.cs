@@ -97,11 +97,29 @@ namespace VacationsTracker.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please, retry your login and password pair..
+        ///   Looks up a localized string similar to Please, retry your login and password pair.
         /// </summary>
-        public static string LoginPage_Error {
+        public static string LoginPage_InvalidCredentials {
             get {
-                return ResourceManager.GetString("LoginPage_Error", resourceCulture);
+                return ResourceManager.GetString("LoginPage_InvalidCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login field must not be empty.
+        /// </summary>
+        public static string LoginPage_InvalidLogin {
+            get {
+                return ResourceManager.GetString("LoginPage_InvalidLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password field must not be empty.
+        /// </summary>
+        public static string LoginPage_InvalidPassword {
+            get {
+                return ResourceManager.GetString("LoginPage_InvalidPassword", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace VacationsTracker.Core.Resources {
         public static string LoginPage_LoginPlaceholder {
             get {
                 return ResourceManager.GetString("LoginPage_LoginPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check your internet connection.
+        /// </summary>
+        public static string LoginPage_NoInternet {
+            get {
+                return ResourceManager.GetString("LoginPage_NoInternet", resourceCulture);
             }
         }
         
@@ -129,6 +156,15 @@ namespace VacationsTracker.Core.Resources {
         public static string LoginPage_SignIn {
             get {
                 return ResourceManager.GetString("LoginPage_SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot log in, try again later.
+        /// </summary>
+        public static string LoginPage_UnknownError {
+            get {
+                return ResourceManager.GetString("LoginPage_UnknownError", resourceCulture);
             }
         }
         

@@ -129,17 +129,29 @@
   <data name="HomePage_Title" xml:space="preserve">
     <value>Requests</value>
   </data>
-  <data name="LoginPage_Error" xml:space="preserve">
-    <value>Please, retry your login and password pair.</value>
+  <data name="LoginPage_InvalidCredentials" xml:space="preserve">
+    <value>Please, retry your login and password pair</value>
+  </data>
+  <data name="LoginPage_InvalidLogin" xml:space="preserve">
+    <value>Login field must not be empty</value>
+  </data>
+  <data name="LoginPage_InvalidPassword" xml:space="preserve">
+    <value>Password field must not be empty</value>
   </data>
   <data name="LoginPage_LoginPlaceholder" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="LoginPage_NoInternet" xml:space="preserve">
+    <value>Check your internet connection</value>
   </data>
   <data name="LoginPage_PasswordPlaceholder" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="LoginPage_SignIn" xml:space="preserve">
     <value>SIGN IN</value>
+  </data>
+  <data name="LoginPage_UnknownError" xml:space="preserve">
+    <value>Cannot log in, try again later</value>
   </data>
   <data name="NavigationView_All" xml:space="preserve">
     <value>ALL</value>

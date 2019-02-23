@@ -17,9 +17,14 @@ namespace VacationsTracker.Core.Domain
 
         public void ValidateCredentials()
         {
-            if (Login == null || Password == null)
+            if (string.IsNullOrWhiteSpace(Login))
             {
-                throw new InvalidCredentialsException();
+                throw new EmptyLoginException();
+            }
+
+            if (string.IsNullOrWhiteSpace(Password))
+            {
+                throw new EmptyPasswordException();
             }
         }
     }

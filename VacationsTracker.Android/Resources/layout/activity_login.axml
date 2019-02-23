@@ -23,7 +23,6 @@
 
 	<TextView
 		android:id="@+id/invalid_credentials_text"
-	    android:text="@string/login_page_error"
 		app:layout_constraintTop_toBottomOf="@id/guideline"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"

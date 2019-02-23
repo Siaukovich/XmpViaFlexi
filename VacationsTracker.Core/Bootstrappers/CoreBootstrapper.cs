@@ -31,11 +31,11 @@ namespace VacationsTracker.Core.Bootstrappers
                 () => new ConnectivityService(simpleIoc.Get<IConnectivity>()),
                 Reuse.Singleton);
 
-            simpleIoc.Register<ISecureStorage>(() => new XamarinSecureStorage(), Reuse.Singleton);
+            simpleIoc.Register<ISecureStorage>(() => new VacationSimulatorSecureStorage(), Reuse.Singleton);
 
-            simpleIoc.Register<IVacationContext>(() => new VacationContext(simpleIoc.Get<ISecureStorage>()));
             simpleIoc.Register<IVacationApi>(() => new VacationApi(simpleIoc.Get<IVacationContext>()));
-            simpleIoc.Register<IVacationsRepository>(() => new NetVacationRepository(simpleIoc.Get<IVacationApi>()));
+            simpleIoc.Register<IVacationContext>(() => new VacationContext(simpleIoc.Get<ISecureStorage>()));
+            simpleIoc.Register<IVacationsRepository>(() => new NetVacationRepository(simpleIoc.Get<IVacationApi>()), Reuse.Singleton);
 
             simpleIoc.Register<IUserRepository>(() => new UserRepository(simpleIoc.Get<ISecureStorage>()));
 

@@ -103,6 +103,11 @@ namespace VacationsTracker.Droid.Views.New
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
                 .To(vm => vm.Type)
                 .WithConvertion<TypeToPagerItemValueConverter>();
+
+            bindingSet.Bind(ViewHolder.IndeterminateBar)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loading)
+                .WithConvertion<VisibilityValueConverter>();
         }
 
         private void OnVacationStartDayClick(object sender, EventArgs args)

@@ -4,19 +4,11 @@ namespace VacationsTracker.Core.Domain
 {
     public enum VacationType
     {
-        [EnumMember(Value = "Regular")]
-        Regular,
-
-        [EnumMember(Value = "Sick")]
-        Sick,
-
-        [EnumMember(Value = "Exceptional")]
-        Exceptional,
-
-        [EnumMember(Value = "Overtime")]
-        Overtime,
-
-        [EnumMember(Value = "LeaveWithoutPay")]
-        LeaveWithoutPay
+        Undefined = 0,
+        Regular = 1,
+        Sick = 2,
+        Exceptional = 3,
+        Overtime = 4,
+        LeaveWithoutPay = 5
     }
 }

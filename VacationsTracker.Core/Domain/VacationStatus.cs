@@ -4,10 +4,10 @@ namespace VacationsTracker.Core.Domain
 {
     public enum VacationStatus
     {
-        [EnumMember(Value = "Approved")]
-        Approved,
-
-        [EnumMember(Value = "LeaveWithoutPay")]
-        Closed
+        Draft = 0,
+        Submitted = 1,
+        Approved = 2,
+        InProgress = 3,
+        Closed = 4
     }
 }

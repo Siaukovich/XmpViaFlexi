@@ -30,8 +30,12 @@ namespace VacationsTracker.Droid.Views.Login
 
             bindingSet.Bind(ViewHolder.InvalidCredentialsText)
                 .For(v => v.Visibility)
-                .To(vm => vm.InvalidCredentials)
+                .To(vm => vm.ErrorOccured)
                 .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.InvalidCredentialsText)
+                .For(v => v.Text)
+                .To(vm => vm.ErrorMessage);
 
             bindingSet.Bind(ViewHolder.LoginEntry)
                 .For(v => v.TextAndTextChangedBinding())
