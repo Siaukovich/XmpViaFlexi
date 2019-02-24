@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
-using RestSharp.Portable;
-using RestSharp.Portable.HttpClient;
-
 namespace VacationsTracker.Core.DataAccess
 {
     internal class VacationContext : IVacationContext

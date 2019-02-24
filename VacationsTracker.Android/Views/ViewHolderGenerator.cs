@@ -13,6 +13,7 @@ namespace VacationsTracker.Droid.Views
          private readonly Activity activity;
 
          private Android.Support.V7.Widget.Toolbar homeToolbar;
+         private Button logoutButton;
          private Android.Support.V4.Widget.DrawerLayout drawerLayout;
          private Android.Support.V4.Widget.SwipeRefreshLayout refresher;
          private Android.Support.V7.Widget.RecyclerView recyclerView;
@@ -29,6 +30,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.V7.Widget.Toolbar HomeToolbar =>
             homeToolbar ?? (homeToolbar = activity.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.home_toolbar));
+
+        
+        public Button LogoutButton =>
+            logoutButton ?? (logoutButton = activity.FindViewById<Button>(Resource.Id.logout_button));
 
         
         public Android.Support.V4.Widget.DrawerLayout DrawerLayout =>

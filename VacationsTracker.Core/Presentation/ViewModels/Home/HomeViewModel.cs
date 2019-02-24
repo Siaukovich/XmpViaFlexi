@@ -22,17 +22,20 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
+        private readonly IUserRepository _userRepository;
         private DateTime _refreshedDateTime;
         private bool _loading;
 
         public HomeViewModel(
             INavigationService navigationService,
             IVacationsRepository vacationsRepository,
+            IUserRepository userRepository,
             IOperationFactory operationFactory)
                 : base(operationFactory)
         {
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
+            _userRepository = userRepository;
         }
 
         public RangeObservableCollection<VacationCellViewModel> Vacations { get; } = new RangeObservableCollection<VacationCellViewModel>();
@@ -56,6 +59,15 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         public ICommand<NavigationMenuItem> FilterVacationsCommand => CommandProvider.GetForAsync<NavigationMenuItem>(FilterVacations);
 
         public ICommand RefreshCommand => CommandProvider.GetForAsync(Refresh);
+
+        public ICommand LogoutCommand => CommandProvider.Get(Logout);
+
+        private void Logout()
+        {
+            _userRepository.Logout();
+
+            _navigationService.NavigateBackToLogin(this);
+        }
 
         private Task FilterVacations(NavigationMenuItem item)
         {

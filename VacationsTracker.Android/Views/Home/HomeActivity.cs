@@ -143,6 +143,10 @@ namespace VacationsTracker.Droid.Views.Home
             bindingSet.Bind(ViewHolder.Refresher)
                 .For(v => v.ValueChangedBinding())
                 .To(vm => vm.RefreshCommand);
+
+            bindingSet.Bind(ViewHolder.LogoutButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.LogoutCommand);
         }
     }
 }

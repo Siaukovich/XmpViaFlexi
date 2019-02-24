@@ -44,5 +44,7 @@ namespace VacationsTracker.Core.DataAccess
 
             await _storage.SetAsync(Settings.TokenStorageKey, userTokenResponse.AccessToken);
         }
+
+        public void Logout() => _storage.Remove(Settings.TokenStorageKey);
     }
 }

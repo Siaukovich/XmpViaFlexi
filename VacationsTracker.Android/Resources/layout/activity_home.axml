@@ -25,6 +25,12 @@
 			android:textSize="20dp"
 			android:text="@string/home_page_title" />
 
+		<Button 
+			android:id="@+id/logout_button"
+			android:layout_gravity="center|right"
+			android:text="@string/home_page_logout_button_text" 
+			style="@style/ToolbarButtonStyle1"/>
+
 	</android.support.v7.widget.Toolbar>
 	
 	<android.support.v4.widget.DrawerLayout

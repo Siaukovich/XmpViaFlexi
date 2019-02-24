@@ -10,6 +10,8 @@ namespace VacationsTracker.Core.Navigation
     {
         void NavigateToLogin(EntryViewModel fromViewModel);
 
+        void NavigateBackToLogin(HomeViewModel fromViewModel);
+
         void NavigateToHome(LoginViewModel fromViewModel);
 
         void NavigateToVacationDetails(HomeViewModel fromViewModel, VacationDetailsParameters parameters);

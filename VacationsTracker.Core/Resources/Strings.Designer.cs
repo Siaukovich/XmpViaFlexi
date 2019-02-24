@@ -88,6 +88,15 @@ namespace VacationsTracker.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string HomePage_LogoutButton_Text {
+            get {
+                return ResourceManager.GetString("HomePage_LogoutButton_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Requests.
         /// </summary>
         public static string HomePage_Title {

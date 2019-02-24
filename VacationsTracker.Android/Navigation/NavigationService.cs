@@ -27,6 +27,14 @@ namespace VacationsTracker.Droid.Navigation
             splashScreenActivity.NotNull().StartActivity(loginIntent);
         }
 
+        public void NavigateBackToLogin(HomeViewModel fromViewModel)
+        {
+            var homeActivity = GetActivity<HomeViewModel, HomeActivity>(fromViewModel);
+            var loginIntent = new Intent(homeActivity, typeof(LoginActivity));
+            loginIntent.AddFlags(ActivityFlags.ClearTask | ActivityFlags.ClearTop | ActivityFlags.NewTask);
+            homeActivity.NotNull().StartActivity(loginIntent);
+        }
+
         public void NavigateToHome(LoginViewModel fromViewModel)
         {
             var loginActivity = GetActivity<LoginViewModel, LoginActivity>(fromViewModel);
